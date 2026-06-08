@@ -48,7 +48,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="text-gray-600 text-xs md:text-sm lg:p-20 lg:-mt-30  ">
-        2026 Rickson Bozar. All rights reserved.
+       © 2026 Rickson Bozar. All rights reserved.
       </div>
     </div>
   );

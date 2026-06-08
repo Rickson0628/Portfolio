@@ -2,7 +2,7 @@ import { ImLocation } from "react-icons/im";
 import { AiFillGithub } from "react-icons/ai";
 import { AiFillLinkedin } from "react-icons/ai";
 import React from "react";
-import EarthZoom from './Earth';
+
 
 const Landing = () => {
   return (
@@ -38,7 +38,6 @@ const Landing = () => {
         </div>
            {/* Right Side */}
        <div className="space-y-3">
-  <EarthZoom design="h-[420px] w-full rounded-3xl" />
 
   <div className="flex items-center justify-center gap-2 text-gray-500">
     <ImLocation />

@@ -113,23 +113,23 @@ const Skills = () => {
   return (
     // Top Line
     <div className="lg:p-20">
-      <div className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-10 mb-6 ml-5">
+      <div className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-10 mb-6 sm:mx-5">
         SKILLS
       </div>
-      <div className="ml-5">
+      <div className="sm:mx-5">
         <LineHorizontalIcon />
       </div>
       {allSkills.map((section, index) => (
         <div key={section.title}>
-          <div className="lg:flex lg:items-center lg:gap-10  p-5  rounded-lg transition transform hover:bg-orange-50">
+          <div className="rounded-lg transition transform hover:bg-orange-50 sm:p-5 lg:flex lg:items-center lg:gap-10">
             {/* Right Side */}
             <div className="lg:w-1/3 flex flex-col justify-center">
               {/* Title */}
-              <div className="font-extrabold mb-6 text-2xl sm:text-3xl lg:text-4xl">
+              <div className="font-extrabold mb-5 text-2xl sm:text-3xl lg:text-4xl">
                 {section.title}
               </div>
               {/* Description */}
-              <div className="mb-7 sm:text-md md:text-lg text-gray-500">
+              <div className="mb-5 sm:text-md md:text-lg text-gray-500">
                 {section.description}
               </div>
             </div>
@@ -157,7 +157,7 @@ const Skills = () => {
           </div>
 
           {index !== allSkills.length - 1 ? (
-            <div className=" mt-5 ml-5">
+            <div className=" mt-5 sm:ml-5">
               <LineHorizontalIcon />
             </div>
           ) : (
