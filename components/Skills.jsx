@@ -112,7 +112,7 @@ const allSkills = [
 const Skills = () => {
   return (
     // Top Line
-    <div className="lg:p-20">
+    <div className="p-8 lg:p-20 -mt-10 lg:-mb-10">
       <div className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-10 mb-6 sm:mx-5">
         SKILLS
       </div>
@@ -125,11 +125,11 @@ const Skills = () => {
             {/* Right Side */}
             <div className="lg:w-1/3 flex flex-col justify-center">
               {/* Title */}
-              <div className="font-extrabold mb-5 text-2xl sm:text-3xl lg:text-4xl">
+              <div className="font-extrabold mb-5 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
                 {section.title}
               </div>
               {/* Description */}
-              <div className="mb-5 sm:text-md md:text-lg text-gray-500">
+              <div className="mb-5 text-sm sm:text-base md:text-lg text-gray-500">
                 {section.description}
               </div>
             </div>

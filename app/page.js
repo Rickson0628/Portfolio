@@ -14,11 +14,12 @@ export default function Home() {
   const [isSideBarOpen, setSideBar] = useState(false)
 
   return (
-    <div className="p-8">
+    <div className="">
       <Nav setSideBar={setSideBar} />
       <Landing />
       <Milestone />
       <Project />
+      
       <SideBar isOpen={isSideBarOpen} setSideBar={setSideBar}>
         <SideContent />
       </SideBar>

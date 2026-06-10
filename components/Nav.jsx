@@ -6,7 +6,7 @@ import Image from "next/image";
 const Nav = ({ setSideBar }) => {
   return (
     <nav>
-      <a href="#" className="fixed top-8 font-bold">
+      <a href="#" className="fixed top-8 left-5 font-bold">
         <Image src={`/rx-black-logo.png`} width={60} height={60} alt="Logo"/>
       </a>
 
