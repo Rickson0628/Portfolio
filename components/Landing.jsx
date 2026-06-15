@@ -6,7 +6,7 @@ import React from "react";
 
 const Landing = () => {
   return (
-    <div className="my-20 mx-5 lg:p-20">
+    <div className="my-20 mx-5 lg:p-15 xl:p-20">
       {/* Left Side */}
       <div className="flex gap-5">
         <div>

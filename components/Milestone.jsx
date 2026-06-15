@@ -1,49 +1,135 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const milestones = [
   {
     title: "Service Advisor",
     company: "Canadian Tire",
     description:
-      "Delivered customer-focused service by communicating effectively, resolving issues under pressure, coordinating with mechanics, parts, and service advisors, multitasking in a fast-paced environment, and training new colleagues on internal systems and company policies.",
-    date: "Aug 2023 - Present",
+      "Delivered customer-focused service by communicating effectively, resolving issues under pressure, coordinating with mechanics, automotive parts, and service advisors, multitasking in a fast-paced environment, and training new colleagues on internal systems and company policies.",
+    date: "2023 - Present",
+    type: "Work",
   },
   {
     title: "Diploma in Computer Programming",
     company: "Seneca Polytechnic",
     description:
-      "Student at Seneca Polytechnic with a 3.7 GPA. Coursework spans full-stack development, object-oriented programming, software testing, database management, operating systems, software analysis and design, and data structures and algorithms. Experienced in building dynamic MERN stack applications, writing SQL/Oracle queries, debugging and documenting programs, automating tasks with scripts, and applying SDLC principles to deliver efficient software solutions.Delivered customer-focused service by communicating effectively, resolving issues under pressure, coordinating with mechanics, parts, and service advisors, multitasking in a fast-paced environment, and training new colleagues on internal systems and company policies.",
-    date: "January 2024 - December 2025",
+      "Student at Seneca Polytechnic with a 3.7 GPA. Coursework spans full-stack development, object-oriented programming, software testing, database management, operating systems, software analysis and design, and data structures and algorithms.",
+    date: "2024 - 2025",
+    type: "School Learning",
   },
-
   {
     title: "Full-Stack Developer",
     company: "DBTK",
     description:
-      "Assisted in developing responsive and high-performing web pages using Next.js, including server-rendered and statically generated pages. Supported backend functionality with Node.js, REST API integration, and MongoDB database management. Collaborated with the development team using Git/GitHub, helped debug frontend and backend issues, and contributed to delivering stable and user-focused web features.",
-    date: "May 2025 - August 2025",
+      "Assisted in developing responsive and high-performing web pages using Next.js, including server-rendered and statically generated pages. Supported backend functionality with Node.js, REST API integration, and MongoDB database management.",
+    date: "2025",
+    type: "Internship",
   },
 ];
 
 const Milestone = () => {
+  const timelineRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 80%", "end 20%"],
+  });
+
+  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
+  const circlePosition = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
   return (
-    <div className="lg:p-20">
-      <div className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-10 mb-5">
+    <section ref={timelineRef} className="p-8 lg:p-16 xl:p-20">
+      <div className="lg:flex lg:justify-center font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-10 mb-20 text-univ">
         MILESTONES
       </div>
-      {milestones.map((milestone) => (
-        <div key={milestone.title} className="mb-5">
-          <div className="flex">
-            <div className="w-1/4">{milestone.date}</div>
-            <divz className="w-3/4">
-              <div>{milestone.title}</div>
-              <div>{milestone.company}</div>
-              <div>{milestone.description}</div>
-            </divz>
-          </div>
+
+      <div className="relative w-full">
+        {/* Timeline line */}
+        <div className="absolute left-4 top-0 h-full w-[2px] lg:left-1/2 lg:-translate-x-1/2">
+          {/* Background line */}
+          <div className="absolute h-full w-[2px] bg-gray-300"></div>
+
+          {/* Animated glowing line */}
+          <motion.div
+            className="absolute h-full w-[2px] origin-top bg-univ shadow-[0_0_18px_rgba(240,128,0,0.9)]"
+            style={{ scaleY }}
+          />
+
+          {/* Moving pulsing circle */}
+          <motion.div
+            className="absolute left-1/2 z-20 h-4 w-4 -translate-x-1/2 -translate-y-1/2"
+            style={{ top: circlePosition }}
+          >
+            {/* Pulse glow */}
+            <motion.div
+              className="absolute inset-0 rounded-full bg-univ shadow-[0_0_18px_8px_rgba(240,128,0,0.6)]"
+              animate={{
+                scale: [1, 2.5, 1],
+                opacity: [0.7, 0, 0.7],
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            {/* Main circle */}
+            <div className="relative h-4 w-4 rounded-full bg-univ shadow-[0_0_18px_8px_rgba(240,128,0,0.6)]"></div>
+          </motion.div>
         </div>
-      ))}
-    </div>
+
+        {/* Milestone Section */}
+        <div className="ml-12 lg:ml-0">
+          {milestones.map((milestone, index) => (
+            <div key={index}>
+              <div className="lg:grid lg:grid-cols-2 lg:gap-24">
+                {/* Left side */}
+                <div className="lg:pr-16 lg:text-right">
+                  <div className="flex justify-between mb-4 gap-4 ">
+                    <div className="text-left">
+                      <div className="font-bold mb-1 sm:text-lg lg:text-xl xl:text-2xl xl:text-3xl">
+                        {milestone.title}
+                      </div>
+
+                      <div className="text-univ sm:text-lg lg:text-xl xl:text-2xl">
+                        {milestone.company}
+                      </div>
+                    </div>
+
+                    <div className="text-right ">
+                      <div className="text-gray-600 mb-1 sm:text-lg lg:text-xl xl:text-2xl">
+                        {milestone.date}
+                      </div>
+
+                      <div className="text-univ sm:text-lg lg:text-xl xl:text-2xl">
+                        {milestone.type}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right side */}
+                <div className="text-gray-700 lg:pl-16 lg:text-lg">
+                  {milestone.description}
+                </div>
+              </div>
+
+              {index < milestones.length - 1 ? (
+                <div className="mb-20"></div>
+              ) : (
+                ""
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 

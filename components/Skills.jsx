@@ -112,7 +112,7 @@ const allSkills = [
 const Skills = () => {
   return (
     // Top Line
-    <div className="p-8 lg:p-20 -mt-10 lg:-mb-10">
+    <div className="p-8 lg:p-15 xl:p-20 -mt-10 lg:-mb-10">
       <div className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-10 mb-6 sm:mx-5">
         SKILLS
       </div>

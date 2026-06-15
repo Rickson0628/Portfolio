@@ -46,7 +46,7 @@ const Project = () => {
     );
   };
   return (
-    <section className="p-8 sm:mx-5 lg:p-20 lg:-mb-10">
+    <section className="p-8 lg:p-15 xl:p-20 sm:mx-5 lg:-mb-5">
       <h2 className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-10 mb-5">
         PROJECTS
       </h2>

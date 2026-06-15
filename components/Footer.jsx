@@ -16,9 +16,9 @@ const Footer = () => {
       <div className="md:flex md:gap-30 lg:gap-30 lg:px-20 lg:py-12 xl:gap-70">
         {/* Short intro */}
         <div className="my-7">
-          <div className="text-2xl font-bold">Got a problem?</div>
+          <div className="text-2xl font-bold">reppin</div>
           <div className="text-univ font-bold text-2xl mb-2">
-            {`I'll bring the code`}
+            {`lorem epsum`}
           </div>
           <div className="text-gray-600">Full Stack Developer</div>
         </div>
