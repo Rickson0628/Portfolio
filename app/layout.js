@@ -8,7 +8,7 @@ const sora = Sora({
 export const metadata = {
   title: "Rickson Bozar",
   icons:{
-    icon:"/rx-black-logo.png",
+    icon:"/rx-logo.png",
   },
   description: "Personal Website",
 };

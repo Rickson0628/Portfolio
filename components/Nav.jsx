@@ -7,7 +7,7 @@ const Nav = ({ setSideBar }) => {
   return (
     <nav>
       <a href="#" className="fixed top-8 left-5 font-bold">
-        <Image src={`/rx-black-logo.png`} width={60} height={60} alt="Logo"/>
+        <Image src={`/rx-logo.png`} width={60} height={60} alt="Logo"/>
       </a>
 
       <button

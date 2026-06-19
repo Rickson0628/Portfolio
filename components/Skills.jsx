@@ -31,6 +31,9 @@ import {
 import { DiReact } from "react-icons/di";
 import { MdSecurity } from "react-icons/md";
 import LineHorizontalIcon from "@/svg/horizontal-line";
+import WordTypewriter from "@/animation/WordTypeWriter";
+import FadeInOnScroll from "@/animation/IconFadeIn";
+import IconFadeIn from "@/animation/IconFadeIn";
 
 const frontSkills = {
   title: "Frontend",
@@ -112,9 +115,10 @@ const allSkills = [
 const Skills = () => {
   return (
     // Top Line
-    <div className="p-8 lg:p-15 xl:p-20 -mt-10 lg:-mb-10">
-      <div className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-10 mb-6 sm:mx-5">
-        SKILLS
+    <div className="p-8 lg:p-15 xl:p-20 -mt-10 lg:-mt-20 lg:-mb-10">
+      
+      <div className="font-extrabold text-3xl sm:text-4xl  lg:text-5xl  mt-10 mb-6 sm:mx-5 ">
+        <WordTypewriter text="SKILLS"/>
       </div>
       <div className="sm:mx-5">
         <LineHorizontalIcon />
@@ -125,17 +129,17 @@ const Skills = () => {
             {/* Right Side */}
             <div className="lg:w-1/3 flex flex-col justify-center">
               {/* Title */}
-              <div className="font-extrabold mb-5 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-                {section.title}
+              <div className="font-extrabold mb-5 text-2xl sm:text-3xl md:text-4xl">
+                <WordTypewriter text={section.title}/>
               </div>
               {/* Description */}
               <div className="mb-5 text-sm sm:text-base md:text-lg text-gray-500">
-                {section.description}
+                <WordTypewriter text={section.description}/>
               </div>
             </div>
 
             {/* Left Side */}
-            <div className="grid grid-cols-3 sm:grid-cols-3 lg:w-2/3 md:flex md:flex-wrap gap-2 lg:gap-7">
+            <div className="grid grid-cols-3 sm:grid-cols-3 lg:w-2/3 md:flex md:flex-wrap gap-2 lg:gap-2 xl:grid xl:grid-cols-4">
               {section.skills.map((skill, index) => (
                 // Icon
                 <div
@@ -143,13 +147,14 @@ const Skills = () => {
                   className=" h-14.5 px-4 flex items-center justify-center gap-2 border-2 border-gray-100 hover:border-univ rounded-lg 
               hover:scale-105 hover:shadow-md transition-all duration-200 sm:mt-5 md:mt-5"
                 >
-                  <div className="w-8 flex justify-center items-center shrink-0">
+                  <IconFadeIn>
+                  <div className="w-8 flex justify-center items-center shrink-0 animate-fade-in ">
                     {skill.icon}
                   </div>
-
+                  </IconFadeIn>
                   {/* Icon Name */}
                   <span className="text-sm font-medium whitespace-nowrap">
-                    {skill.name}
+                     <WordTypewriter text={skill.name}/>
                   </span>
                 </div>
               ))}
@@ -157,7 +162,7 @@ const Skills = () => {
           </div>
 
           {index !== allSkills.length - 1 ? (
-            <div className=" mt-5 sm:ml-5">
+            <div className="sm:ml-5">
               <LineHorizontalIcon />
             </div>
           ) : (

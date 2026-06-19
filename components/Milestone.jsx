@@ -2,6 +2,7 @@
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import WordTypewriter from "@/animation/WordTypeWriter";
 
 const milestones = [
   {
@@ -44,8 +45,8 @@ const Milestone = () => {
 
   return (
     <section ref={timelineRef} className="p-8 lg:p-16 xl:p-20">
-      <div className="lg:flex lg:justify-center font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-10 mb-20 text-univ">
-        MILESTONES
+      <div className="lg:flex lg:justify-center font-extrabold text-3xl sm:text-4xl  lg:text-5xl mt-10 mb-10 lg:mb-20">
+         <WordTypewriter text="Milestones"/>
       </div>
 
       <div className="relative w-full">
@@ -85,38 +86,39 @@ const Milestone = () => {
         </div>
 
         {/* Milestone Section */}
-        <div className="ml-12 lg:ml-0">
+        <div className="ml-12 lg:ml-6">
           {milestones.map((milestone, index) => (
             <div key={index}>
               <div className="lg:grid lg:grid-cols-2 lg:gap-24">
                 {/* Left side */}
-                <div className="lg:pr-16 lg:text-right">
+                <div className="lg:pr-5 lg:text-right">
                   <div className="flex justify-between mb-4 gap-4 ">
                     <div className="text-left">
-                      <div className="font-bold mb-1 sm:text-lg lg:text-xl xl:text-2xl xl:text-3xl">
-                        {milestone.title}
+                      <div className="font-bold mb-1 sm:text-lg lg:text-xl lg:text-2xl">
+                        <WordTypewriter text={milestone.title}/>
+                        
                       </div>
 
                       <div className="text-univ sm:text-lg lg:text-xl xl:text-2xl">
-                        {milestone.company}
+                         <WordTypewriter text={milestone.company}/>
                       </div>
                     </div>
 
                     <div className="text-right ">
-                      <div className="text-gray-600 mb-1 sm:text-lg lg:text-xl xl:text-2xl">
-                        {milestone.date}
+                      <div className="text-gray-600 mb-1 sm:text-lg lg:text-xl">
+                         <WordTypewriter text={milestone.date}/>
                       </div>
 
-                      <div className="text-univ sm:text-lg lg:text-xl xl:text-2xl">
-                        {milestone.type}
+                      <div className="text-univ sm:text-lg lg:text-xl">
+                         <WordTypewriter text={milestone.type}/>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Right side */}
-                <div className="text-gray-700 lg:pl-16 lg:text-lg">
-                  {milestone.description}
+                <div className="text-gray-700 lg:pr-5 lg:text-lg">
+                   <WordTypewriter text={milestone.description}/>
                 </div>
               </div>
 

@@ -46,8 +46,8 @@ const Project = () => {
     );
   };
   return (
-    <section className="p-8 lg:p-15 xl:p-20 sm:mx-5 lg:-mb-5">
-      <h2 className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-10 mb-5">
+    <section className="p-8 -mt-10 lg:p-15 xl:p-20 sm:mx-5 lg:-mb-5 lg:-mt-20">
+      <h2 className="font-extrabold  text-3xl  sm:text-4xl  lg:text-5xl  mt-10 mb-5">
         PROJECTS
       </h2>
 
@@ -100,7 +100,7 @@ const Project = () => {
             {/* Project Info */}
             <div className="flex justify-between sm:items-center mt-4 gap-1">
               {/* Project Title */}
-              <h3 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-3xl">
+              <h3 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-2xl xl:text-3xl">
                 {project.title}
               </h3>
               {/* Project Date */}
@@ -111,7 +111,7 @@ const Project = () => {
 
             {/* Marquee Description */}
             <div className="overflow-hidden whitespace-nowrap text-sm text-gray-600 mt-2">
-              <p className="inline-block animate-marquee sm:text-base md:text-lg lg:text-base">
+              <p className="inline-block animate-marquee sm:text-base md:text-lg lg:text-sm xl:text-lg">
                 ★ {project.description} ★
               </p>
             </div>

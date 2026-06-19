@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import Project from "./../components/Project";
 import Milestone from "@/components/Milestone";
 import { motion, useScroll } from "framer-motion";
+import TechStack from "@/components/TechStack";
 
 export default function Home() {
   const [isSideBarOpen, setSideBar] = useState(false);
@@ -34,7 +35,9 @@ export default function Home() {
       </SideBar>
 
       <Skills />
+      
       <Footer />
+
     </main>
   );
 }
