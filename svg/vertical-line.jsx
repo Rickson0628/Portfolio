@@ -2,7 +2,7 @@ import React from "react";
 
 const LineVerticalIcon = ({
   size = 50,
-  color = "#F08000",
+  color = "#014D4E",
   strokeWidth = 2,
   background = "transparent",
   opacity = 1,

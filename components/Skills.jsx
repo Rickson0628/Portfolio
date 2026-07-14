@@ -125,7 +125,7 @@ const Skills = () => {
       </div>
       {allSkills.map((section, index) => (
         <div key={section.title}>
-          <div className="rounded-lg transition transform hover:bg-orange-50 sm:p-5 lg:flex lg:items-center lg:gap-10">
+          <div className="rounded-lg transition transform hover:bg-teal-50 sm:p-5 lg:flex lg:items-center lg:gap-10">
             {/* Right Side */}
             <div className="lg:w-1/3 flex flex-col justify-center">
               {/* Title */}

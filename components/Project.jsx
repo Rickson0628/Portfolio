@@ -62,7 +62,7 @@ const Project = () => {
               setImageCount(0);
               setSelectedProject(project);
             }}
-            className="relative group border-2 border-gray-100 p-4 rounded-2xl shadow-md hover:bg-orange-50 hover:border-univ transition-all duration-300 hover:scale-[1.02] hover:cursor-pointer mt-8"
+            className="relative group border-2 border-gray-100 p-4 rounded-2xl shadow-md hover:bg-teal-50 hover:border-univ transition-all duration-300 hover:scale-[1.02] hover:cursor-pointer mt-8"
           >
             {/* Icon */}
             <div className="absolute right-8 top-8 z-10">
@@ -130,7 +130,7 @@ const Project = () => {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Upper Modal */}
-            <div className="relative p-5 bg-white w-full rounded-xl shadow-xl mb-5">
+            <div className="relative p-5 bg-gray-300 w-full rounded-xl shadow-xl mb-5">
               {/* Image Container */}
               <div className="relative w-full aspect-video rounded-lg overflow-hidden mt-2">
                 {/* Arrows */}
@@ -160,11 +160,11 @@ const Project = () => {
               </div>
             </div>
             {/* Lower Modal */}
-            <div className="relative p-5 bg-white w-full rounded-xl shadow-xl">
+            <div className="relative p-5 bg-gray-300 w-full rounded-xl shadow-xl">
               {/* First Div */}
               <div className="flex w-full my-2 gap-2 ">
                 {/* Title and Link */}
-                <a className="w-7/8 bg-gray-200 p-4 rounded-sm shadow-xl  hover:bg-orange-100 transition-all duration-300 hover:scale-[1.02] hover:cursor-pointer" href={selectedProject.link}
+                <a className="w-7/8 bg-gray-200 p-4 rounded-sm shadow-xl  hover:bg-teal-50 transition-all duration-300 hover:scale-[1.01] hover:cursor-pointer" href={selectedProject.link}
                 target="_bka">
                   <div className="flex justify-between">
                     <div className="font-bold text-xl md:text-2xl lg:text-3xl">
@@ -177,7 +177,7 @@ const Project = () => {
                 </a>
                 {/* Close Button */}
                 <button
-                  className="w-1/8 bg-gray-200 p-4 rounded-sm flex items-center justify-center text-red-500 text-2xl font-extrabold shadow-xl hover:bg-orange-100 transition-all duration-300 hover:scale-[1.10] hover:cursor-pointer md:text-3xl lg:text-4xl"
+                  className="w-1/8 bg-gray-200 p-4 rounded-sm flex items-center justify-center text-red-500 text-2xl font-extrabold shadow-xl hover:bg-teal-50 transition-all duration-300 hover:scale-[1.05] hover:cursor-pointer md:text-3xl lg:text-4xl"
                   onClick={() => setSelectedProject(null)}
                 >
                   <AiOutlineClose />

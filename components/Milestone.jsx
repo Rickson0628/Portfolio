@@ -57,7 +57,7 @@ const Milestone = () => {
 
           {/* Animated glowing line */}
           <motion.div
-            className="absolute h-full w-[2px] origin-top bg-univ shadow-[0_0_18px_rgba(240,128,0,0.9)]"
+            className="absolute h-full w-[2px] origin-top bg-univ shadow-[#5B7553]"
             style={{ scaleY }}
           />
 
@@ -68,7 +68,7 @@ const Milestone = () => {
           >
             {/* Pulse glow */}
             <motion.div
-              className="absolute inset-0 rounded-full bg-univ shadow-[0_0_18px_8px_rgba(240,128,0,0.6)]"
+              className="absolute inset-0 rounded-full bg-univ shadow-[#5B7553]]"
               animate={{
                 scale: [1, 2.5, 1],
                 opacity: [0.7, 0, 0.7],
@@ -81,7 +81,7 @@ const Milestone = () => {
             />
 
             {/* Main circle */}
-            <div className="relative h-4 w-4 rounded-full bg-univ shadow-[0_0_18px_8px_rgba(240,128,0,0.6)]"></div>
+            <div className="relative h-4 w-4 rounded-full bg-univ shadow-[#5B7553]"></div>
           </motion.div>
         </div>
 
@@ -91,7 +91,7 @@ const Milestone = () => {
             <div key={index}>
               <div className="lg:grid lg:grid-cols-2 lg:gap-24">
                 {/* Left side */}
-                <div className="lg:pr-5 lg:text-right">
+                <div className="lg:pr-8 lg:text-right">
                   <div className="flex justify-between mb-4 gap-4 ">
                     <div className="text-left">
                       <div className="font-bold mb-1 sm:text-lg lg:text-xl lg:text-2xl">
@@ -99,7 +99,7 @@ const Milestone = () => {
                         
                       </div>
 
-                      <div className="text-univ sm:text-lg lg:text-xl xl:text-2xl">
+                      <div className="text-gray-600 sm:text-lg lg:text-xl ">
                          <WordTypewriter text={milestone.company}/>
                       </div>
                     </div>
@@ -117,7 +117,7 @@ const Milestone = () => {
                 </div>
 
                 {/* Right side */}
-                <div className="text-gray-700 lg:pr-5 lg:text-lg">
+                <div className="text-gray-700 lg:pl-5 lg:text-lg">
                    <WordTypewriter text={milestone.description}/>
                 </div>
               </div>
