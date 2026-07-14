@@ -18,9 +18,9 @@ const Footer = () => {
       <div className="md:flex md:gap-30 lg:gap-30 lg:px-20 lg:py-12 xl:gap-70">
         {/* Short intro */}
         <div className="my-7">        
-          <div className="text-2xl font-bold"> <WordTypewriter text="reppin" /></div>
+          <div className="text-2xl font-bold"> <WordTypewriter text="Ideas are only the beginning" /></div>
           <div className="text-univ font-bold text-2xl mb-2">
-            <WordTypewriter text="lorem epsum" />
+            <WordTypewriter text="I build what comes next." />
           </div>
           <div className="text-gray-600"><WordTypewriter text="Full Stack Developer" /></div>
         </div>
