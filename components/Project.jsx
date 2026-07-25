@@ -46,11 +46,11 @@ const Project = () => {
     );
   };
   return (
-    <section className="p-8 -mt-10 lg:p-15 xl:p-20 sm:mx-5 lg:-mb-5 lg:-mt-20">
-      <h2 className="font-extrabold  text-3xl  sm:text-4xl  lg:text-5xl  mt-10 mb-5">
+    <section id="projects" className="p-8 -mt-10 lg:p-1 xl:p-20 sm:mx-5 lg:-mb-5 lg:-mt-20">
+      <h2 className="mb-5 mt-10 font-sans text-4xl font-semibold leading-none tracking-[-0.05em] sm:text-5xl lg:text-6xl">
         PROJECTS
       </h2>
-
+      <div className="bg-da"></div>
       <LineHorizontalIcon />
 
       {/* Card  */}
@@ -100,18 +100,18 @@ const Project = () => {
             {/* Project Info */}
             <div className="flex justify-between sm:items-center mt-4 gap-1">
               {/* Project Title */}
-              <h3 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-2xl xl:text-3xl">
+              <h3 className="font-sans text-2xl font-semibold leading-tight tracking-[-0.03em] sm:text-3xl lg:text-2xl xl:text-3xl">
                 {project.title}
               </h3>
               {/* Project Date */}
-              <p className="text-sm text-gray-600 sm:text-base md:text-lg lg:text-base">
+              <p className="font-mono text-xs tracking-[-0.02em] text-gray-600 tabular-nums sm:text-sm">
                 {project.date}
               </p>
             </div>
 
             {/* Marquee Description */}
-            <div className="overflow-hidden whitespace-nowrap text-sm text-gray-600 mt-2">
-              <p className="inline-block animate-marquee sm:text-base md:text-lg lg:text-sm xl:text-lg">
+            <div className="mt-2 overflow-hidden whitespace-nowrap font-sans text-sm leading-6 text-gray-600">
+              <p className="inline-block animate-marquee sm:text-base">
                 ★ {project.description} ★
               </p>
             </div>
@@ -154,7 +154,7 @@ const Project = () => {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover opacity-100 transition-all duration-500 hover:scale-[1.02] "
                 />
-                <div className="absolute bottom-3 right-3 z-50 rounded-full bg-black/50 px-3 py-1  text-xs text-white">
+                <div className="absolute bottom-3 right-3 z-50 rounded-full bg-black/50 px-3 py-1 font-mono text-xs text-white tabular-nums">
                   {imageCount + 1} / {selectedProject.image.length}
                 </div>
               </div>
@@ -167,7 +167,7 @@ const Project = () => {
                 <a className="w-7/8 bg-gray-200 p-4 rounded-sm shadow-xl  hover:bg-teal-50 transition-all duration-300 hover:scale-[1.01] hover:cursor-pointer" href={selectedProject.link}
                 target="_bka">
                   <div className="flex justify-between">
-                    <div className="font-bold text-xl md:text-2xl lg:text-3xl">
+                    <div className="font-sans text-xl font-semibold tracking-[-0.03em] md:text-2xl lg:text-3xl">
                       {selectedProject.title}
                     </div>
                     <div className="flex justify-between items-center text-blue-700 text-xl md:text-2xl lg:text-3xl ">
@@ -189,12 +189,12 @@ const Project = () => {
                 {/* Year and Tech Stack*/}
                 <div className="bg-gray-200 p-4 rounded-sm shadow-xl flex justify-between">
                   <div>
-                    <div className="text-sm font-light md:text-base ">Year:</div>
-                    <div className="md:text-lg ">{selectedProject.date}</div>
+                    <div className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-gray-500 sm:text-xs">Year:</div>
+                    <div className="font-mono text-sm font-medium tabular-nums sm:text-base">{selectedProject.date}</div>
                   </div>
                   <div>
-                    <div className="text-sm font-light md:text-base ">Role:</div>
-                    <div className="md:text-lg ">{selectedProject.role}</div>
+                    <div className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-gray-500 sm:text-xs">Role:</div>
+                    <div className="font-sans text-sm font-medium sm:text-base">{selectedProject.role}</div>
                   </div>
                 </div>
               </div>
@@ -204,8 +204,8 @@ const Project = () => {
                 {/* Project Description*/}
                 <div className=" bg-gray-200 p-4 rounded-sm shadow-xl hover:gradient">
                   <div>
-                    <div className="mb-2 text-sm font-light md:text-base">Overview:</div>
-                    <div className="md:text-lg">{selectedProject.description}</div>
+                    <div className="mb-2 font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-gray-500 sm:text-xs">Overview:</div>
+                    <div className="font-sans text-base leading-7 sm:text-lg">{selectedProject.description}</div>
                   </div>
                 </div>
               </div>

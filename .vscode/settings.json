@@ -1,0 +1,12 @@
+{
+  "tailwindCSS.experimental.configFile": "app/globals.css",
+  "tailwindCSS.files.exclude": [
+    "**/.git/**",
+    "**/.next/**",
+    "**/node_modules/**"
+  ],
+  "files.watcherExclude": {
+    "**/.next/**": true,
+    "**/node_modules/**": true
+  }
+}

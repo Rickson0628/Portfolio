@@ -18,23 +18,23 @@ const Footer = () => {
       <div className="md:flex md:gap-30 lg:gap-30 lg:px-20 lg:py-12 xl:gap-70">
         {/* Short intro */}
         <div className="my-7">        
-          <div className="text-2xl font-bold"> <WordTypewriter text="Ideas are only the beginning" /></div>
-          <div className="text-univ font-bold text-2xl mb-2">
+          <div className="font-sans text-2xl font-semibold leading-tight tracking-[-0.04em] sm:text-3xl lg:text-4xl"> <WordTypewriter text="Ideas are only the beginning" /></div>
+          <div className="mb-2 font-sans text-2xl font-semibold leading-tight tracking-[-0.04em] text-univ sm:text-3xl lg:text-4xl">
             <WordTypewriter text="I build what comes next." />
           </div>
-          <div className="text-gray-600"><WordTypewriter text="Full Stack Developer" /></div>
+          <div className="font-mono text-xs font-medium uppercase tracking-[0.12em] text-gray-600 sm:text-sm"><WordTypewriter text="Full Stack Developer" /></div>
         </div>
 
         {/* Contact */}
         <div className="my-7 flex flex-col gap-2">
-          <div className="text-univ font-bold"><WordTypewriter text="CONTACT" /></div>
+          <div className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-univ"><WordTypewriter text="CONTACT" /></div>
 
-          <div className="flex gap-2 items-center text-sm">
+          <div className="flex items-center gap-2 font-sans text-sm sm:text-base">
             <IconFadeIn><MdEmail className="text-gray-600" /></IconFadeIn>
             <WordTypewriter text="ricksonbozar2@gmail.com" />
           </div>
 
-          <div className="flex gap-2 items-center text-sm">
+          <div className="flex items-center gap-2 font-mono text-xs tabular-nums sm:text-sm">
             <IconFadeIn><CgPhone className="text-gray-600" /></IconFadeIn>
             <WordTypewriter text="+1 (437) 424-5853" />
           </div>
@@ -42,19 +42,19 @@ const Footer = () => {
 
         {/* Socials */}
         <div className="my-7 flex flex-col gap-2">
-          <div className="text-univ font-bold"><WordTypewriter text="SOCIAL" /></div>
+          <div className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-univ"><WordTypewriter text="SOCIAL" /></div>
 
-          <div className="flex gap-2 items-center text-sm">
+          <div className="flex items-center gap-2 font-sans text-sm sm:text-base">
             <IconFadeIn><AiFillGithub className="text-gray-600" /></IconFadeIn>
             <WordTypewriter text="Github" />
           </div>
 
-          <div className="flex gap-2 items-center text-sm">
+          <div className="flex items-center gap-2 font-sans text-sm sm:text-base">
             <IconFadeIn><AiFillLinkedin className="text-gray-600" /></IconFadeIn>
            <WordTypewriter text="LinkedIn" /> 
           </div>
 
-          <div className="flex gap-2 items-center text-sm">
+          <div className="flex items-center gap-2 font-sans text-sm sm:text-base">
            <IconFadeIn> <CgFileDocument className="text-gray-600" /></IconFadeIn>
             <WordTypewriter text="Resume" />
           </div>
@@ -62,7 +62,7 @@ const Footer = () => {
       </div>
 
       {/* Copyright */}
-      <div className="mt-6 text-gray-600 text-xs md:text-sm lg:px-20">
+      <div className="mt-6 font-mono text-[11px] tracking-[-0.02em] text-gray-600 sm:text-xs lg:px-20">
        © 2026 Rickson Bozar. All rights reserved.
       </div>
     </footer>

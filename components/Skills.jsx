@@ -117,7 +117,7 @@ const Skills = () => {
     // Top Line
     <div className="p-8 lg:p-15 xl:p-20 -mt-10 lg:-mt-20 lg:-mb-10">
       
-      <div className="font-extrabold text-3xl sm:text-4xl  lg:text-5xl  mt-10 mb-6 sm:mx-5 ">
+      <div className="mb-6 mt-10 font-sans text-4xl font-semibold leading-none tracking-[-0.05em] sm:mx-5 sm:text-5xl lg:text-6xl">
         <WordTypewriter text="SKILLS"/>
       </div>
       <div className="sm:mx-5">
@@ -129,11 +129,11 @@ const Skills = () => {
             {/* Right Side */}
             <div className="lg:w-1/3 flex flex-col justify-center">
               {/* Title */}
-              <div className="font-extrabold mb-5 text-2xl sm:text-3xl md:text-4xl">
+              <div className="mb-5 font-sans text-2xl font-semibold leading-tight tracking-[-0.04em] sm:text-3xl lg:text-4xl">
                 <WordTypewriter text={section.title}/>
               </div>
               {/* Description */}
-              <div className="mb-5 text-sm sm:text-base md:text-lg text-gray-500">
+              <div className="mb-5 font-sans text-sm leading-6 text-gray-500 sm:text-base lg:text-lg lg:leading-7">
                 <WordTypewriter text={section.description}/>
               </div>
             </div>
@@ -153,7 +153,7 @@ const Skills = () => {
                   </div>
                   </IconFadeIn>
                   {/* Icon Name */}
-                  <span className="text-sm font-medium whitespace-nowrap">
+                  <span className="whitespace-nowrap font-mono text-xs font-medium tracking-[-0.02em] sm:text-sm">
                      <WordTypewriter text={skill.name}/>
                   </span>
                 </div>

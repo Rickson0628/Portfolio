@@ -45,7 +45,7 @@ const Milestone = () => {
 
   return (
     <section ref={timelineRef} className="p-8 lg:p-16 xl:p-20">
-      <div className="lg:flex lg:justify-center font-extrabold text-3xl sm:text-4xl  lg:text-5xl mt-10 mb-10 lg:mb-20">
+      <div className="mb-10 mt-10 font-sans text-4xl font-semibold leading-none tracking-[-0.05em] sm:text-5xl lg:mb-20 lg:flex lg:justify-center lg:text-6xl">
          <WordTypewriter text="Milestones"/>
       </div>
 
@@ -94,22 +94,22 @@ const Milestone = () => {
                 <div className="lg:pr-8 lg:text-right">
                   <div className="flex justify-between mb-4 gap-4 ">
                     <div className="text-left">
-                      <div className="font-bold mb-1 sm:text-lg lg:text-xl lg:text-2xl">
+                      <div className="mb-1 font-sans text-xl font-semibold leading-tight tracking-[-0.03em] sm:text-2xl lg:text-3xl">
                         <WordTypewriter text={milestone.title}/>
                         
                       </div>
 
-                      <div className="text-gray-600 sm:text-lg lg:text-xl ">
+                      <div className="font-sans text-sm leading-6 text-gray-600 sm:text-base lg:text-lg">
                          <WordTypewriter text={milestone.company}/>
                       </div>
                     </div>
 
                     <div className="text-right ">
-                      <div className="text-gray-600 mb-1 sm:text-lg lg:text-xl">
+                      <div className="mb-1 font-mono text-xs tracking-[-0.02em] text-gray-600 tabular-nums sm:text-sm lg:text-base">
                          <WordTypewriter text={milestone.date}/>
                       </div>
 
-                      <div className="text-univ sm:text-lg lg:text-xl">
+                      <div className="font-mono text-xs font-medium tracking-[-0.02em] text-univ sm:text-sm lg:text-base">
                          <WordTypewriter text={milestone.type}/>
                       </div>
                     </div>
@@ -117,7 +117,7 @@ const Milestone = () => {
                 </div>
 
                 {/* Right side */}
-                <div className="text-gray-700 lg:pl-5 lg:text-lg">
+                <div className="font-sans text-base leading-7 text-gray-700 sm:text-lg lg:pl-5 lg:leading-8">
                    <WordTypewriter text={milestone.description}/>
                 </div>
               </div>

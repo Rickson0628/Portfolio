@@ -76,7 +76,7 @@ const Skills = [
 const TechStack = () => {
   return (
     <section className='p-8 lg:p-20'>
-       <div className="flex items-center justify-center font-extrabold text-univ text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-10 mb-6 sm:mx-5">
+       <div className="mb-6 mt-10 flex items-center justify-center font-sans text-4xl font-semibold leading-none tracking-[-0.05em] text-univ sm:mx-5 sm:text-5xl lg:text-6xl">
         SKILLS
       </div>
       <div className="sm:mx-5 flex justify-center mb-10">
@@ -86,7 +86,7 @@ const TechStack = () => {
         {Skills.map((skill)=>(
           <div key={skill.name} className='flex flex-col w-29 gap-2 justify-center items-center border border-gray-300 p-5 rounded-2xl hover:bg-orange-50 hover:border-univ hover:scale-105 hover:shadow-md transition-all duration-200'>
             <div>{skill.icon}</div>
-            <div>{skill.name}</div>
+            <div className="font-mono text-xs font-medium tracking-[-0.02em] sm:text-sm">{skill.name}</div>
           </div>
         ))}
       </div>

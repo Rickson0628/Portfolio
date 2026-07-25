@@ -1,22 +1,26 @@
 import "./globals.css";
-import { Sora } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 
-const sora = Sora({
-  subsets: ["latin"],
-});
 
 export const metadata = {
   title: "Rickson Bozar",
-  icons:{
-    icon:"/rx-logo.png",
+  icons: {
+    icon: "/rx-black-logo.png",
   },
   description: "Personal Website",
 };
 
+
+
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${sora.className} min-h-full flex flex-col`}>
+    <html
+      lang="en"
+      className={`${GeistSans.variable} ${GeistMono.variable} `}
+    >
+      <body className={`${GeistSans.className} min-h-full flex flex-col antialiased text-white`}>
         {children}
       </body>
     </html>

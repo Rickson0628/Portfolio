@@ -12,16 +12,17 @@ const SideContent = () => {
   return (
     <section>
       <div className='flex flex-row'>
-        {icons.map((icon)=>(
-          <a key={icon.name} href={icon.href}>
+        {icons.map((icon, index)=>(
+          <a key={index} href={icon.href}>
           {icon.name}
           </a>
         ))}
       </div>
       <div className='flex flex-col gap-3'>
         {routes.map((route, index)=>(
-          <a key={route} className='text-xl font-bold'>
-             {index + 1} {". "} {route}         
+          <a key={route} className='flex items-baseline gap-3 font-sans text-2xl font-semibold tracking-[-0.03em] sm:text-3xl'>
+             <span className="font-mono text-xs font-medium tracking-normal text-univ tabular-nums">{index + 1}.</span>
+             <span>{route}</span>
           </a>
         ))}
 
