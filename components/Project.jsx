@@ -1,9 +1,9 @@
 "use client";
+import { BiLeftDownArrowCircle } from "react-icons/bi"; 
 import { AiOutlineLink } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiLeftArrowCircle } from "react-icons/bi";
 import { BiRightArrowCircle } from "react-icons/bi";
-import { AiOutlineRightCircle } from "react-icons/ai";
 import { BiInfoCircle } from "react-icons/bi";
 import LineHorizontalIcon from "@/svg/horizontal-line";
 import Image from "next/image";
@@ -50,7 +50,7 @@ const Project = () => {
       <h2 className="mb-5 mt-10 font-sans text-4xl font-semibold leading-none tracking-[-0.05em] sm:text-5xl lg:text-6xl">
         PROJECTS
       </h2>
-      <div className="bg-da"></div>
+      <div className=""></div>
       <LineHorizontalIcon />
 
       {/* Card  */}
@@ -62,19 +62,18 @@ const Project = () => {
               setImageCount(0);
               setSelectedProject(project);
             }}
-            className="relative group border-2 border-gray-100 p-4 rounded-2xl shadow-md hover:bg-teal-50 hover:border-univ transition-all duration-300 hover:scale-[1.02] hover:cursor-pointer mt-8"
+            className="group relative mt-8 rounded-2xl border-2 border-border bg-surface p-4 shadow-md transition-all duration-300 hover:scale-[1.02] hover:cursor-pointer  hover:bg-highlight"
           >
             {/* Icon */}
             <div className="absolute right-8 top-8 z-10">
               <BiInfoCircle
                 size={22}
-                color="white"
-                className="transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+                className="text-on-media opacity-100 transition-opacity duration-300 group-hover:opacity-0"
               />
-
-              <AiOutlineRightCircle
+         
+              <BiLeftDownArrowCircle
                 size={22}
-                className="absolute inset-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100 text-univ"
+                className="absolute inset-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100 text-on-media scale-115"
               />
             </div>
 
@@ -104,13 +103,13 @@ const Project = () => {
                 {project.title}
               </h3>
               {/* Project Date */}
-              <p className="font-mono text-xs tracking-[-0.02em] text-gray-600 tabular-nums sm:text-sm">
+              <p className="font-mono text-xs tracking-[-0.02em] text-muted tabular-nums sm:text-sm">
                 {project.date}
               </p>
             </div>
 
             {/* Marquee Description */}
-            <div className="mt-2 overflow-hidden whitespace-nowrap font-sans text-sm leading-6 text-gray-600">
+            <div className="mt-2 overflow-hidden whitespace-nowrap font-sans text-sm leading-6 text-muted">
               <p className="inline-block animate-marquee sm:text-base">
                 ★ {project.description} ★
               </p>
@@ -122,7 +121,7 @@ const Project = () => {
       {selectedProject && (
         // Project  Modal Container
         <div
-          className="fixed z-100 inset-0 overflow-y-auto  bg-black/50 p-5"
+          className="fixed inset-0 z-100 overflow-y-auto bg-overlay p-5"
           onClick={() => setSelectedProject(null)}
         >
           <div
@@ -130,19 +129,21 @@ const Project = () => {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Upper Modal */}
-            <div className="relative p-5 bg-gray-300 w-full rounded-xl shadow-xl mb-5">
+            <div className="relative mb-5 w-full rounded-xl border border-border bg-surface p-5 text-foreground shadow-xl">
               {/* Image Container */}
               <div className="relative w-full aspect-video rounded-lg overflow-hidden mt-2">
                 {/* Arrows */}
                 <button
-                  className="absolute z-50 top-1/2 -translate-y-1/2 left-1 text-white text-2xl hover:text-univ"
+                  className="absolute left-1 top-1/2 z-50 -translate-y-1/2 text-2xl text-on-media transition-opacity hover:opacity-70"
                   onClick={prevImage}
+                  aria-label="Previous project image"
                 >
                   <BiLeftArrowCircle />
                 </button>
                 <button
-                  className="absolute z-50 top-1/2  -translate-y-1/2 right-1 text-white text-2xl hover:text-univ"
+                  className="absolute right-1 top-1/2 z-50 -translate-y-1/2 text-2xl text-on-media transition-opacity hover:opacity-70"
                   onClick={nextImage}
+                  aria-label="Next project image"
                 >
                   <BiRightArrowCircle />
                 </button>
@@ -154,31 +155,32 @@ const Project = () => {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover opacity-100 transition-all duration-500 hover:scale-[1.02] "
                 />
-                <div className="absolute bottom-3 right-3 z-50 rounded-full bg-black/50 px-3 py-1 font-mono text-xs text-white tabular-nums">
+                <div className="absolute bottom-3 right-3 z-50 rounded-full bg-overlay px-3 py-1 font-mono text-xs text-on-media tabular-nums">
                   {imageCount + 1} / {selectedProject.image.length}
                 </div>
               </div>
             </div>
             {/* Lower Modal */}
-            <div className="relative p-5 bg-gray-300 w-full rounded-xl shadow-xl">
+            <div className="relative w-full rounded-xl border border-border bg-surface p-5 text-foreground shadow-xl">
               {/* First Div */}
               <div className="flex w-full my-2 gap-2 ">
                 {/* Title and Link */}
-                <a className="w-7/8 bg-gray-200 p-4 rounded-sm shadow-xl  hover:bg-teal-50 transition-all duration-300 hover:scale-[1.01] hover:cursor-pointer" href={selectedProject.link}
+                <a className="w-7/8 rounded-sm border border-border bg-background p-4 shadow-xl transition-all duration-300 hover:scale-[1.01] hover:cursor-pointer hover:bg-highlight" href={selectedProject.link}
                 target="_bka">
                   <div className="flex justify-between">
                     <div className="font-sans text-xl font-semibold tracking-[-0.03em] md:text-2xl lg:text-3xl">
                       {selectedProject.title}
                     </div>
-                    <div className="flex justify-between items-center text-blue-700 text-xl md:text-2xl lg:text-3xl ">
+                    <div className="flex items-center justify-between text-xl text-univ md:text-2xl lg:text-3xl">
                       <AiOutlineLink />
                     </div>
                   </div>
                 </a>
                 {/* Close Button */}
                 <button
-                  className="w-1/8 bg-gray-200 p-4 rounded-sm flex items-center justify-center text-red-500 text-2xl font-extrabold shadow-xl hover:bg-teal-50 transition-all duration-300 hover:scale-[1.05] hover:cursor-pointer md:text-3xl lg:text-4xl"
+                  className="flex w-1/8 items-center justify-center rounded-sm border border-border bg-background p-4 text-2xl font-extrabold text-foreground shadow-xl transition-all duration-300 hover:scale-[1.05] hover:cursor-pointer hover:bg-highlight hover:text-univ md:text-3xl lg:text-4xl"
                   onClick={() => setSelectedProject(null)}
+                  aria-label="Close project details"
                 >
                   <AiOutlineClose />
                 </button>
@@ -187,13 +189,13 @@ const Project = () => {
               {/* Second Div */}
               <div className="w-full my-2 mt-5 ">
                 {/* Year and Tech Stack*/}
-                <div className="bg-gray-200 p-4 rounded-sm shadow-xl flex justify-between">
+                <div className="flex justify-between rounded-sm border border-border bg-background p-4 shadow-xl">
                   <div>
-                    <div className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-gray-500 sm:text-xs">Year:</div>
+                    <div className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-muted sm:text-xs">Year:</div>
                     <div className="font-mono text-sm font-medium tabular-nums sm:text-base">{selectedProject.date}</div>
                   </div>
                   <div>
-                    <div className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-gray-500 sm:text-xs">Role:</div>
+                    <div className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-muted sm:text-xs">Role:</div>
                     <div className="font-sans text-sm font-medium sm:text-base">{selectedProject.role}</div>
                   </div>
                 </div>
@@ -202,9 +204,9 @@ const Project = () => {
               {/* Third Div */}
               <div className="w-full my-2 mt-5 ">
                 {/* Project Description*/}
-                <div className=" bg-gray-200 p-4 rounded-sm shadow-xl hover:gradient">
+                <div className="rounded-sm border border-border bg-background p-4 shadow-xl transition-colors hover:bg-highlight">
                   <div>
-                    <div className="mb-2 font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-gray-500 sm:text-xs">Overview:</div>
+                    <div className="mb-2 font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-muted sm:text-xs">Overview:</div>
                     <div className="font-sans text-base leading-7 sm:text-lg">{selectedProject.description}</div>
                   </div>
                 </div>

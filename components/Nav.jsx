@@ -17,7 +17,7 @@ const icons = [
 
 const Nav = ({ setSideBar }) => {
   return (
-    <nav className="fixed p-10 lg:p-8  w-full z-50 shadow-sm backdrop-blur-xs ">
+    <nav className="fixed z-50 w-full bg-background/80 p-10 text-foreground shadow-sm backdrop-blur-xs lg:p-8">
       {/* Left fixed vertical nav */}
       <div className="fixed left-5 -top-7 lg:-top-5 z-60 flex flex-col h-screen w-20  items-center justify-between py-8">
         {/* Top logo */}
@@ -29,12 +29,12 @@ const Nav = ({ setSideBar }) => {
         </a>
 
         {/* Bottom social icons */}
-        <div className="hidden translate-y-5 lg:flex flex-col items-center gap-4 lg:mr-11 xl:mr-5 text-gray-600 dark:text-white">
+        <div className="hidden translate-y-5 flex-col items-center gap-4 text-muted lg:mr-11 lg:flex xl:mr-5">
           {icons.map((icon, index) => (
             <a
               key={icon.href}
               href={icon.href}
-              className="transition transform hover:scale-115  duration-300"
+              className="transform transition duration-300 hover:scale-115 hover:text-univ"
             >
               {icon.name}
             </a>
@@ -48,7 +48,7 @@ const Nav = ({ setSideBar }) => {
         onClick={() => setSideBar((prev) => !prev)}
         aria-label="Open menu"
       >
-        <RxHamburgerMenu size={25} color="#000000" />
+        <RxHamburgerMenu size={25} />
       </button>
       <div className="hidden lg:flex flex-row z-50 cursor-pointer gap-15 items-center justify-center w-full">
         {/* All routes */}
@@ -66,7 +66,7 @@ const Nav = ({ setSideBar }) => {
           href="/Rickson-Bozar-Resume.pdf"
           target="_blank"
           rel="noreferrer"
-          className="group flex items-center gap-2 rounded-md border border-gray-300 px-5 py-2.5 font-mono text-sm font-semibold tracking-[0.08em]
+          className="group flex items-center gap-2 rounded-md border border-border px-5 py-2.5 font-mono text-sm font-semibold tracking-[0.08em]
       transition-all duration-300 hover:-translate-y-0.5 hover:border-univ hover:text-univ focus-visible:outline-2 focus-visible:outline-offset-4
       focus-visible:outline-univ
     "

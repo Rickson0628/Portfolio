@@ -53,11 +53,11 @@ const Milestone = () => {
         {/* Timeline line */}
         <div className="absolute left-4 top-0 h-full w-[2px] lg:left-1/2 lg:-translate-x-1/2">
           {/* Background line */}
-          <div className="absolute h-full w-[2px] bg-gray-300"></div>
+          <div className="absolute h-full w-[2px] bg-border"></div>
 
           {/* Animated glowing line */}
           <motion.div
-            className="absolute h-full w-[2px] origin-top bg-univ shadow-[#5B7553]"
+            className="absolute h-full w-[2px] origin-top bg-univ shadow-sm"
             style={{ scaleY }}
           />
 
@@ -68,7 +68,7 @@ const Milestone = () => {
           >
             {/* Pulse glow */}
             <motion.div
-              className="absolute inset-0 rounded-full bg-univ shadow-[#5B7553]]"
+              className="absolute inset-0 rounded-full bg-univ shadow-sm"
               animate={{
                 scale: [1, 2.5, 1],
                 opacity: [0.7, 0, 0.7],
@@ -81,7 +81,7 @@ const Milestone = () => {
             />
 
             {/* Main circle */}
-            <div className="relative h-4 w-4 rounded-full bg-univ shadow-[#5B7553]"></div>
+            <div className="relative h-4 w-4 rounded-full bg-univ shadow-sm"></div>
           </motion.div>
         </div>
 
@@ -99,13 +99,13 @@ const Milestone = () => {
                         
                       </div>
 
-                      <div className="font-sans text-sm leading-6 text-gray-600 sm:text-base lg:text-lg">
+                      <div className="font-sans text-sm leading-6 text-muted sm:text-base lg:text-lg">
                          <WordTypewriter text={milestone.company}/>
                       </div>
                     </div>
 
                     <div className="text-right ">
-                      <div className="mb-1 font-mono text-xs tracking-[-0.02em] text-gray-600 tabular-nums sm:text-sm lg:text-base">
+                      <div className="mb-1 font-mono text-xs tracking-[-0.02em] text-muted tabular-nums sm:text-sm lg:text-base">
                          <WordTypewriter text={milestone.date}/>
                       </div>
 
@@ -117,7 +117,7 @@ const Milestone = () => {
                 </div>
 
                 {/* Right side */}
-                <div className="font-sans text-base leading-7 text-gray-700 sm:text-lg lg:pl-5 lg:leading-8">
+                <div className="font-sans text-base leading-7 text-foreground sm:text-lg lg:pl-5 lg:leading-8">
                    <WordTypewriter text={milestone.description}/>
                 </div>
               </div>

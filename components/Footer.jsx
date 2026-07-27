@@ -22,7 +22,7 @@ const Footer = () => {
           <div className="mb-2 font-sans text-2xl font-semibold leading-tight tracking-[-0.04em] text-univ sm:text-3xl lg:text-4xl">
             <WordTypewriter text="I build what comes next." />
           </div>
-          <div className="font-mono text-xs font-medium uppercase tracking-[0.12em] text-gray-600 sm:text-sm"><WordTypewriter text="Full Stack Developer" /></div>
+          <div className="font-mono text-xs font-medium uppercase tracking-[0.12em] text-muted sm:text-sm"><WordTypewriter text="Full Stack Developer" /></div>
         </div>
 
         {/* Contact */}
@@ -30,12 +30,12 @@ const Footer = () => {
           <div className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-univ"><WordTypewriter text="CONTACT" /></div>
 
           <div className="flex items-center gap-2 font-sans text-sm sm:text-base">
-            <IconFadeIn><MdEmail className="text-gray-600" /></IconFadeIn>
+            <IconFadeIn><MdEmail className="text-muted" /></IconFadeIn>
             <WordTypewriter text="ricksonbozar2@gmail.com" />
           </div>
 
           <div className="flex items-center gap-2 font-mono text-xs tabular-nums sm:text-sm">
-            <IconFadeIn><CgPhone className="text-gray-600" /></IconFadeIn>
+            <IconFadeIn><CgPhone className="text-muted" /></IconFadeIn>
             <WordTypewriter text="+1 (437) 424-5853" />
           </div>
         </div>
@@ -45,24 +45,24 @@ const Footer = () => {
           <div className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-univ"><WordTypewriter text="SOCIAL" /></div>
 
           <div className="flex items-center gap-2 font-sans text-sm sm:text-base">
-            <IconFadeIn><AiFillGithub className="text-gray-600" /></IconFadeIn>
+            <IconFadeIn><AiFillGithub className="text-muted" /></IconFadeIn>
             <WordTypewriter text="Github" />
           </div>
 
           <div className="flex items-center gap-2 font-sans text-sm sm:text-base">
-            <IconFadeIn><AiFillLinkedin className="text-gray-600" /></IconFadeIn>
+            <IconFadeIn><AiFillLinkedin className="text-muted" /></IconFadeIn>
            <WordTypewriter text="LinkedIn" /> 
           </div>
 
           <div className="flex items-center gap-2 font-sans text-sm sm:text-base">
-           <IconFadeIn> <CgFileDocument className="text-gray-600" /></IconFadeIn>
+           <IconFadeIn> <CgFileDocument className="text-muted" /></IconFadeIn>
             <WordTypewriter text="Resume" />
           </div>
         </div>
       </div>
 
       {/* Copyright */}
-      <div className="mt-6 font-mono text-[11px] tracking-[-0.02em] text-gray-600 sm:text-xs lg:px-20">
+      <div className="mt-6 font-mono text-[11px] tracking-[-0.02em] text-muted sm:text-xs lg:px-20">
        © 2026 Rickson Bozar. All rights reserved.
       </div>
     </footer>

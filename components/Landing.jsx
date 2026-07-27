@@ -9,6 +9,7 @@ import {
   AiFillLinkedin,
   AiOutlineInstagram,
 } from "react-icons/ai";
+import WordTypewriter from "@/animation/WordTypeWriter";
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -80,18 +81,18 @@ const Landing = () => {
           {/* Animated greeting */}
           <div className="flex justify-center items-center">
             <div
-              className={`text-xl md:text-2xl  font-mono font-semibold transition-all duration-500 ease-out text-univ ${
+              className={`text-xl md:text-2xl font-mono font-semibold text-univ transition-all duration-500 ease-out ${
                 isVisible
                   ? "translate-y-0 scale-100 opacity-100 blur-0"
                   : "-translate-y-3 scale-50 opacity-0 blur-sm"
               } `}
             >
-              {greetings[index]}!
-              <div className=" mt-3 h-0.5 bg-univ rounded-2xl " />
+           {greetings[index]}!
+              <div className="mt-3 h-0.5 rounded-2xl bg-univ" />
             </div>
           </div>
-          <div className="font-mono text-xl md:text-2xl text-gray-600 mb-4 dark:text-gray-400 ">
-            I am
+          <div className="mb-4 font-mono text-xl text-muted md:text-2xl">
+              I am
           </div>
         </div>
 
@@ -99,26 +100,26 @@ const Landing = () => {
         <div
           className={` w-full ${ibmPlexSans.className} font-medium tracking-[-0.06em] leading-[0.85] text-8xl md:text-9xl xl:text-[150px] pb-5 -ml-5 `}
         >
-          <div className="">Rickson</div>
-          <div className="">Bozar</div>
+          <div className="">   Rickson</div>  
+          <div className="">   Bozar</div>
         </div>
         {/* Field and location*/}
 
         <div className="relative flex w-full">
           <div>
-            <div className="font-mono  font-extrabold text-xl md:text-3xl lg:text-3xl xl:text-3xl  mt-5  xl:mt-0 text-univ">
-              <div className="flex gap-1 mb-5 lg:mb-0 text-gray-600 lg:opacity-0">
+            <div className="mt-5 font-mono text-xl font-extrabold text-univ md:text-3xl lg:text-3xl xl:mt-0 xl:text-3xl">
+              <div className="mb-5 flex gap-1 text-muted lg:mb-0 lg:opacity-0">
                 {icons.map((icon, index) => (
                   <a key={index} href={icon.href} target="_blank">
                     {icon.name}
                   </a>
                 ))}
               </div>
-              FULL-STACK
+                  FULL-STACK
             </div>
 
-            <div className="font-mono font-extrabold  text-xl md:text-3xl lg:text-3xl xl:text-3xl text-gray-500 dark:text-gray-400 ">
-              DEVELOPER
+            <div className="font-mono text-xl font-extrabold text-muted md:text-3xl lg:text-3xl xl:text-3xl">
+                 DEVELOPER
             </div>
           </div>
           {/* Greeting robot */}
@@ -145,9 +146,9 @@ const Landing = () => {
         </div>
         {/* Location */}
 
-        <div className="w-full  mt-10  text-gray-600 dark:text-gray-400  ">
+        <div className="mt-10 w-full text-muted">
           {/* Line */}
-          <div className="gray w-90 h-0.5 mb-2 bg-gray-200 sm:w-75 md:w-100 xl:w-115" ></div>
+          <div className="mb-2 h-0.5 w-90 bg-border sm:w-75 md:w-100 xl:w-115"></div>
           <div className="flex items-center gap-2 text-base">
             <div>
               <ImLocation />

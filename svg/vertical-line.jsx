@@ -2,7 +2,7 @@ import React from "react";
 
 const LineVerticalIcon = ({
   size = 50,
-  color = "#014D4E",
+  color = "var(--accent)",
   strokeWidth = 2,
   background = "transparent",
   opacity = 1,
@@ -37,7 +37,7 @@ const LineVerticalIcon = ({
         transform: transforms.join(" ") || undefined,
         filter:
           shadow > 0
-            ? `drop-shadow(0 ${shadow}px ${shadow * 2}px rgba(0,0,0,0.3))`
+            ? `drop-shadow(0 ${shadow}px ${shadow * 2}px var(--overlay))`
             : undefined,
         backgroundColor:
           background !== "transparent" ? background : undefined,

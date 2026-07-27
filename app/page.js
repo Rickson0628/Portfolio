@@ -21,7 +21,7 @@ export default function Home() {
   }
 
   return (
-    <main className="">
+    <main className="min-h-screen bg-background text-foreground">
       {/* Scroll progress bar */}
       <motion.div
         className="fixed left-0 top-0 z-999 h-1 w-full origin-left bg-univ"
@@ -30,9 +30,11 @@ export default function Home() {
 
       <Nav setSideBar={setSideBar} />
       {/* Dark Mode Button */}
-      <button className="fixed flex justify-center items-center bottom-5 right-5 p-3 border text-xl border-gray-300 rounded-3xl shadow-lg z-100 cursor-pointer transition hover:scale-110 text-gray-500 hover:text-white  hover:bg-black dark:text-black dark:bg-white" 
-      onClick={toggleDarkMode}  
-      aria-label="Toggle Dark Mode">
+      <button
+        className="fixed bottom-5 right-5 z-100 flex cursor-pointer items-center justify-center rounded-3xl border border-border bg-surface p-3 text-xl text-muted shadow-lg transition hover:scale-110 hover:bg-univ hover:text-background"
+        onClick={toggleDarkMode}
+        aria-label="Toggle Dark Mode"
+      >
         <span className="dark:hidden">
           <BiMoon />
         </span>

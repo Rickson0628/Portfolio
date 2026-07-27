@@ -40,18 +40,18 @@ const frontSkills = {
   description: "Building responsive and intuitive user interfaces",
   skills: [
     { name: "Next.js", icon: <SiNextdotjs size={20} /> },
-    { name: "React", icon: <DiReact size={24} color="#61DBFB" /> },
+    { name: "React", icon: <DiReact size={24} /> },
     {
       name: "JavaScript",
-      icon: <IoLogoJavascript size={20} color="#F7DF1E" />,
+      icon: <IoLogoJavascript size={20} />,
     },
-    { name: "Tailwind", icon: <SiTailwindcss size={20} color="#38BDF8" /> },
+    { name: "Tailwind", icon: <SiTailwindcss size={20} /> },
     {
       name: "Bootstrap",
-      icon: <BsFillBootstrapFill size={20} color="#7952B3" />,
+      icon: <BsFillBootstrapFill size={20} />,
     },
-    { name: "HTML", icon: <AiFillHtml5 size={20} color="#E34F26" /> },
-    { name: "CSS", icon: <FaCss3Alt size={20} color="#1572B6" /> },
+    { name: "HTML", icon: <AiFillHtml5 size={20} /> },
+    { name: "CSS", icon: <FaCss3Alt size={20} /> },
     { name: "Jotai", icon: <BiGhost size={18} /> },
   ],
 };
@@ -60,22 +60,22 @@ const backSkills = {
   title: "Backend",
   description: "Developing scalable server-side logic and APIs",
   skills: [
-    { name: "Node.js", icon: <SiNodedotjs size={18} color="#339933" /> },
+    { name: "Node.js", icon: <SiNodedotjs size={18} /> },
     { name: "Express", icon: <SiExpress size={15} /> },
     { name: "REST API", icon: <FaDatabase size={15} /> },
-    { name: "Python", icon: <SiPython size={18} color="#3776AB" /> },
-    { name: "C++", icon: <SiCplusplus size={18} color="#00599C" /> },
-    { name: "Jest", icon: <SiJest size={18} color="#C21325" /> },
-    { name: "Cypress", icon: <SiCypress size={18} color="#17202C" /> },
+    { name: "Python", icon: <SiPython size={18} /> },
+    { name: "C++", icon: <SiCplusplus size={18} /> },
+    { name: "Jest", icon: <SiJest size={18} /> },
+    { name: "Cypress", icon: <SiCypress size={18} /> },
   ],
 };
 const databaseSkills = {
   title: "Databases",
   description: "Working with relational and NoSQL databases",
   skills: [
-    { name: "MongoDB", icon: <SiMongodb size={20} color="#47A248" /> },
-    { name: "MySQL", icon: <SiMysql size={24} color="#4479A1" /> },
-    { name: "PostgreSQL", icon: <SiPostgresql size={20} color="#336791" /> },
+    { name: "MongoDB", icon: <SiMongodb size={20} /> },
+    { name: "MySQL", icon: <SiMysql size={24} /> },
+    { name: "PostgreSQL", icon: <SiPostgresql size={20} /> },
     { name: "JSON", icon: <FaDatabase size={15} /> },
   ],
 };
@@ -87,20 +87,20 @@ const authSkills = {
     { name: "JWT", icon: <SiJsonwebtokens size={18} /> },
     { name: "OAuth", icon: <MdSecurity size={18} /> },
     { name: "bcrypt", icon: <FaLock size={15} /> },
-    { name: "Cookies", icon: <FaCookieBite size={18} color="#D2691E" /> },
+    { name: "Cookies", icon: <FaCookieBite size={18} /> },
   ],
 };
 const toolSkills = {
   title: "Tools",
   description: "Develop, test, and deploy applications efficiently",
   skills: [
-    { name: "Git", icon: <FaGitAlt size={20} color="#F05032" /> },
+    { name: "Git", icon: <FaGitAlt size={20} /> },
     { name: "GitHub", icon: <FaGithub size={18} /> },
     { name: "Vercel", icon: <SiVercel size={18} /> },
-    { name: "Figma", icon: <FaFigma size={20} color="#F24E1E" /> },
-    { name: "Jira", icon: <SiJira size={18} color="#0052CC" /> },
-    { name: "Postman", icon: <SiPostman size={18} color="#FF6C37" /> },
-    { name: "Thunder", icon: <AiFillThunderbolt size={20} color="#8A5CF6" /> },
+    { name: "Figma", icon: <FaFigma size={20} /> },
+    { name: "Jira", icon: <SiJira size={18} /> },
+    { name: "Postman", icon: <SiPostman size={18} /> },
+    { name: "Thunder", icon: <AiFillThunderbolt size={20} /> },
   ],
 };
 
@@ -125,7 +125,7 @@ const Skills = () => {
       </div>
       {allSkills.map((section, index) => (
         <div key={section.title}>
-          <div className="rounded-lg transition transform hover:bg-teal-50 sm:p-5 lg:flex lg:items-center lg:gap-10">
+          <div className="transform rounded-lg transition hover:bg-highlight sm:p-5 lg:flex lg:items-center lg:gap-10">
             {/* Right Side */}
             <div className="lg:w-1/3 flex flex-col justify-center">
               {/* Title */}
@@ -133,7 +133,7 @@ const Skills = () => {
                 <WordTypewriter text={section.title}/>
               </div>
               {/* Description */}
-              <div className="mb-5 font-sans text-sm leading-6 text-gray-500 sm:text-base lg:text-lg lg:leading-7">
+              <div className="mb-5 font-sans text-sm leading-6 text-muted sm:text-base lg:text-lg lg:leading-7">
                 <WordTypewriter text={section.description}/>
               </div>
             </div>
@@ -144,8 +144,7 @@ const Skills = () => {
                 // Icon
                 <div
                   key={skill.name}
-                  className=" h-14.5 px-4 flex items-center justify-center gap-2 border-2 border-gray-100 hover:border-univ rounded-lg 
-              hover:scale-105 hover:shadow-md transition-all duration-200 sm:mt-5 md:mt-5"
+                  className="h-14.5 flex items-center justify-center gap-2 rounded-lg border-2 border-border bg-surface px-4 transition-all duration-200 hover:scale-105 hover:border-univ hover:bg-highlight hover:shadow-md sm:mt-5 md:mt-5"
                 >
                   <IconFadeIn>
                   <div className="w-8 flex justify-center items-center shrink-0 animate-fade-in ">

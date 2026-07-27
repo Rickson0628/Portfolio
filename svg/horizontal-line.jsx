@@ -3,8 +3,8 @@ import React from "react";
 const LineHorizontalIcon = ({
   size = 50,
   length = 50,
-  fullWidth = false, // 🔥 NEW
-  color = "#014D4E",
+  fullWidth = false,
+  color = "var(--accent)",
   strokeWidth = 6,
   background = "transparent",
   opacity = 1,
@@ -39,7 +39,7 @@ const LineHorizontalIcon = ({
         transform: transforms.join(" ") || undefined,
         filter:
           shadow > 0
-            ? `drop-shadow(0 ${shadow}px ${shadow * 2}px rgba(0,0,0,0.3))`
+            ? `drop-shadow(0 ${shadow}px ${shadow * 2}px var(--overlay))`
             : undefined,
         backgroundColor:
           background !== "transparent" ? background : undefined,
