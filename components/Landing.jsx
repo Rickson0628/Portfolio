@@ -90,7 +90,7 @@ const Landing = () => {
               <div className=" mt-3 h-0.5 bg-univ rounded-2xl " />
             </div>
           </div>
-          <div className="font-mono text-xl md:text-2xl text-gray-600 mb-4 ">
+          <div className="font-mono text-xl md:text-2xl text-gray-600 mb-4 dark:text-gray-400 ">
             I am
           </div>
         </div>
@@ -117,7 +117,7 @@ const Landing = () => {
               FULL-STACK
             </div>
 
-            <div className="font-mono font-extrabold  text-xl md:text-3xl lg:text-3xl xl:text-3xl text-gray-500  ">
+            <div className="font-mono font-extrabold  text-xl md:text-3xl lg:text-3xl xl:text-3xl text-gray-500 dark:text-gray-400 ">
               DEVELOPER
             </div>
           </div>
@@ -145,7 +145,7 @@ const Landing = () => {
         </div>
         {/* Location */}
 
-        <div className="w-full  mt-10  text-gray-600  ">
+        <div className="w-full  mt-10  text-gray-600 dark:text-gray-400  ">
           {/* Line */}
           <div className="gray w-90 h-0.5 mb-2 bg-gray-200 sm:w-75 md:w-100 xl:w-115" ></div>
           <div className="flex items-center gap-2 text-base">

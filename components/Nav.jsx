@@ -17,16 +17,19 @@ const icons = [
 
 const Nav = ({ setSideBar }) => {
   return (
-    <nav className="fixed p-10 lg:p-8  w-full z-50 shadow-sm backdrop-blur-xs">
+    <nav className="fixed p-10 lg:p-8  w-full z-50 shadow-sm backdrop-blur-xs ">
       {/* Left fixed vertical nav */}
       <div className="fixed left-5 -top-7 lg:-top-5 z-60 flex flex-col h-screen w-20  items-center justify-between py-8">
         {/* Top logo */}
-        <a href="#">
+        <a href="#" className="dark:hidden">
           <Image src="/rx-black-logo.png" width={80} height={80} alt="Logo" />
+        </a>
+        <a href="#" className="hidden dark:block">
+          <Image src="/rx-white-logo.png" width={80} height={80} alt="Logo" />
         </a>
 
         {/* Bottom social icons */}
-        <div className="hidden translate-y-5 lg:flex flex-col items-center gap-4 lg:mr-11 xl:mr-5 text-gray-600">
+        <div className="hidden translate-y-5 lg:flex flex-col items-center gap-4 lg:mr-11 xl:mr-5 text-gray-600 dark:text-white">
           {icons.map((icon, index) => (
             <a
               key={icon.href}
@@ -77,6 +80,7 @@ const Nav = ({ setSideBar }) => {
           />
         </a>
       </div>
+  
     </nav>
   );
 };
