@@ -44,7 +44,7 @@ const Milestone = () => {
   const circlePosition = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section ref={timelineRef} className="p-8 lg:p-16 xl:p-20">
+    <section ref={timelineRef} className="p-8 lg:p-15 xl:p-20">
       <div className="mb-10 mt-10 font-sans text-4xl font-semibold leading-none tracking-[-0.05em] sm:text-5xl lg:mb-20 lg:flex lg:justify-center lg:text-6xl">
          <WordTypewriter text="Milestones"/>
       </div>

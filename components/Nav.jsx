@@ -26,7 +26,7 @@ const Nav = ({ setSideBar }) => {
         </a>
 
         {/* Bottom social icons */}
-        <div className="hidden lg:flex flex-col items-center gap-5 lg:mr-11 text-gray-600">
+        <div className="hidden translate-y-5 lg:flex flex-col items-center gap-4 lg:mr-11 xl:mr-5 text-gray-600">
           {icons.map((icon, index) => (
             <a
               key={icon.href}
@@ -63,13 +63,8 @@ const Nav = ({ setSideBar }) => {
           href="/Rickson-Bozar-Resume.pdf"
           target="_blank"
           rel="noreferrer"
-          className="
-      group flex items-center gap-2 rounded-md
-      border border-gray-300 px-5 py-2.5
-      font-mono text-sm font-semibold tracking-[0.08em]
-      transition-all duration-300
-      hover:-translate-y-0.5 hover:border-univ hover:text-univ
-      focus-visible:outline-2 focus-visible:outline-offset-4
+          className="group flex items-center gap-2 rounded-md border border-gray-300 px-5 py-2.5 font-mono text-sm font-semibold tracking-[0.08em]
+      transition-all duration-300 hover:-translate-y-0.5 hover:border-univ hover:text-univ focus-visible:outline-2 focus-visible:outline-offset-4
       focus-visible:outline-univ
     "
         >
