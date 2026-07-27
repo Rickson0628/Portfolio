@@ -70,7 +70,7 @@ const Landing = () => {
   }, []);
 
   return (
-    <div className="p-8 md:p-15 md:pt-35 lg:p-20  lg:pt-35  xl:p-25 xl:pt-35  relative flex min-h-screen w-full max-w-screen flex-col items-center justify-center overflow-x-clip sm:flex-row">
+    <div className="p-8 md:p-15 md:pt-35 lg:p-20  lg:pt-35  xl:p-25 xl:pt-35   relative flex min-h-screen w-full max-w-screen flex-col items-center justify-center overflow-x-clip sm:flex-row">
       {/* Horizontal Line */}
 
       {/* Left Container */}
@@ -146,7 +146,8 @@ const Landing = () => {
         {/* Location */}
 
         <div className="w-full  mt-10  text-gray-600  ">
-          <div className="gray w-90 h-0.5 mb-2 bg-gray-200 sm:w-75 md:w-100"></div>
+          {/* Line */}
+          <div className="gray w-90 h-0.5 mb-2 bg-gray-200 sm:w-75 md:w-100 xl:w-115" ></div>
           <div className="flex items-center gap-2 text-base">
             <div>
               <ImLocation />
@@ -155,13 +156,12 @@ const Landing = () => {
           </div>
         </div>
       </div>
-      {/* Robot occupies remaining space */}
+      {/* Right Side */}
       <div className="relative hidden min-w-0 max-w-full flex-1 md:flex md:items-center md:justify-center pl-30 ">
-        {/* Cropping window */}
+        {/* Robot */}
         <div className="relative h-[70vh] w-full overflow-visible">
-          {/* Keep the robot/canvas large */}
           <div
-            className="absolute left-1/2 top-1/2 h-[80vw] w-[80vw] lg:h-[70vw] lg:h-[70vw] xl:w-[60vw] xl:h-[60vw]
+            className="absolute left-1/2 top-1/2 h-[80vw] w-[80vw] lg:h-[70vw] lg:h-[70vw] xl:w-[60vw] xl:h-[60vw] 2xl:w-[55vw] 2xl:h-[55vw]
                     -translate-x-1/2 -translate-y-1/2"
           >
             <Spline
