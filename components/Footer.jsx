@@ -8,7 +8,7 @@ import IconFadeIn from './../animation/IconFadeIn';
 
 const Footer = () => {
   return (
-    <footer className="px-8 pt-8 pb-6">
+    <footer className="px-8 pt-8 pb-6 ">
       {/* Line design */}
       <div className="flex justify-center items-center">
         <LineHorizontalIcon length={150} />
