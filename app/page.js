@@ -31,7 +31,7 @@ export default function Home() {
       <Nav setSideBar={setSideBar} />
       {/* Dark Mode Button */}
       <button
-        className="fixed bottom-5 right-5 z-100 flex cursor-pointer items-center justify-center rounded-3xl border border-border bg-surface p-3 text-xl text-muted shadow-lg transition hover:scale-110 hover:bg-univ hover:text-background"
+        className="fixed bottom-5 right-5 z-100 flex cursor-pointer items-center justify-center rounded-3xl border border-border bg-surface p-3 text-xl text-muted shadow-lg transition hover:scale-110 hover:bg-univ hover:text-background motion-safe:animate-[fade-in_700ms_ease-out_0.3s_both]"
         onClick={toggleDarkMode}
         aria-label="Toggle Dark Mode"
       >

@@ -17,7 +17,7 @@ const icons = [
 
 const Nav = ({ setSideBar }) => {
   return (
-    <nav className="fixed z-50 w-full bg-background/80 p-10 text-foreground shadow-sm backdrop-blur-xs lg:p-8">
+    <nav className="fixed z-50 w-full bg-background/80 p-10 text-foreground shadow-sm backdrop-blur-xs lg:p-8 motion-safe:animate-[fade-in_700ms_ease-out_0.3s_both]">
       {/* Left fixed vertical nav */}
       <div className="fixed left-5 -top-7 lg:-top-5 z-60 flex flex-col h-screen w-20  items-center justify-between py-8">
         {/* Top logo */}
