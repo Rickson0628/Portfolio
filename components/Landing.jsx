@@ -81,14 +81,14 @@ const Landing = () => {
           {/* Animated greeting */}
           <div className="flex justify-center items-center">
             <div
-              className={`text-xl md:text-2xl font-mono font-semibold text-univ transition-all duration-500 ease-out ${
+              className={`text-xl md:text-2xl font-mono font-semibold text-univ dark:text-signal transition-all duration-500 ease-out ${
                 isVisible
                   ? "translate-y-0 scale-100 opacity-100 blur-0"
                   : "-translate-y-3 scale-50 opacity-0 blur-sm"
               } `}
             >
            {greetings[index]}!
-              <div className="mt-3 h-0.5 rounded-2xl bg-univ" />
+              <div className="mt-3 h-0.5 rounded-2xl bg-univ dark:bg-signal" />
             </div>
           </div>
           <div className="mb-4 font-mono text-xl text-muted md:text-2xl">
@@ -100,8 +100,8 @@ const Landing = () => {
         <div
           className={` w-full ${ibmPlexSans.className} font-medium tracking-[-0.06em] leading-[0.85] text-8xl md:text-9xl xl:text-[150px] pb-5 -ml-5 motion-safe:animate-[slide-right_700ms_ease-out_0.8s_both]`}
         >
-          <div className="">   Rickson</div>  
-          <div className="">   Bozar</div>
+          <div className="">Rickson</div>  
+          <div className="">Bozar</div>
         </div>
         {/* Field and location*/}
 
@@ -126,7 +126,7 @@ const Landing = () => {
           <div
             className=" absolute -top-45 left-35  h-[500px] w-[500px]
         sm:h-[570px] sm:w-[570px] sm:left-45 sm:-top-75 
-        overflow-hidden cursor-grab active:cursor-grabbing max-w-full z-0 md:hidden motion-safe:animate-[slide-up_700ms_ease-out_1s_both] "
+        overflow-hidden cursor-grab active:cursor-grabbing max-w-full z-10 md:hidden motion-safe:animate-[slide-up_700ms_ease-out_1s_both] "
           >
             <Spline
               scene="https://prod.spline.design/n3j9W3bacAtGt2Zo/scene.splinecode"
@@ -162,7 +162,7 @@ const Landing = () => {
         {/* Robot */}
         <div className="relative h-[70vh] w-full overflow-visible motion-safe:animate-[fade-in_700ms_ease-out_1s_both]">
           <div
-            className="absolute left-1/2 top-1/2 h-[80vw] w-[80vw] lg:h-[70vw] lg:h-[70vw] xl:w-[60vw] xl:h-[60vw] 2xl:w-[55vw] 2xl:h-[55vw]
+            className=" z-10  absolute left-1/2 top-1/2 h-[80vw] w-[80vw] lg:h-[70vw] lg:h-[70vw] xl:w-[60vw] xl:h-[60vw] 2xl:w-[55vw] 2xl:h-[55vw]
                     -translate-x-1/2 -translate-y-1/2"
           >
             <Spline

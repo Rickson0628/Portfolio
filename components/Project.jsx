@@ -30,6 +30,26 @@ const projects = [
     role: "Full-Stack Developer",
     link: "https://tailwind-project-lime-pi.vercel.app/"
   },
+    {
+    title: "Serv",
+    date: "Present",
+    description:
+      "Online service platform that helps customers find qualified skilled workers for repairs, maintenance, and other service needs.",
+    image: ["/serv-image.png", "/hoverServ-image.png"],
+    hoverImage: "/hoverServ-image.png",
+    role: "Full-Stack Developer",
+    link: "https://www.figma.com/design/mfDny3wMR43p24YnegKCeN/Serv?node-id=0-1&t=2rjeML1fHNnI6Dy4-1",
+  },
+  {
+    title: "Nike Store",
+    date: "March 2026",
+    description:
+      "A practice e-commerce website built with Tailwind CSS, featuring a clean store layout, product sections, and a responsive design for a modern shopping experience.",
+    image: ["/nike.png", "/hoverNike.png"],
+    hoverImage: "/hoverNike.png",
+    role: "Full-Stack Developer",
+    link: "https://tailwind-project-lime-pi.vercel.app/"
+  },
 ];
 
 const Project = () => {
@@ -129,7 +149,7 @@ const Project = () => {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Upper Modal */}
-            <div className="relative mb-5 w-full rounded-xl border border-border bg-surface p-5 text-foreground shadow-xl">
+            <div className="relative mb-5 w-full rounded-xl border border-border bg-surface-raised p-5 text-foreground shadow-xl">
               {/* Image Container */}
               <div className="relative w-full aspect-video rounded-lg overflow-hidden mt-2">
                 {/* Arrows */}
@@ -161,7 +181,7 @@ const Project = () => {
               </div>
             </div>
             {/* Lower Modal */}
-            <div className="relative w-full rounded-xl border border-border bg-surface p-5 text-foreground shadow-xl">
+            <div className="relative w-full rounded-xl border border-border bg-surface-raised p-5 text-foreground shadow-xl">
               {/* First Div */}
               <div className="flex w-full my-2 gap-2 ">
                 {/* Title and Link */}

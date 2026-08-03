@@ -29,6 +29,22 @@ const milestones = [
     date: "2025",
     type: "Internship",
   },
+    {
+    title: "Diploma in Computer Programming",
+    company: "Seneca Polytechnic",
+    description:
+      "Student at Seneca Polytechnic with a 3.7 GPA. Coursework spans full-stack development, object-oriented programming, software testing, database management, operating systems, software analysis and design, and data structures and algorithms.",
+    date: "2024 - 2025",
+    type: "School Learning",
+  },
+  {
+    title: "Full-Stack Developer",
+    company: "DBTK",
+    description:
+      "Assisted in developing responsive and high-performing web pages using Next.js, including server-rendered and statically generated pages. Supported backend functionality with Node.js, REST API integration, and MongoDB database management.",
+    date: "2025",
+    type: "Internship",
+  },
 ];
 
 const Milestone = () => {
@@ -39,12 +55,12 @@ const Milestone = () => {
     offset: ["start 80%", "end 20%"],
   });
 
-  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const scaleY = useTransform(scrollYProgress, [0.1, 0.9], [0, 1]);
 
-  const circlePosition = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const circlePosition = useTransform(scrollYProgress, [0.1, 0.9], ["0%", "100%"]);
 
   return (
-    <section ref={timelineRef} className="p-8 lg:p-15 xl:p-20">
+    <section ref={timelineRef} className="p-8 lg:p-15 xl:p-20 pt-0 lg:-mt-10">
       <div className="mb-10 mt-10 font-sans text-4xl font-semibold leading-none tracking-[-0.05em] sm:text-5xl lg:mb-20 lg:flex lg:justify-center lg:text-6xl">
          <WordTypewriter text="Milestones"/>
       </div>
@@ -60,6 +76,7 @@ const Milestone = () => {
             className="absolute h-full w-[2px] origin-top bg-univ shadow-sm"
             style={{ scaleY }}
           />
+          
 
           {/* Moving pulsing circle */}
           <motion.div

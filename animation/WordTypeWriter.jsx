@@ -26,7 +26,7 @@ const WordTypewriter = ({
 
       // Get the position of this text block on the screen
       const rect = ref.current.getBoundingClientRect();
-
+      
       // This is the invisible trigger line on the screen
       // 0.6 means 60% from the top of the screen
       const triggerY = window.innerHeight * triggerPoint;

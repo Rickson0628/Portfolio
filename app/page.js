@@ -12,13 +12,15 @@ import Milestone from "@/components/Milestone";
 import { motion, useScroll } from "framer-motion";
 import { BiSun } from "react-icons/bi";
 import { BiMoon } from "react-icons/bi";
+import About from "@/components/About";
+
 
 export default function Home() {
   const [isSideBarOpen, setSideBar] = useState(false);
   const { scrollYProgress } = useScroll();
-  const toggleDarkMode = ()=>{
-    window.document.documentElement.classList.toggle("dark")
-  }
+  const toggleDarkMode = () => {
+    window.document.documentElement.classList.toggle("dark");
+  };
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -29,20 +31,22 @@ export default function Home() {
       />
 
       <Nav setSideBar={setSideBar} />
-      {/* Dark Mode Button */}
+      {/* Dark and Light Mode Buttons */}
       <button
-        className="fixed bottom-5 right-5 z-100 flex cursor-pointer items-center justify-center rounded-3xl border border-border bg-surface p-3 text-xl text-muted shadow-lg transition hover:scale-110 hover:bg-univ hover:text-background motion-safe:animate-[fade-in_700ms_ease-out_0.3s_both]"
+        className="fixed bottom-5 right-5 z-100 flex cursor-pointer items-center justify-center rounded-3xl border border-border  
+        bg-surface-raised p-3 text-xl text-muted shadow-lg transition hover:scale-110 hover:bg-univ hover:text-background motion-
+        safe:animate-[fade-in_700ms_ease-out_0.3s_both]"
         onClick={toggleDarkMode}
-        aria-label="Toggle Dark Mode"
-      >
-        <span className="dark:hidden">
-          <BiMoon />
-        </span>
-        <span className="hidden dark:block">
-          <BiSun />
-        </span>
+        aria-label="Toggle Dark Mode">
+          <span className="dark:hidden">
+            <BiMoon />
+          </span>
+          <span className="hidden dark:block">
+            <BiSun />
+          </span>
       </button>
       <Landing />
+      <About />
       <Milestone />
       <Project />
 
