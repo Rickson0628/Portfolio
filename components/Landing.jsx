@@ -1,4 +1,5 @@
 "use client";
+import { CgFileDocument } from "react-icons/cg"; 
 import { BiChevronsUp } from "react-icons/bi";
 import { ImLocation } from "react-icons/im";
 import Spline from "@splinetool/react-spline";
@@ -37,6 +38,11 @@ const icons = [
     name: <AiOutlineInstagram size={25} />,
     href: "https://www.instagram.com/ricksonbozar/",
     label: "Instagram"
+  },
+  {
+    name: <CgFileDocument size={24}/>,
+    href: `/Rickson-Bozar-Resume.pdf`,
+    label: "Resume"
   },
 ];
 
