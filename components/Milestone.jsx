@@ -62,7 +62,7 @@ const Milestone = () => {
   return (
     <section ref={timelineRef} className="p-8 lg:p-15 xl:p-20 pt-0 lg:-mt-10">
       <div className="mb-10 mt-10 font-sans text-4xl font-semibold leading-none tracking-[-0.05em] sm:text-5xl lg:mb-20 lg:flex lg:justify-center lg:text-6xl">
-         <WordTypewriter text="Milestones"/>
+         <WordTypewriter text="MILESTONES"/>
       </div>
 
       <div className="relative w-full">

@@ -33,9 +33,10 @@ export default function Home() {
       <Nav setSideBar={setSideBar} />
       {/* Dark and Light Mode Buttons */}
       <button
-        className="fixed bottom-5 right-5 z-100 flex cursor-pointer items-center justify-center rounded-3xl border border-border  
-        bg-surface-raised p-3 text-xl text-muted shadow-lg transition hover:scale-110 hover:bg-univ hover:text-background motion-
-        safe:animate-[fade-in_700ms_ease-out_0.3s_both]"
+        className="fixed bottom-5 right-5 z-100 flex cursor-pointer items-center justify-center rounded-3xl border border-border/80  dark:border-white/10
+        bg-surface-raised p-3 text-xl text-muted shadow-lg transition-transform  hover:scale-108  hover:bg-black/80 dark:hover:bg-white/80
+        hover:text-background motion-
+        safe:animate-[fade-in_700ms_ease-out_0.3s_both] "
         onClick={toggleDarkMode}
         aria-label="Toggle Dark Mode">
           <span className="dark:hidden">

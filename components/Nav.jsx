@@ -19,22 +19,23 @@ const Nav = ({ setSideBar }) => {
   return (
     <nav className="fixed z-50 w-full bg-background/80 p-10 text-foreground shadow-sm backdrop-blur-xs lg:p-8 motion-safe:animate-[fade-in_700ms_ease-out_0.3s_both]">
       {/* Left fixed vertical nav */}
-      <div className="fixed left-5 -top-7 lg:-top-5 z-60 flex flex-col h-screen w-20  items-center justify-between py-8">
+      <div className="fixed pointer-events-none lg:pointer-events-auto left-5 -top-7 lg:-top-5 z-60 flex flex-col h-screen w-20  items-center justify-between py-8">
+     
         {/* Top logo */}
         <a href="#" className="dark:hidden">
-          <Image src="/rx-black-logo.png" width={80} height={80} alt="Logo" />
+          <Image src="/rx-black-logo.png" width={80} height={80} alt="Black-Logo" />
         </a>
         <a href="#" className="hidden dark:block">
-          <Image src="/rx-white-logo.png" width={80} height={80} alt="Logo" />
+          <Image src="/rx-whiteLogo.png" width={80} height={80} alt="White-Logo" />
         </a>
-
+ 
         {/* Bottom social icons */}
         <div className="hidden translate-y-5 flex-col items-center gap-4 text-muted lg:mr-11 lg:flex xl:mr-5">
           {icons.map((icon, index) => (
             <a
               key={icon.href}
               href={icon.href}
-              className="transform transition duration-300 hover:scale-115 hover:text-univ"
+              className="transform transition duration-300 hover:scale-108 hover:text-univ"
             >
               {icon.name}
             </a>
@@ -54,7 +55,7 @@ const Nav = ({ setSideBar }) => {
         {/* All routes */}
         {routes.map((route) => (
           <div key={route}>
-            <button className="font-sans text-lg font-medium tracking-[-0.01em] hover:text-univ cursor-pointer">
+            <button className="font-mono text-lg font-medium tracking-[-0.01em] hover:text-univ cursor-pointer  ">
               {route}
             </button>
           </div>
