@@ -8,7 +8,7 @@ import SideContent from "@/components/SideContent";
 import Skills from "@/components/Skills";
 import Footer from "@/components/Footer";
 import Project from "./../components/Project";
-import Milestone from "@/components/Milestone";
+import Milestone from "@/components/Experience";
 import { motion, useScroll } from "framer-motion";
 import { BiSun } from "react-icons/bi";
 import { BiMoon } from "react-icons/bi";
