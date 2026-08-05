@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import WordTypewriter from "@/animation/WordTypeWriter";
-
+import IconFadeIn from "@/animation/IconFadeIn";
 
 const milestones = [
   {
@@ -13,7 +13,7 @@ const milestones = [
       "Delivered customer-focused service by communicating effectively, resolving issues under pressure, coordinating with mechanics, automotive parts, and service advisors, multitasking in a fast-paced environment, and training new colleagues on internal systems and company policies.",
     date: "2023 - Present",
     type: "Work",
-     tags: ["Next.js", "Node.js", "MongoDB"],
+    tags: ["Customer Service", "Problem Solving", "Team Coordination"],
   },
   {
     title: "Computer Programming Graduate",
@@ -22,7 +22,7 @@ const milestones = [
       "Student at Seneca Polytechnic with a 3.7 GPA. Coursework spans full-stack development, object-oriented programming, software testing, database management, operating systems, software analysis and design, and data structures and algorithms.",
     date: "2024 - 2025",
     type: "School Learning",
-     tags: ["Next.js", "Node.js", "MongoDB"],
+    tags: ["Full-Stack Development", "Database Management", "Software Testing"],
   },
   {
     title: "Full-Stack Developer",
@@ -31,16 +31,16 @@ const milestones = [
       "Assisted in developing responsive and high-performing web pages using Next.js, including server-rendered and statically generated pages. Supported backend functionality with Node.js, REST API integration, and MongoDB database management.",
     date: "2025",
     type: "Internship",
-     tags: ["Next.js", "Node.js", "MongoDB"],
+    tags: ["Next.js", "Node.js", "MongoDB"],
   },
- {
+  {
     title: "Computer Programming Graduate",
     company: "Seneca Polytechnic",
     description:
       "Student at Seneca Polytechnic with a 3.7 GPA. Coursework spans full-stack development, object-oriented programming, software testing, database management, operating systems, software analysis and design, and data structures and algorithms.",
     date: "2024 - 2025",
     type: "School Learning",
-     tags: ["Next.js", "Node.js", "MongoDB"],
+    tags: ["Full-Stack Development", "Database Management", "Software Testing"],
   },
   {
     title: "Full-Stack Developer",
@@ -49,7 +49,7 @@ const milestones = [
       "Assisted in developing responsive and high-performing web pages using Next.js, including server-rendered and statically generated pages. Supported backend functionality with Node.js, REST API integration, and MongoDB database management.",
     date: "2025",
     type: "Internship",
-     tags: ["Next.js", "Node.js", "MongoDB"],
+    tags: ["Next.js", "Node.js", "MongoDB"],
   },
 ];
 
@@ -68,21 +68,17 @@ const Experience = () => {
     [0.1, 0.8],
     ["0%", "100%"],
   );
-  const circleGlow = useTransform(
-    scrollYProgress,
-    [0.1, 0.5, 0.7],
-    [1, 2, 1],
-  );
+  const circleGlow = useTransform(scrollYProgress, [0.1, 0.5, 0.7], [1, 2, 1]);
 
   return (
     <section
       ref={timelineRef}
-      className=" p-8 mt-15 lg:-mt-10 lg:p-15 xl:p-20 "
+      className=" p-8 mt-10  lg:p-15 lg:mt-0 lg:pt-0 xl:p-20 "
     >
-      <h2 className="text-[clamp(3rem,6vw,6rem)] xl:text-[clamp(2.5rem,5vw,5rem)] font-semibold tracking-[-0.055em] mb-15">
-  <WordTypewriter text="Experience" />
-</h2>
-      
+      <h2 className="text-[clamp(3rem,6vw,6rem)] xl:text-[clamp(2.5rem,5vw,5rem)] font-semibold tracking-[-0.055em] mb-10">
+        <WordTypewriter text="Experience" />
+      </h2>
+
       <div className="relative w-full">
         {/* Timeline line */}
         <div className="absolute left-4 lg:left-6 top-0 h-full w-[2px] ">
@@ -127,37 +123,37 @@ const Experience = () => {
                     <WordTypewriter text={milestone.title} />
                   </div>
 
-               <div className="font-sans text-sm font-semibold leading-6 text-univ sm:text-base lg:text-xl">
-  <WordTypewriter text={milestone.company} />
-</div>
+                  <div className="font-sans text-sm font-semibold leading-6 text-univ sm:text-base lg:text-xl">
+                    <WordTypewriter text={milestone.company} />
+                  </div>
                 </div>
 
                 <div className="shrink-0 text-right">
-                 <div className="mb-1 font-mono text-xs tabular-nums tracking-[-0.02em] text-muted sm:text-sm lg:text-lg">
-  <WordTypewriter text={milestone.date} />
-</div>
+                  <div className="mb-1 font-mono text-xs tabular-nums tracking-[-0.02em] text-muted sm:text-sm lg:text-lg">
+                    <WordTypewriter text={milestone.date} />
+                  </div>
 
-
-               <div className="font-mono text-xs font-medium tracking-[-0.02em] text-univ sm:text-sm lg:text-lg">
-  <WordTypewriter text={milestone.type} />
-</div>
+                  <div className="font-mono text-xs font-medium tracking-[-0.02em] text-univ sm:text-sm lg:text-lg">
+                    <WordTypewriter text={milestone.type} />
+                  </div>
                 </div>
               </div>
 
               <div className="font-sans leading-7 text-muted sm:text-lg">
                 <WordTypewriter text={milestone.description} />
               </div>
-              <div className="mt-5 flex flex-wrap gap-2">
-  {milestone.tags.map((tag) => (
-    <span
-      key={tag}
-      className="rounded-full border border-border bg-surface-raised px-4 py-2 font-sans text-xs text-foreground sm:text-sm"
-    >
-      {tag}
-    </span>
-  ))}
-</div>
-
+              <motion.div className="mt-5 flex flex-wrap gap-2">
+                {milestone.tags.map((tag) => (
+                  <IconFadeIn key={tag}>
+                    <span
+                      key={tag}
+                      className="rounded-lg border border-border bg-surface-raised px-4 py-2 font-sans text-xs text-foreground sm:text-sm"
+                    >
+                      {tag}
+                    </span>
+                  </IconFadeIn>
+                ))}
+              </motion.div>
 
               {index < milestones.length - 1 && <div className="mb-20" />}
             </div>
