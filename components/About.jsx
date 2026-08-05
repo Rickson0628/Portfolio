@@ -353,7 +353,7 @@
                 Beyond the Code
               </p>
 
-              <h2 className="text-[clamp(2.15rem,min(9vw,11vh),4.5rem)] font-bold leading-[0.95]">
+              <h2 className="text-[clamp(2.15rem,min(9vw,11vh),4.5rem)] py-4 font-bold leading-[0.95]">
                 About Me
               </h2>
 
@@ -364,7 +364,7 @@
                 {`Working code is only the starting point. The goal is to build software that feels clear, dependable, and genuinely useful—something that reduces friction instead of adding to it.`}
               </p>                   
 
-              <p className="mx-auto mt-[clamp(0.65rem,1.7vh,1rem)] text-[clamp(0.72rem,min(3.3vw,2.8vh),1rem)] leading-[1.4] text-muted"><span className="text-univ font-bold">Find</span> the friction, <span className="text-univ font-bold">Simplify</span> the process, <span className="text-univ font-bold">Build</span> it right.</p>
+              <p className="mx-auto mt-[clamp(0.65rem,1.7vh,1rem)] text-[clamp(0.72rem,min(3.3vw,2.8vh),1rem)] leading-[1.4] text-muted pt-4"><span className="text-univ font-bold">Find</span> the friction, <span className="text-univ font-bold">Simplify</span> the process, <span className="text-univ font-bold">Build</span> it right.</p>
             </motion.div>
 
             {/* Tablet and mobile portrait cards */}
