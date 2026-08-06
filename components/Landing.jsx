@@ -15,7 +15,7 @@ import {
 } from "react-icons/ai";
 
 // Loads the local Spline component only when it is rendered
-const SplineScene = dynamic(() => import("./SplineScene"), {
+const SplineScene = dynamic(() => import("./SplineScene.jsx"), {
   ssr: false,
   loading: () => <RobotLoadingState />,
 });
