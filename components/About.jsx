@@ -448,16 +448,16 @@ const MobileAbout = ({
 }) => {
   // Pictures move first
   const topY = useTransform(
-    scrollYProgress,
-    [0, 0.12, 0.52, 1],
-    ["0vh", "0vh", "-31vh", "-31vh"],
-  );
+  scrollYProgress,
+  [0, 0.12, 0.52, 1],
+  ["-10vh", "-10vh", "-31vh", "-31vh"],
+);
 
-  const bottomY = useTransform(
-    scrollYProgress,
-    [0, 0.12, 0.52, 1],
-    ["0vh", "0vh", "35vh", "35vh"],
-  );
+ const bottomY = useTransform(
+  scrollYProgress,
+  [0, 0.12, 0.52, 1],
+  ["11vh", "11vh", "35vh", "35vh"],
+);
 
   // About box appears after the pictures separate
   const boxOpacity = useTransform(
