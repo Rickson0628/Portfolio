@@ -14,8 +14,8 @@ import {
   AiOutlineInstagram,
 } from "react-icons/ai";
 
-// Loads Spline only when the 3D model is rendered
-const Spline = dynamic(() => import("@splinetool/react-spline"), {
+// Loads the local Spline component only when it is rendered
+const SplineScene = dynamic(() => import("./SplineScene"), {
   ssr: false,
   loading: () => <RobotLoadingState />,
 });
@@ -62,7 +62,7 @@ const socialLinks = [
 ];
 
 // Displays while the 3D model is loading
-const RobotLoadingState = () => {
+function RobotLoadingState() {
   return (
     <div className="flex h-full w-full items-center justify-center">
       <div className="flex flex-col items-center gap-3">
@@ -86,7 +86,7 @@ const RobotLoadingState = () => {
       </div>
     </div>
   );
-};
+}
 
 // Lightweight preview shown before Spline loads on mobile
 const MobileRobotPreview = ({ onLoad }) => {
@@ -150,7 +150,7 @@ const MobileRobotPreview = ({ onLoad }) => {
           Tap below to load and interact with the 3D model.
         </p>
 
-        {/* Loads Spline after the user presses the button */}
+        {/* Loads Spline after the button is pressed */}
         <button
           type="button"
           onClick={onLoad}
@@ -479,10 +479,12 @@ const Landing = () => {
             motion-safe:animate-[fade-in_700ms_ease-out_0.8s_both]
           "
         >
-          {/* Displays either the real model or the mobile preview */}
-          {shouldRenderSpline ? (
+          {/* Waits until the screen size has been checked */}
+          {!hasResolvedScreen ? (
+            <RobotLoadingState />
+          ) : shouldRenderSpline ? (
             // Interactive 3D model
-            <Spline
+            <SplineScene
               scene="https://prod.spline.design/n3j9W3bacAtGt2Zo/scene.splinecode"
               className="
                 h-full
