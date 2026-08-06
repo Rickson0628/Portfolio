@@ -40,7 +40,7 @@ const RobotLoadingState = () => {
   );
 };
 
-// Loads the local Spline wrapper only when it is rendered
+// Loads the local Spline wrapper only when rendered
 const SplineScene = dynamic(
   () => import("./SplineScene.jsx"),
   {
@@ -97,7 +97,7 @@ const Landing = () => {
   // Controls the greeting transition
   const [isVisible, setIsVisible] = useState(true);
 
-  // Controls whether the robot has been loaded on mobile
+  // Controls whether the robot has loaded on mobile
   const [loadMobileSpline, setLoadMobileSpline] =
     useState(false);
 
@@ -177,17 +177,24 @@ const Landing = () => {
         className="
           pointer-events-none
           absolute
-          -left-[18rem]
+          -left-[12rem]
           top-[10%]
-          size-[30rem]
+          size-[22rem]
           rounded-full
           bg-univ
-          opacity-[0.15]
-          blur-[140px]
-          mix-blend-multiply
+          opacity-[0.14]
+          blur-[70px]
 
-          dark:opacity-[0.20]
-          dark:mix-blend-screen
+          dark:opacity-[0.18]
+
+          md:-left-[18rem]
+          md:size-[30rem]
+          md:opacity-[0.15]
+          md:blur-[140px]
+          md:mix-blend-multiply
+
+          md:dark:opacity-[0.20]
+          md:dark:mix-blend-screen
         "
       />
 
@@ -209,11 +216,12 @@ const Landing = () => {
           <div className="flex items-center justify-center">
             <div
               className={`
+                transform-gpu
                 font-mono
                 text-xl
                 font-semibold
                 text-univ
-                transition-all
+                transition-[opacity,transform]
                 duration-500
                 ease-out
 
@@ -221,8 +229,8 @@ const Landing = () => {
 
                 ${
                   isVisible
-                    ? "translate-y-0 scale-100 opacity-100 blur-0"
-                    : "-translate-y-3 scale-50 opacity-0 blur-sm"
+                    ? "translate-y-0 scale-100 opacity-100"
+                    : "-translate-y-3 scale-75 opacity-0"
                 }
               `}
             >
@@ -265,7 +273,13 @@ const Landing = () => {
         {/* Job title, social links and mobile robot */}
         <div className="relative flex w-full">
           {/* Job title and social links */}
-          <div className="motion-safe:animate-[slide-right_700ms_ease-out_1s_both]">
+          <div
+            className="
+              motion-safe:animate-[slide-right_700ms_ease-out_0.9s_both]
+
+              md:motion-safe:animate-[slide-right_700ms_ease-out_1s_both]
+            "
+          >
             <div
               className="
                 mt-5
@@ -275,7 +289,6 @@ const Landing = () => {
                 text-univ
 
                 md:text-3xl
-
                 lg:text-3xl
 
                 xl:mt-0
@@ -353,11 +366,11 @@ const Landing = () => {
 
               md:hidden
 
-              motion-safe:animate-[slide-up_700ms_ease-out_1s_both]
+              motion-safe:animate-[slide-up_700ms_ease-out_1.1s_both]
             "
           >
             {loadMobileSpline ? (
-              // Interactive robot in its original mobile location
+              // Interactive robot
               <SplineScene
                 scene="https://prod.spline.design/n3j9W3bacAtGt2Zo/scene.splinecode"
                 className="
@@ -368,7 +381,7 @@ const Landing = () => {
                 "
               />
             ) : (
-              // Button appears inside the original robot container
+              // Button inside the robot container
               <div className="flex h-full w-full items-center justify-center">
                 <button
                   type="button"
@@ -379,15 +392,14 @@ const Landing = () => {
                     rounded-full
                     border
                     border-univ
-                    bg-background/90
+                    bg-background/95
                     px-6
                     py-3
                     font-mono
                     text-sm
                     font-semibold
                     text-univ
-                    shadow-lg
-                    backdrop-blur-sm
+                    shadow-md
                     transition-transform
 
                     hover:scale-[1.03]
@@ -439,7 +451,9 @@ const Landing = () => {
             w-full
             text-muted
 
-            motion-safe:animate-[slide-up_700ms_ease-out_1s_both]
+            motion-safe:animate-[slide-up_700ms_ease-out_1.25s_both]
+
+            md:motion-safe:animate-[slide-up_700ms_ease-out_1s_both]
           "
         >
           {/* Location divider */}
@@ -490,7 +504,7 @@ const Landing = () => {
             motion-safe:animate-[fade-in_700ms_ease-out_1s_both]
           "
         >
-          {/* Desktop robot stays in its original position */}
+          {/* Desktop robot */}
           <div
             className="
               absolute
