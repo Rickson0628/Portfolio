@@ -450,13 +450,13 @@ const MobileAbout = ({
 const topY = useTransform(
   scrollYProgress,
   [0, 0.52],
-  ["-13vh", "-29vh"],
+  ["-10vh", "-29vh"],
 );
 
 const bottomY = useTransform(
   scrollYProgress,
   [0, 0.52],
-  ["13vh", "34vh"],
+  ["10vh", "34vh"],
 );
 
   // About box opacity and position
