@@ -36,19 +36,20 @@ const PictureCard = ({
         "
         style={scrollStyle}
       >
-        {/* Orange glow behind the card */}
-        <div
-          aria-hidden="true"
-          className={`
-            absolute
-            -inset-1
-            z-0
-            rounded-[1.35rem]
-            bg-univ/15
-
-            ${mobile ? "blur-md" : "blur-xl"}
-          `}
-        />
+        {/* Orange glow on large screens and above */}
+        {!mobile && (
+          <div
+            aria-hidden="true"
+            className="
+              absolute
+              -inset-1
+              z-0
+              rounded-[1.35rem]
+              bg-univ/15
+              blur-xl
+            "
+          />
+        )}
 
         {/* Portrait background */}
         <div
@@ -64,39 +65,101 @@ const PictureCard = ({
             [contain:paint]
           "
         >
-          {/* Top-right picture glow */}
-          <div
-            aria-hidden="true"
-            className={`
-              absolute
-              aspect-square
-              rounded-full
-              bg-border
+          {mobile ? (
+            <>
+              {/* Mobile and tablet gradient background */}
+              <div
+                aria-hidden="true"
+                className="
+                  absolute
+                  inset-0
+                  bg-gradient-to-br
+                  from-border/60
+                  via-surface
+                  to-border/30
+                "
+              />
 
-              ${
-                mobile
-                  ? "-right-[20%] -top-[20%] w-[65%] opacity-70 blur-xl"
-                  : "-right-[30%] top-[10%] w-[60%] blur-3xl"
-              }
-            `}
-          />
+              {/* Subtle orange tint */}
+              <div
+                aria-hidden="true"
+                className="
+                  absolute
+                  inset-0
+                  bg-gradient-to-tr
+                  from-univ/10
+                  via-transparent
+                  to-univ/5
+                "
+              />
 
-          {/* Bottom-left picture glow */}
-          <div
-            aria-hidden="true"
-            className={`
-              absolute
-              aspect-square
-              rounded-full
-              bg-border
+              {/* Top-right gradient shape */}
+              <div
+                aria-hidden="true"
+                className="
+                  absolute
+                  -right-[28%]
+                  -top-[45%]
+                  aspect-square
+                  w-[80%]
+                  rounded-full
+                  bg-gradient-to-br
+                  from-border/80
+                  via-border/20
+                  to-transparent
+                "
+              />
 
-              ${
-                mobile
-                  ? "-bottom-[15%] -left-[12%] w-[45%] opacity-70 blur-xl"
-                  : "-bottom-[10%] -left-[30%] w-[60%] blur-3xl"
-              }
-            `}
-          />
+              {/* Bottom-left gradient shape */}
+              <div
+                aria-hidden="true"
+                className="
+                  absolute
+                  -bottom-[38%]
+                  -left-[22%]
+                  aspect-square
+                  w-[65%]
+                  rounded-full
+                  bg-gradient-to-tr
+                  from-border/70
+                  via-border/20
+                  to-transparent
+                "
+              />
+            </>
+          ) : (
+            <>
+              {/* Top-right desktop glow */}
+              <div
+                aria-hidden="true"
+                className="
+                  absolute
+                  -right-[30%]
+                  top-[10%]
+                  aspect-square
+                  w-[60%]
+                  rounded-full
+                  bg-border
+                  blur-3xl
+                "
+              />
+
+              {/* Bottom-left desktop glow */}
+              <div
+                aria-hidden="true"
+                className="
+                  absolute
+                  -bottom-[10%]
+                  -left-[30%]
+                  aspect-square
+                  w-[60%]
+                  rounded-full
+                  bg-border
+                  blur-3xl
+                "
+              />
+            </>
+          )}
         </div>
 
         {/* Portrait image */}
@@ -151,7 +214,7 @@ const DesktopAbout = ({
     ["0vw", "0vw", "34vw", "34vw"],
   );
 
-  // Slightly straightens the cards while scrolling
+  // Slightly straightens the cards
   const leftRotate = useTransform(
     scrollYProgress,
     [0.1, 0.75],
@@ -164,7 +227,7 @@ const DesktopAbout = ({
     [4, 2],
   );
 
-  // Desktop card scale
+  // Scales the desktop cards
   const desktopPictureScale = useTransform(
     scrollYProgress,
     [0.1, 0.75],
@@ -194,7 +257,7 @@ const DesktopAbout = ({
   const pointerX = useMotionValue(0.5);
   const pointerY = useMotionValue(0.5);
 
-  // Converts the cursor position into card movement
+  // Converts cursor position into movement
   const cursorX = useTransform(pointerX, [0, 1], [-16, 16]);
   const cursorY = useTransform(pointerY, [0, 1], [-10, 10]);
 
@@ -368,13 +431,14 @@ const MobileAbout = ({
   leftPicture,
   rightPicture,
 }) => {
-  // Moves the cards vertically
+  // Moves the top card upward
   const topY = useTransform(
     scrollYProgress,
     [0, 0.12, 0.68, 1],
     ["0vh", "0vh", "-31vh", "-31vh"],
   );
 
+  // Moves the bottom card downward
   const bottomY = useTransform(
     scrollYProgress,
     [0, 0.12, 0.68, 1],
