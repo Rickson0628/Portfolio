@@ -234,7 +234,7 @@ const DesktopAbout = ({
     [1, 0.94],
   );
 
-  // Reveals the About text
+  // Reveals the desktop About text
   const textOpacity = useTransform(
     scrollYProgress,
     [0, 0.2, 0.6, 1],
@@ -258,8 +258,17 @@ const DesktopAbout = ({
   const pointerY = useMotionValue(0.5);
 
   // Converts cursor position into movement
-  const cursorX = useTransform(pointerX, [0, 1], [-16, 16]);
-  const cursorY = useTransform(pointerY, [0, 1], [-10, 10]);
+  const cursorX = useTransform(
+    pointerX,
+    [0, 1],
+    [-16, 16],
+  );
+
+  const cursorY = useTransform(
+    pointerY,
+    [0, 1],
+    [-10, 10],
+  );
 
   // Smooths the cursor movement
   const smoothCursorX = useSpring(cursorX, {
@@ -280,10 +289,12 @@ const DesktopAbout = ({
       event.currentTarget.getBoundingClientRect();
 
     const x =
-      (event.clientX - container.left) / container.width;
+      (event.clientX - container.left) /
+      container.width;
 
     const y =
-      (event.clientY - container.top) / container.height;
+      (event.clientY - container.top) /
+      container.height;
 
     pointerX.set(Math.max(0, Math.min(1, x)));
     pointerY.set(Math.max(0, Math.min(1, y)));
@@ -361,13 +372,17 @@ const DesktopAbout = ({
         </p>
 
         <p className="mx-auto mt-2 max-w-lg text-xl leading-7 text-muted">
-          <span className="font-bold text-univ">Find</span>{" "}
+          <span className="font-bold text-univ">
+            Find
+          </span>{" "}
           the friction,{" "}
           <span className="font-bold text-univ">
             Simplify
           </span>{" "}
           the process,{" "}
-          <span className="font-bold text-univ">Build</span>{" "}
+          <span className="font-bold text-univ">
+            Build
+          </span>{" "}
           it right.
         </p>
       </motion.div>
@@ -425,37 +440,36 @@ const DesktopAbout = ({
   );
 };
 
-// Lightweight tablet and mobile About animation
+// Tablet and mobile About animation
 const MobileAbout = ({
   scrollYProgress,
   leftPicture,
   rightPicture,
 }) => {
-  // Moves the top card upward
+  // Pictures move first
   const topY = useTransform(
     scrollYProgress,
-    [0, 0.12, 0.68, 1],
+    [0, 0.12, 0.52, 1],
     ["0vh", "0vh", "-31vh", "-31vh"],
   );
 
-  // Moves the bottom card downward
   const bottomY = useTransform(
     scrollYProgress,
-    [0, 0.12, 0.68, 1],
+    [0, 0.12, 0.52, 1],
     ["0vh", "0vh", "35vh", "35vh"],
   );
 
-  // Reveals the About text
-  const textOpacity = useTransform(
+  // About box appears after the pictures separate
+  const boxOpacity = useTransform(
     scrollYProgress,
-    [0.2, 0.48, 0.7, 1],
-    [0, 1, 1, 1],
+    [0.55, 0.72, 1],
+    [0, 1, 1],
   );
 
-  const textY = useTransform(
+  const boxY = useTransform(
     scrollYProgress,
-    [0.2, 0.48, 1],
-    [20, 0, 0],
+    [0.55, 0.72, 1],
+    [24, 0, 0],
   );
 
   // Tablet and mobile card sizes
@@ -476,13 +490,14 @@ const MobileAbout = ({
         px-3
       "
     >
-      {/* Responsive About text */}
+      {/* About box */}
       <motion.div
         className="
           relative
           z-30
           w-full
           max-w-xl
+          transform-gpu
           rounded-[clamp(1rem,4vw,1.5rem)]
           border
           border-border
@@ -490,11 +505,11 @@ const MobileAbout = ({
           px-[clamp(1rem,4vw,1.75rem)]
           py-[clamp(0.875rem,2.6vh,1.75rem)]
           text-center
-          shadow-lg
+          shadow-sm
         "
         style={{
-          opacity: textOpacity,
-          y: textY,
+          opacity: boxOpacity,
+          y: boxY,
         }}
       >
         <p
@@ -556,13 +571,17 @@ const MobileAbout = ({
             text-muted
           "
         >
-          <span className="font-bold text-univ">Find</span>{" "}
+          <span className="font-bold text-univ">
+            Find
+          </span>{" "}
           the friction,{" "}
           <span className="font-bold text-univ">
             Simplify
           </span>{" "}
           the process,{" "}
-          <span className="font-bold text-univ">Build</span>{" "}
+          <span className="font-bold text-univ">
+            Build
+          </span>{" "}
           it right.
         </p>
       </motion.div>
