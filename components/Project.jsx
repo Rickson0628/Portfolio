@@ -1,16 +1,24 @@
 "use client";
-import { BiLeftDownArrowCircle } from "react-icons/bi"; 
-import { AiOutlineLink } from "react-icons/ai";
-import { AiOutlineClose } from "react-icons/ai";
-import { BiLeftArrowCircle } from "react-icons/bi";
-import { BiRightArrowCircle } from "react-icons/bi";
-import { BiInfoCircle } from "react-icons/bi";
-import LineHorizontalIcon from "@/svg/horizontal-line";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import React, { useState } from "react";
+import {
+  AnimatePresence,
+  motion,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+import { BiLeftArrowCircle, BiRightArrowCircle } from "react-icons/bi";
+import { AiOutlineClose, AiOutlineLink } from "react-icons/ai";
+import { ImArrowDownLeft2 } from "react-icons/im";
+import LineHorizontalIcon from "@/svg/horizontal-line";
+import WordTypewriter from "@/animation/WordTypeWriter";
 
+// Project content
 const projects = [
   {
+    id: 1,
     title: "Serv",
     date: "Present",
     description:
@@ -21,6 +29,7 @@ const projects = [
     link: "https://www.figma.com/design/mfDny3wMR43p24YnegKCeN/Serv?node-id=0-1&t=2rjeML1fHNnI6Dy4-1",
   },
   {
+    id: 2,
     title: "Nike Store",
     date: "March 2026",
     description:
@@ -28,9 +37,10 @@ const projects = [
     image: ["/nike.png", "/hoverNike.png"],
     hoverImage: "/hoverNike.png",
     role: "Full-Stack Developer",
-    link: "https://tailwind-project-lime-pi.vercel.app/"
+    link: "https://tailwind-project-lime-pi.vercel.app/",
   },
-    {
+  {
+    id: 3,
     title: "Serv",
     date: "Present",
     description:
@@ -41,6 +51,7 @@ const projects = [
     link: "https://www.figma.com/design/mfDny3wMR43p24YnegKCeN/Serv?node-id=0-1&t=2rjeML1fHNnI6Dy4-1",
   },
   {
+    id: 4,
     title: "Nike Store",
     date: "March 2026",
     description:
@@ -48,193 +59,517 @@ const projects = [
     image: ["/nike.png", "/hoverNike.png"],
     hoverImage: "/hoverNike.png",
     role: "Full-Stack Developer",
-    link: "https://tailwind-project-lime-pi.vercel.app/"
+    link: "https://tailwind-project-lime-pi.vercel.app/",
   },
 ];
 
+// Card entrance animation
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+  },
+
+  visible: (index) => ({
+    opacity: 1,
+    y: 0,
+
+    transition: {
+      duration: 0.55,
+      delay: index * 0.1,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }),
+};
+
 const Project = () => {
+  const shouldReduceMotion = useReducedMotion();
+
+  const projectScrollRef = useRef(null);
+  const projectViewportRef = useRef(null);
+  const projectTrackRef = useRef(null);
+
+  const [isHorizontalScroll, setIsHorizontalScroll] = useState(false);
+  const [horizontalDistance, setHorizontalDistance] = useState(0);
+
   const [selectedProject, setSelectedProject] = useState(null);
+
   const [imageCount, setImageCount] = useState(0);
+
+  // Tracks vertical progress through the sticky Projects area.
+  const { scrollYProgress } = useScroll({
+    target: projectScrollRef,
+    offset: ["start start", "end end"],
+  });
+
+  // Converts the vertical progress into horizontal movement.
+  const projectX = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, -horizontalDistance],
+  );
+
+  const smoothProjectX = useSpring(projectX, {
+    stiffness: 130,
+    damping: 30,
+    mass: 0.35,
+  });
+
+  // Uses horizontal scrolling from Tailwind's large breakpoint and above.
+  useEffect(() => {
+    const largeScreen = window.matchMedia("(min-width: 1024px)");
+
+    const updateScrollMode = () => {
+      setIsHorizontalScroll(largeScreen.matches && !shouldReduceMotion);
+    };
+
+    updateScrollMode();
+    largeScreen.addEventListener("change", updateScrollMode);
+
+    return () => {
+      largeScreen.removeEventListener("change", updateScrollMode);
+    };
+  }, [shouldReduceMotion]);
+
+  // Measures the exact distance the project track needs to travel.
+  useEffect(() => {
+    if (!isHorizontalScroll) return;
+
+    const measureTrack = () => {
+      const viewport = projectViewportRef.current;
+      const track = projectTrackRef.current;
+
+      if (!viewport || !track) return;
+
+      setHorizontalDistance(
+        Math.max(0, track.scrollWidth - viewport.clientWidth),
+      );
+    };
+
+    const animationFrame = requestAnimationFrame(measureTrack);
+    const resizeObserver = new ResizeObserver(measureTrack);
+
+    if (projectViewportRef.current) {
+      resizeObserver.observe(projectViewportRef.current);
+    }
+
+    if (projectTrackRef.current) {
+      resizeObserver.observe(projectTrackRef.current);
+    }
+
+    window.addEventListener("resize", measureTrack);
+
+    return () => {
+      cancelAnimationFrame(animationFrame);
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", measureTrack);
+    };
+  }, [isHorizontalScroll]);
+
+  const openProject = (project) => {
+    setImageCount(0);
+    setSelectedProject(project);
+  };
+
+  const closeProject = () => {
+    setSelectedProject(null);
+  };
+
   const nextImage = () => {
-    setImageCount((prev) =>
-      prev === selectedProject.image.length - 1 ? 0 : prev + 1,
+    if (!selectedProject) return;
+
+    setImageCount((previousImage) =>
+      previousImage === selectedProject.image.length - 1
+        ? 0
+        : previousImage + 1,
     );
   };
-  const prevImage = () => {
-    setImageCount((prev) =>
-      prev === 0 ? selectedProject.image.length - 1 : prev - 1,
+
+  const previousImage = () => {
+    if (!selectedProject) return;
+
+    setImageCount((previousImage) =>
+      previousImage === 0
+        ? selectedProject.image.length - 1
+        : previousImage - 1,
     );
   };
+
   return (
-    <section id="projects" className="p-8 -mt-10 lg:p-15 xl:p-20 sm:mx-5 lg:-mb-5 lg:-mt-20">
-      <h2 className="mb-5 mt-10 font-sans text-4xl font-semibold leading-none tracking-[-0.05em] sm:text-5xl lg:text-6xl">
-        PROJECTS
-      </h2>
-      <div className=""></div>
-      <LineHorizontalIcon />
-
-      {/* Card  */}
-      <div className="gap-8 lg:grid lg:grid-cols-2 lg:mt-3 ">
-        {projects.map((project) => (
-          <article
-            key={project.title}
-            onClick={() => {
-              setImageCount(0);
-              setSelectedProject(project);
-            }}
-            className="group relative mt-8 rounded-2xl border-2 border-border bg-surface p-4 shadow-md transition-all duration-300 hover:scale-[1.02] hover:cursor-pointer  hover:bg-highlight"
-          >
-            {/* Icon */}
-            <div className="absolute right-8 top-8 z-10">
-              <BiInfoCircle
-                size={22}
-                className="text-on-media opacity-100 transition-opacity duration-300 group-hover:opacity-0"
-              />
-         
-              <BiLeftDownArrowCircle
-                size={22}
-                className="absolute inset-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100 text-on-media scale-115"
-              />
-            </div>
-
-            {/* Image Container */}
-            <div className="relative w-full aspect-video rounded-lg overflow-hidden mt-2">
-              <Image
-                src={project.image[0]}
-                alt={`${project.title} preview`}
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover transition-opacity duration-500 opacity-100 group-hover:opacity-0"
-              />
-
-              <Image
-                src={project.hoverImage}
-                alt={`${project.title} hover preview`}
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover transition-opacity duration-500 opacity-0 group-hover:opacity-100"
-              />
-            </div>
-
-            {/* Project Info */}
-            <div className="flex justify-between sm:items-center mt-4 gap-1">
-              {/* Project Title */}
-              <h3 className="font-sans text-2xl font-semibold leading-tight tracking-[-0.03em] sm:text-3xl lg:text-2xl xl:text-3xl">
-                {project.title}
-              </h3>
-              {/* Project Date */}
-              <p className="font-mono text-xs tracking-[-0.02em] text-muted tabular-nums sm:text-sm">
-                {project.date}
-              </p>
-            </div>
-
-            {/* Marquee Description */}
-            <div className="mt-2 overflow-hidden whitespace-nowrap font-sans text-sm leading-6 text-muted">
-              <p className="inline-block animate-marquee sm:text-base">
-                ★ {project.description} ★
-              </p>
-            </div>
-          </article>
-        ))}
-      </div>
-      {/* Project Modal */}
-      {selectedProject && (
-        // Project  Modal Container
+    // Projects section
+    <section
+      id="projects"
+      className="-mt-10 p-8 sm:mx-5 lg:-mb-5 lg:-mt-20 lg:p-15 xl:p-20"
+    >
+      {/* Project scroll area */}
+      <div
+        ref={projectScrollRef}
+        className="relative"
+        style={
+          isHorizontalScroll
+            ? { height: `calc(100dvh + ${horizontalDistance}px)` }
+            : undefined
+        }
+      >
+        {/* Sticky viewport */}
         <div
-          className="fixed inset-0 z-100 overflow-y-auto bg-overlay p-5"
-          onClick={() => setSelectedProject(null)}
+          ref={projectViewportRef}
+          className={
+            isHorizontalScroll
+              ? "sticky top-0 flex h-dvh flex-col overflow-hidden"
+              : ""
+          }
         >
+          {/* Section heading stays visible during the horizontal scroll */}
           <div
-            className="mx-auto my-8 w-full max-w-5xl"
-            onClick={(e) => e.stopPropagation()}
+            className={isHorizontalScroll ? "w-full shrink-0 pt-3 sm:pt-6" : ""}
           >
-            {/* Upper Modal */}
-            <div className="relative mb-5 w-full rounded-xl border border-border bg-surface-raised p-5 text-foreground shadow-xl">
-              {/* Image Container */}
-              <div className="relative w-full aspect-video rounded-lg overflow-hidden mt-2">
-                {/* Arrows */}
-                <button
-                  className="absolute left-1 top-1/2 z-50 -translate-y-1/2 text-2xl text-on-media transition-opacity hover:opacity-70"
-                  onClick={prevImage}
-                  aria-label="Previous project image"
-                >
-                  <BiLeftArrowCircle />
-                </button>
-                <button
-                  className="absolute right-1 top-1/2 z-50 -translate-y-1/2 text-2xl text-on-media transition-opacity hover:opacity-70"
-                  onClick={nextImage}
-                  aria-label="Next project image"
-                >
-                  <BiRightArrowCircle />
-                </button>
+            {/* Section title */}
+            <h2 className="mb-5 mt-10 text-[clamp(2.5rem,5vw,5rem)] font-semibold leading-none tracking-[-0.055em]">
+              <WordTypewriter text="Projects" />
+            </h2>
 
-                <Image
-                  src={selectedProject.image[imageCount]}
-                  alt={`${selectedProject.title} preview`}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover opacity-100 transition-all duration-500 hover:scale-[1.02] "
-                />
-                <div className="absolute bottom-3 right-3 z-50 rounded-full bg-overlay px-3 py-1 font-mono text-xs text-on-media tabular-nums">
-                  {imageCount + 1} / {selectedProject.image.length}
-                </div>
-              </div>
-            </div>
-            {/* Lower Modal */}
-            <div className="relative w-full rounded-xl border border-border bg-surface-raised p-5 text-foreground shadow-xl">
-              {/* First Div */}
-              <div className="flex w-full my-2 gap-2 ">
-                {/* Title and Link */}
-                <a className="w-7/8 rounded-sm border border-border bg-background p-4 shadow-xl transition-all duration-300 hover:scale-[1.01] hover:cursor-pointer hover:bg-highlight" href={selectedProject.link}
-                target="_bka">
-                  <div className="flex justify-between">
-                    <div className="font-sans text-xl font-semibold tracking-[-0.03em] md:text-2xl lg:text-3xl">
-                      {selectedProject.title}
-                    </div>
-                    <div className="flex items-center justify-between text-xl text-univ md:text-2xl lg:text-3xl">
-                      <AiOutlineLink />
-                    </div>
-                  </div>
-                </a>
-                {/* Close Button */}
-                <button
-                  className="flex w-1/8 items-center justify-center rounded-sm border border-border bg-background p-4 text-2xl font-extrabold text-foreground shadow-xl transition-all duration-300 hover:scale-[1.05] hover:cursor-pointer hover:bg-highlight hover:text-univ md:text-3xl lg:text-4xl"
-                  onClick={() => setSelectedProject(null)}
-                  aria-label="Close project details"
-                >
-                  <AiOutlineClose />
-                </button>
-              </div>
-
-              {/* Second Div */}
-              <div className="w-full my-2 mt-5 ">
-                {/* Year and Tech Stack*/}
-                <div className="flex justify-between rounded-sm border border-border bg-background p-4 shadow-xl">
-                  <div>
-                    <div className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-muted sm:text-xs">Year:</div>
-                    <div className="font-mono text-sm font-medium tabular-nums sm:text-base">{selectedProject.date}</div>
-                  </div>
-                  <div>
-                    <div className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-muted sm:text-xs">Role:</div>
-                    <div className="font-sans text-sm font-medium sm:text-base">{selectedProject.role}</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Third Div */}
-              <div className="w-full my-2 mt-5 ">
-                {/* Project Description*/}
-                <div className="rounded-sm border border-border bg-background p-4 shadow-xl transition-colors hover:bg-highlight">
-                  <div>
-                    <div className="mb-2 font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-muted sm:text-xs">Overview:</div>
-                    <div className="font-sans text-base leading-7 sm:text-lg">{selectedProject.description}</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Section divider */}
           </div>
+
+          {/* Project track */}
+          <motion.div
+            ref={projectTrackRef}
+            className={
+              isHorizontalScroll
+                ? "my-auto flex w-max gap-8 py-5 xl:gap-9"
+                : "gap-8"
+            }
+            style={{ x: isHorizontalScroll ? smoothProjectX : 0 }}
+          >
+            {projects.map((project, index) => (
+              // Project card
+              <motion.article
+                key={project.id}
+                custom={index}
+                variants={cardVariants}
+                initial={shouldReduceMotion ? false : "hidden"}
+                whileInView={shouldReduceMotion ? undefined : "visible"}
+                viewport={{
+                  once: true,
+                  amount: 0.2,
+                }}
+                onClick={() => openProject(project)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    openProject(project);
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+                aria-label={`View ${project.title} project details`}
+                style={
+                  isHorizontalScroll
+                    ? {
+                        width:
+                          "min(72vw, 850px, max(15rem, calc((100dvh - 18rem) * 1.5)))",
+                      }
+                    : undefined
+                }
+                className={`group relative overflow-hidden rounded-2xl border-2 border-border bg-surface p-4 shadow-md transition-[background-color,border-color,box-shadow] duration-300 hover:cursor-pointer hover:bg-highlight hover:shadow-xl xl:p-5 ${
+                  isHorizontalScroll ? "shrink-0" : "mt-8"
+                }`}
+              >
+                {/* Bottom accent line */}
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-x-0 bottom-0 h-[2px] origin-left scale-x-0 bg-univ transition-transform duration-500 ease-out group-hover:scale-x-100"
+                />
+
+                {/* Card icon */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute right-8 top-9 z-10 flex size-6 sm:size-8 items-center justify-center rounded-full dark:bg-[#181a1c] text-white shadow-sm ring-1 ring-white bg-white dark:ring-white/5"
+                >
+                  {/* Default dot */}
+                  <span className="size-1.5 sm:size-2 rounded-full  bg-black/70 dark:bg-white/80 transition-all duration-300 group-hover:scale-0 group-hover:opacity-0" />
+
+                  {/* Hover arrow */}
+                  <ImArrowDownLeft2
+                    size={11}
+                    strokeWidth={0.5}
+                    className="absolute translate-x-1 text-black/70 dark:text-white/80 -translate-y-1 scale-75 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100"
+                  />
+                </div>
+
+                {/* Image preview */}
+                <div className="relative mt-2 aspect-video w-full overflow-hidden rounded-lg xl:aspect-[3/2]">
+                  {/* Default image */}
+                  <Image
+                    src={project.image[0]}
+                    alt={`${project.title} project preview`}
+                    fill
+                    sizes="(min-width: 1280px) 850px, (min-width: 1024px) 50vw, 100vw"
+                    className="object-cover opacity-100 transition-[opacity,transform] duration-500 group-hover:scale-[1.015] group-hover:opacity-0 "
+                  />
+
+                  {/* Hover image */}
+                  <Image
+                    src={project.hoverImage}
+                    alt=""
+                    aria-hidden="true"
+                    fill
+                    sizes="(min-width: 1280px) 850px, (min-width: 1024px) 50vw, 100vw"
+                    className="object-cover opacity-0 transition-[opacity,transform] duration-500 group-hover:scale-[1.015] group-hover:opacity-100"
+                  />
+
+                  {/* Project title and date */}
+                  <div className="absolute inset-x-0 bottom-0 z-30 flex items-end justify-between">
+                    {/* Project title and date overlay */}
+                    <div className="absolute inset-x-0 bottom-0 z-30 flex items-end justify-between bg-linear-to-t from-black/90 via-black/45 to-transparent px-4 pb-4 pt-16 sm:px-5 sm:pb-5">
+                      {/* Project title */}
+                      <div className="flex items-center gap-3">
+                        <span
+                          aria-hidden="true"
+                          className="h-8 w-[3px] rounded-full bg-univ"
+                        />
+
+                        <h3 className="font-sans text-xl font-semibold leading-none tracking-[-0.03em] text-white sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl">
+                          {project.title}
+                        </h3>
+                      </div>
+
+                      {/* Project date */}
+                      <p className="rounded-full border border-white/15 bg-black/35 px-3 py-1 font-mono text-xs text-white/75 backdrop-blur-md sm:text-sm">
+                        {project.date}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Project description */}
+                <div className="mt-2 overflow-hidden whitespace-nowrap font-sans text-sm sm:text-base leading-6 text-muted xl:mt-3">
+                  {/* Moving text */}
+                  <p className="inline-block animate-marquee sm:text-base ">
+                    ★ {project.description} ★
+                  </p>
+                </div>
+              </motion.article>
+            ))}
+          </motion.div>
         </div>
-      )}
+      </div>
+
+      {/* Project modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          // Modal backdrop
+          <motion.div
+            key="project-modal"
+            initial={shouldReduceMotion ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              duration: shouldReduceMotion ? 0 : 0.2,
+            }}
+            className="fixed inset-0 z-100 overflow-y-auto bg-overlay p-5"
+            onClick={closeProject}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="project-modal-title"
+          >
+            {/* Modal container */}
+            <motion.div
+              initial={
+                shouldReduceMotion
+                  ? false
+                  : {
+                      opacity: 0,
+                      y: 30,
+                      scale: 0.98,
+                    }
+              }
+              animate={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+              }}
+              exit={
+                shouldReduceMotion
+                  ? undefined
+                  : {
+                      opacity: 0,
+                      y: 20,
+                      scale: 0.98,
+                    }
+              }
+              transition={{
+                duration: shouldReduceMotion ? 1 : 1.5,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="mx-auto my-8 w-full max-w-5xl"
+              onClick={(event) => event.stopPropagation()}
+            >
+              {/* Image panel */}
+              <div className="relative mb-5 w-full rounded-xl border border-border bg-surface-raised p-5 text-foreground shadow-xl">
+                {/* Image carousel */}
+                <div className="relative mt-2 aspect-video w-full overflow-hidden rounded-lg">
+                  {/* Previous image */}
+                  <button
+                    type="button"
+                    className="absolute left-1 top-1/2 z-50 -translate-y-1/2 text-2xl text-on-media transition-opacity hover:opacity-70"
+                    onClick={previousImage}
+                    aria-label="Previous project image"
+                  >
+                    <BiLeftArrowCircle />
+                  </button>
+
+                  {/* Next image */}
+                  <button
+                    type="button"
+                    className="absolute right-1 top-1/2 z-50 -translate-y-1/2 text-2xl text-on-media transition-opacity hover:opacity-70"
+                    onClick={nextImage}
+                    aria-label="Next project image"
+                  >
+                    <BiRightArrowCircle />
+                  </button>
+
+                  {/* Image transition */}
+                  <AnimatePresence initial={false} mode="wait">
+                    {/* Active image layer */}
+                    <motion.div
+                      key={selectedProject.image[imageCount]}
+                      initial={
+                        shouldReduceMotion
+                          ? false
+                          : {
+                              opacity: 0,
+                              scale: 0.985,
+                            }
+                      }
+                      animate={{
+                        opacity: 1,
+                        scale: 1,
+                      }}
+                      exit={
+                        shouldReduceMotion
+                          ? undefined
+                          : {
+                              opacity: 0,
+                              scale: 1.015,
+                            }
+                      }
+                      transition={{
+                        duration: shouldReduceMotion ? 0 : 0.3,
+                        ease: "easeOut",
+                      }}
+                      className="absolute inset-0"
+                    >
+                      {/* Active image */}
+                      <Image
+                        src={selectedProject.image[imageCount]}
+                        alt={`${selectedProject.title} project preview ${imageCount + 1}`}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 1024px"
+                        className="object-cover"
+                      />
+                    </motion.div>
+                  </AnimatePresence>
+
+                  {/* Image counter */}
+                  <div className="absolute bottom-3 right-3 z-50 rounded-full bg-overlay px-3 py-1 font-mono text-xs tabular-nums text-on-media">
+                    {imageCount + 1} / {selectedProject.image.length}
+                  </div>
+                </div>
+              </div>
+
+              {/* Project details */}
+              <div className="relative w-full rounded-xl border border-border bg-surface-raised p-5 text-foreground shadow-xl">
+                {/* Link and close button */}
+                <div className="my-2 flex w-full gap-2">
+                  {/* Project link */}
+                  <a
+                    className="w-7/8 rounded-sm border border-border bg-background p-4 shadow-xl transition-all duration-300 hover:scale-[1.01] hover:bg-highlight"
+                    href={selectedProject.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {/* Link content */}
+                    <div className="flex justify-between">
+                      {/* Project title */}
+                      <h3
+                        id="project-modal-title"
+                        className="font-sans text-xl font-semibold tracking-[-0.03em] md:text-2xl lg:text-3xl"
+                      >
+                        {selectedProject.title}
+                      </h3>
+
+                      {/* Link icon */}
+                      <div className="flex items-center justify-between text-xl text-univ md:text-2xl lg:text-3xl">
+                        <AiOutlineLink />
+                      </div>
+                    </div>
+                  </a>
+
+                  {/* Close button */}
+                  <button
+                    type="button"
+                    className="flex w-1/8 items-center justify-center rounded-sm border border-border bg-background p-4 text-2xl font-extrabold text-foreground shadow-xl transition-all duration-300 hover:scale-[1.05] hover:bg-highlight hover:text-univ md:text-3xl lg:text-4xl"
+                    onClick={closeProject}
+                    aria-label="Close project details"
+                  >
+                    <AiOutlineClose />
+                  </button>
+                </div>
+
+                {/* Year and role section */}
+                <div className="my-2 mt-5 w-full">
+                  {/* Year and role container */}
+                  <div className="flex justify-between rounded-sm border border-border bg-background p-4 shadow-xl">
+                    {/* Year */}
+                    <div>
+                      {/* Year label */}
+                      <div className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-muted sm:text-xs">
+                        Year:
+                      </div>
+
+                      {/* Year value */}
+                      <div className="font-mono text-sm font-medium tabular-nums sm:text-base">
+                        {selectedProject.date}
+                      </div>
+                    </div>
+
+                    {/* Role */}
+                    <div>
+                      {/* Role label */}
+                      <div className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-muted sm:text-xs">
+                        Role:
+                      </div>
+
+                      {/* Role value */}
+                      <div className="font-sans text-sm font-medium sm:text-base">
+                        {selectedProject.role}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Overview section */}
+                <div className="my-2 mt-5 w-full">
+                  {/* Overview container */}
+                  <div className="rounded-sm border border-border bg-background p-4 shadow-xl transition-colors hover:bg-highlight">
+                    {/* Overview label */}
+                    <div className="mb-2 font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-muted sm:text-xs">
+                      Overview:
+                    </div>
+
+                    {/* Overview text */}
+                    <div className="font-sans text-base leading-7 sm:text-lg">
+                      {selectedProject.description}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
