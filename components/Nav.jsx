@@ -22,11 +22,11 @@ const Nav = ({ setSideBar }) => {
       <div className="fixed pointer-events-none lg:pointer-events-auto left-5 -top-7 lg:-top-5 z-60 flex flex-col h-screen w-20  items-center justify-between py-8">
      
         {/* Top logo */}
-        <a href="#" className="dark:hidden">
-          <Image src="/rx-black-logo.png" width={80} height={80} alt="Black-Logo" />
+        <a href="#" className="pointer-events-auto dark:hidden" aria-label="Go to home">
+          <Image src="/rx-black-logo.webp" width={80} height={80} alt="Black-Logo" fetchPriority="high" />
         </a>
-        <a href="#" className="hidden dark:block">
-          <Image src="/rx-whiteLogo.png" width={80} height={80} alt="White-Logo" />
+        <a href="#" className="pointer-events-auto hidden dark:block" aria-label="Go to home">
+          <Image src="/rx-whiteLogo.webp" width={80} height={80} alt="White-Logo" fetchPriority="high" />
         </a>
  
         {/* Bottom social icons */}

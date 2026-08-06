@@ -19,17 +19,11 @@ const PictureCard = ({
   mobile = false,
 }) => {
   return (
-    // Moves the complete card based on the cursor
     <motion.div
-      className={`
-        absolute
-        transform-gpu
-        will-change-transform
-        ${className}
-      `}
+      className={`absolute transform-gpu ${className}`}
       style={cursorStyle}
     >
-      {/* Handles the original scroll animation */}
+      {/* Handles the card animation */}
       <motion.div
         className="
           relative
@@ -42,7 +36,7 @@ const PictureCard = ({
         "
         style={scrollStyle}
       >
-        {/* Glow behind the complete card */}
+        {/* Orange glow behind the card */}
         <div
           aria-hidden="true"
           className={`
@@ -52,7 +46,7 @@ const PictureCard = ({
             rounded-[1.35rem]
             bg-univ/15
 
-            ${mobile ? "blur-md " : "blur-xl"}
+            ${mobile ? "blur-md" : "blur-xl"}
           `}
         />
 
@@ -67,9 +61,10 @@ const PictureCard = ({
             border
             border-border
             bg-surface
+            [contain:paint]
           "
         >
-          {/* Top-right background circle */}
+          {/* Top-right picture glow */}
           <div
             aria-hidden="true"
             className={`
@@ -80,13 +75,13 @@ const PictureCard = ({
 
               ${
                 mobile
-                  ? "-right-[20%] -top-[20%] w-[65%] blur-3xl"
+                  ? "-right-[20%] -top-[20%] w-[65%] opacity-70 blur-xl"
                   : "-right-[30%] top-[10%] w-[60%] blur-3xl"
               }
             `}
           />
 
-          {/* Bottom-left background circle */}
+          {/* Bottom-left picture glow */}
           <div
             aria-hidden="true"
             className={`
@@ -97,14 +92,14 @@ const PictureCard = ({
 
               ${
                 mobile
-                  ? "-bottom-[15%] -left-[12%] w-[45%] blur-3xl"
+                  ? "-bottom-[15%] -left-[12%] w-[45%] opacity-70 blur-xl"
                   : "-bottom-[10%] -left-[30%] w-[60%] blur-3xl"
               }
             `}
           />
         </div>
 
-        {/* Keeps the portrait inside the rounded card */}
+        {/* Portrait image */}
         <div
           className="
             absolute
@@ -112,9 +107,9 @@ const PictureCard = ({
             z-20
             overflow-hidden
             rounded-2xl
+            [contain:paint]
           "
         >
-          {/* Portrait image */}
           <Image
             src={src}
             alt=""
@@ -125,7 +120,6 @@ const PictureCard = ({
                 ? "82vw"
                 : "(min-width: 1024px) 32vw, 520px"
             }
-            quality={82}
             className={`
               object-contain
               object-bottom
@@ -196,22 +190,13 @@ const DesktopAbout = ({
     [30, 30, 0, 0],
   );
 
-  // Stores the cursor position from 0 to 1
+  // Stores the cursor position
   const pointerX = useMotionValue(0.5);
   const pointerY = useMotionValue(0.5);
 
-  // Converts the cursor position into a small card movement
-  const cursorX = useTransform(
-    pointerX,
-    [0, 1],
-    [-16, 16],
-  );
-
-  const cursorY = useTransform(
-    pointerY,
-    [0, 1],
-    [-10, 10],
-  );
+  // Converts the cursor position into card movement
+  const cursorX = useTransform(pointerX, [0, 1], [-16, 16]);
+  const cursorY = useTransform(pointerY, [0, 1], [-10, 10]);
 
   // Smooths the cursor movement
   const smoothCursorX = useSpring(cursorX, {
@@ -224,7 +209,7 @@ const DesktopAbout = ({
     damping: 22,
   });
 
-  // Tracks the cursor inside the visible section
+  // Tracks the cursor inside the section
   const handlePointerMove = (event) => {
     if (event.pointerType === "touch") return;
 
@@ -232,18 +217,16 @@ const DesktopAbout = ({
       event.currentTarget.getBoundingClientRect();
 
     const x =
-      (event.clientX - container.left) /
-      container.width;
+      (event.clientX - container.left) / container.width;
 
     const y =
-      (event.clientY - container.top) /
-      container.height;
+      (event.clientY - container.top) / container.height;
 
     pointerX.set(Math.max(0, Math.min(1, x)));
     pointerY.set(Math.max(0, Math.min(1, y)));
   };
 
-  // Returns both cards to the center
+  // Returns the cards to the center
   const handlePointerLeave = () => {
     pointerX.set(0.5);
     pointerY.set(0.5);
@@ -256,7 +239,6 @@ const DesktopAbout = ({
   `;
 
   return (
-    // Desktop layout
     <div
       className="
         relative
@@ -276,7 +258,6 @@ const DesktopAbout = ({
           z-30
           w-[min(32vw,500px)]
           text-center
-          will-change-transform
         "
         style={{
           opacity: textOpacity,
@@ -302,7 +283,6 @@ const DesktopAbout = ({
             text-[clamp(3rem,6vw,6rem)]
             font-semibold
             tracking-[-0.055em]
-
             xl:text-[clamp(3rem,7vw,6rem)]
           "
         >
@@ -318,17 +298,13 @@ const DesktopAbout = ({
         </p>
 
         <p className="mx-auto mt-2 max-w-lg text-xl leading-7 text-muted">
-          <span className="font-bold text-univ">
-            Find
-          </span>{" "}
+          <span className="font-bold text-univ">Find</span>{" "}
           the friction,{" "}
           <span className="font-bold text-univ">
             Simplify
           </span>{" "}
           the process,{" "}
-          <span className="font-bold text-univ">
-            Build
-          </span>{" "}
+          <span className="font-bold text-univ">Build</span>{" "}
           it right.
         </p>
       </motion.div>
@@ -369,7 +345,7 @@ const DesktopAbout = ({
             object-bottom
             lg:scale-[1.2]
             xl:scale-[1.1]
-            2xl:scale-[1]
+            2xl:scale-100
           "
           cursorStyle={{
             x: smoothCursorX,
@@ -392,10 +368,7 @@ const MobileAbout = ({
   leftPicture,
   rightPicture,
 }) => {
-  /*
-   * Mobile only animates the vertical card movement.
-   * Rotation, scaling and cursor springs are removed.
-   */
+  // Moves the cards vertically
   const topY = useTransform(
     scrollYProgress,
     [0, 0.12, 0.68, 1],
@@ -428,7 +401,6 @@ const MobileAbout = ({
   `;
 
   return (
-    // Tablet and mobile layout
     <div
       className="
         relative
@@ -455,7 +427,6 @@ const MobileAbout = ({
           py-[clamp(0.875rem,2.6vh,1.75rem)]
           text-center
           shadow-lg
-          will-change-transform
         "
         style={{
           opacity: textOpacity,
@@ -521,17 +492,13 @@ const MobileAbout = ({
             text-muted
           "
         >
-          <span className="font-bold text-univ">
-            Find
-          </span>{" "}
+          <span className="font-bold text-univ">Find</span>{" "}
           the friction,{" "}
           <span className="font-bold text-univ">
             Simplify
           </span>{" "}
           the process,{" "}
-          <span className="font-bold text-univ">
-            Build
-          </span>{" "}
+          <span className="font-bold text-univ">Build</span>{" "}
           it right.
         </p>
       </motion.div>
@@ -551,7 +518,10 @@ const MobileAbout = ({
         {/* Top portrait card */}
         <PictureCard
           src={leftPicture}
-            className={`${smallerPictureClasses}-rotate-[2deg]`}
+          className={`
+            ${smallerPictureClasses}
+            -rotate-[2deg]
+          `}
           mobile
           scrollStyle={{
             y: topY,
@@ -561,7 +531,10 @@ const MobileAbout = ({
         {/* Bottom portrait card */}
         <PictureCard
           src={rightPicture}
-          className={`${smallerPictureClasses}rotate-[2deg]`}
+          className={`
+            ${smallerPictureClasses}
+            rotate-[2deg]
+          `}
           mobile
           scrollStyle={{
             y: bottomY,
@@ -578,19 +551,23 @@ const About = () => {
   // Tracks whether the desktop layout should be rendered
   const [isDesktop, setIsDesktop] = useState(false);
 
+  // Tracks whether the screen size has been checked
+  const [hasResolvedScreen, setHasResolvedScreen] =
+    useState(false);
+
   // Checks when the screen crosses the desktop breakpoint
   useEffect(() => {
-    const desktopQuery =
-      window.matchMedia("(min-width: 1024px)");
+    const desktopQuery = window.matchMedia(
+      "(min-width: 1024px)",
+    );
 
     const updateScreenSize = () => {
       setIsDesktop(desktopQuery.matches);
+      setHasResolvedScreen(true);
     };
 
-    // Checks the screen size when the page first loads
     updateScreenSize();
 
-    // Checks again when the screen crosses the breakpoint
     desktopQuery.addEventListener(
       "change",
       updateScreenSize,
@@ -614,7 +591,6 @@ const About = () => {
   const rightPicture = "/Whole-Image.png";
 
   return (
-    // Main section that provides the scrolling distance
     <section
       id="about"
       ref={sectionRef}
@@ -624,27 +600,25 @@ const About = () => {
         w-full
         bg-background
         text-foreground
-
         lg:h-[240vh]
       "
     >
       {/* Sticky visible About section */}
       <div className="sticky top-0 h-screen overflow-hidden">
-        {isDesktop ? (
-          // Full desktop animation
-          <DesktopAbout
-            scrollYProgress={scrollYProgress}
-            leftPicture={leftPicture}
-            rightPicture={rightPicture}
-          />
-        ) : (
-          // Lightweight tablet and mobile animation
-          <MobileAbout
-            scrollYProgress={scrollYProgress}
-            leftPicture={leftPicture}
-            rightPicture={rightPicture}
-          />
-        )}
+        {hasResolvedScreen &&
+          (isDesktop ? (
+            <DesktopAbout
+              scrollYProgress={scrollYProgress}
+              leftPicture={leftPicture}
+              rightPicture={rightPicture}
+            />
+          ) : (
+            <MobileAbout
+              scrollYProgress={scrollYProgress}
+              leftPicture={leftPicture}
+              rightPicture={rightPicture}
+            />
+          ))}
       </div>
     </section>
   );
