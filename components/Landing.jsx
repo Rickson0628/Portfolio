@@ -3,10 +3,9 @@
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { IBM_Plex_Sans } from "next/font/google";
-import { useReducedMotion } from "framer-motion";
 
 import { CgFileDocument } from "react-icons/cg";
-import { BiChevronsUp, BiCubeAlt } from "react-icons/bi";
+import { BiChevronsUp } from "react-icons/bi";
 import { ImLocation } from "react-icons/im";
 import {
   AiFillGithub,
@@ -14,11 +13,41 @@ import {
   AiOutlineInstagram,
 } from "react-icons/ai";
 
-// Loads the local Spline component only when it is rendered
-const SplineScene = dynamic(() => import("./SplineScene.jsx"), {
-  ssr: false,
-  loading: () => <RobotLoadingState />,
-});
+// Displays while the Spline component is loading
+const RobotLoadingState = () => {
+  return (
+    <div className="flex h-full w-full items-center justify-center">
+      <div className="flex flex-col items-center gap-3">
+        {/* Loading circle */}
+        <div
+          aria-hidden="true"
+          className="
+            size-9
+            animate-spin
+            rounded-full
+            border-2
+            border-border
+            border-t-univ
+          "
+        />
+
+        {/* Loading text */}
+        <span className="font-mono text-xs text-muted">
+          Loading 3D model
+        </span>
+      </div>
+    </div>
+  );
+};
+
+// Loads the local Spline wrapper only when it is rendered
+const SplineScene = dynamic(
+  () => import("./SplineScene.jsx"),
+  {
+    ssr: false,
+    loading: () => <RobotLoadingState />,
+  },
+);
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -38,260 +67,64 @@ const greetings = [
 ];
 
 // Mobile social media links
-const socialLinks = [
+const icons = [
   {
-    icon: <AiFillGithub size={25} />,
+    name: <AiFillGithub size={25} />,
     href: "https://github.com/Rickson0628",
     label: "GitHub",
   },
   {
-    icon: <AiFillLinkedin size={25} />,
+    name: <AiFillLinkedin size={25} />,
     href: "https://www.linkedin.com/in/rickson-bozar-628729320/",
     label: "LinkedIn",
   },
   {
-    icon: <AiOutlineInstagram size={25} />,
+    name: <AiOutlineInstagram size={25} />,
     href: "https://www.instagram.com/ricksonbozar/",
     label: "Instagram",
   },
   {
-    icon: <CgFileDocument size={24} />,
+    name: <CgFileDocument size={24} />,
     href: "/Rickson-Bozar-Resume.pdf",
     label: "Resume",
   },
 ];
 
-// Displays while the 3D model is loading
-function RobotLoadingState() {
-  return (
-    <div className="flex h-full w-full items-center justify-center">
-      <div className="flex flex-col items-center gap-3">
-        {/* Loading circle */}
-        <div
-          aria-hidden="true"
-          className="
-            size-9
-            animate-spin
-            rounded-full
-            border-2
-            border-border
-            border-t-univ
-          "
-        />
-
-        {/* Loading message */}
-        <span className="font-mono text-xs text-muted">
-          Loading 3D model
-        </span>
-      </div>
-    </div>
-  );
-}
-
-// Lightweight preview shown before Spline loads on mobile
-const MobileRobotPreview = ({ onLoad }) => {
-  return (
-    <div
-      className="
-        relative
-        flex
-        h-full
-        w-full
-        items-center
-        justify-center
-        overflow-hidden
-        rounded-[2rem]
-        border
-        border-border
-        bg-surface-raised
-      "
-    >
-      {/* Background glow */}
-      <div
-        aria-hidden="true"
-        className="
-          absolute
-          inset-[18%]
-          rounded-full
-          bg-univ/15
-          blur-2xl
-        "
-      />
-
-      {/* Preview content */}
-      <div className="relative z-10 flex flex-col items-center px-6 text-center">
-        {/* 3D cube icon */}
-        <div
-          className="
-            mb-4
-            flex
-            size-24
-            items-center
-            justify-center
-            rounded-full
-            border
-            border-border
-            bg-background/80
-            text-5xl
-            text-univ
-            shadow-lg
-          "
-        >
-          <BiCubeAlt aria-hidden="true" />
-        </div>
-
-        {/* Preview title */}
-        <p className="font-mono text-sm font-semibold text-foreground">
-          Interactive 3D robot
-        </p>
-
-        {/* Preview description */}
-        <p className="mt-2 max-w-60 text-sm leading-5 text-muted">
-          Tap below to load and interact with the 3D model.
-        </p>
-
-        {/* Loads Spline after the button is pressed */}
-        <button
-          type="button"
-          onClick={onLoad}
-          className="
-            mt-5
-            min-h-11
-            rounded-full
-            border
-            border-univ
-            bg-univ
-            px-6
-            py-3
-            font-mono
-            text-sm
-            font-semibold
-            text-white
-            transition-transform
-            hover:scale-[1.02]
-            active:scale-95
-            focus-visible:outline-2
-            focus-visible:outline-offset-4
-            focus-visible:outline-univ
-          "
-        >
-          Load 3D model
-        </button>
-      </div>
-    </div>
-  );
-};
-
-// Social links displayed on mobile
-const SocialLinks = () => {
-  return (
-    <div className="flex items-center gap-2 text-muted">
-      {socialLinks.map((social) => (
-        <a
-          key={social.label}
-          href={social.href}
-          aria-label={social.label}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="
-            inline-flex
-            min-h-11
-            min-w-11
-            items-center
-            justify-center
-            rounded-full
-            transition-colors
-            hover:text-univ
-            focus-visible:outline-2
-            focus-visible:outline-offset-2
-            focus-visible:outline-univ
-          "
-        >
-          {social.icon}
-        </a>
-      ))}
-    </div>
-  );
-};
-
 const Landing = () => {
-  const shouldReduceMotion = useReducedMotion();
-
   // Controls the currently displayed greeting
-  const [greetingIndex, setGreetingIndex] = useState(0);
+  const [index, setIndex] = useState(0);
 
-  // Controls the greeting fade animation
-  const [isGreetingVisible, setGreetingVisible] = useState(true);
+  // Controls the greeting transition
+  const [isVisible, setIsVisible] = useState(true);
 
-  // Tracks whether the screen is desktop size
-  const [isDesktop, setIsDesktop] = useState(false);
+  // Controls whether the robot has been loaded on mobile
+  const [loadMobileSpline, setLoadMobileSpline] =
+    useState(false);
 
-  // Tracks whether the screen size has been checked
-  const [hasResolvedScreen, setHasResolvedScreen] = useState(false);
-
-  // Controls whether Spline has been requested on mobile
-  const [loadMobileSpline, setLoadMobileSpline] = useState(false);
-
-  // Checks whether the screen is mobile or desktop
+  // Changes the greeting every two seconds
   useEffect(() => {
-    const desktopMediaQuery = window.matchMedia("(min-width: 768px)");
-
-    const updateScreenSize = () => {
-      setIsDesktop(desktopMediaQuery.matches);
-      setHasResolvedScreen(true);
-    };
-
-    // Checks the screen size when the page first loads
-    updateScreenSize();
-
-    // Checks again when the screen crosses the breakpoint
-    desktopMediaQuery.addEventListener("change", updateScreenSize);
-
-    return () => {
-      desktopMediaQuery.removeEventListener(
-        "change",
-        updateScreenSize,
-      );
-    };
-  }, []);
-
-  // Changes the greeting every few seconds
-  useEffect(() => {
-    // Stops the greeting animation when reduced motion is enabled
-    if (shouldReduceMotion) {
-      setGreetingVisible(true);
-      return;
-    }
-
     let transitionTimeout;
 
-    const greetingInterval = window.setInterval(() => {
+    const interval = window.setInterval(() => {
       // Hides the current greeting
-      setGreetingVisible(false);
+      setIsVisible(false);
 
-      // Changes the greeting after the fade-out
+      // Changes the greeting after it fades out
       transitionTimeout = window.setTimeout(() => {
-        setGreetingIndex((currentIndex) => {
-          return (currentIndex + 1) % greetings.length;
+        setIndex((previousIndex) => {
+          return (previousIndex + 1) % greetings.length;
         });
 
         // Shows the new greeting
-        setGreetingVisible(true);
-      }, 350);
-    }, 2500);
+        setIsVisible(true);
+      }, 500);
+    }, 2000);
 
     return () => {
-      window.clearInterval(greetingInterval);
+      window.clearInterval(interval);
       window.clearTimeout(transitionTimeout);
     };
-  }, [shouldReduceMotion]);
-
-  /*
-   * Desktop loads Spline automatically.
-   * Mobile loads Spline only after the button is pressed.
-   */
-  const shouldRenderSpline =
-    hasResolvedScreen && (isDesktop || loadMobileSpline);
+  }, []);
 
   return (
     // Main landing section
@@ -307,17 +140,21 @@ const Landing = () => {
         items-center
         justify-center
         overflow-x-clip
-        px-8
-        pb-12
-        pt-28
-        md:flex-row
-        md:px-15
+        p-8
+
+        sm:flex-row
+
+        md:p-15
         md:pt-35
-        lg:px-20
-        xl:px-25
+
+        lg:p-20
+        lg:pt-35
+
+        xl:p-25
+        xl:pt-35
       "
     >
-      {/* Grid background */}
+      {/* Fading grid background */}
       <div
         aria-hidden="true"
         className="
@@ -326,164 +163,355 @@ const Landing = () => {
           inset-0
           bg-[linear-gradient(var(--theme-border)_1px,transparent_1px),linear-gradient(90deg,var(--theme-border)_1px,transparent_1px)]
           [background-size:40px_40px]
-          [mask-image:linear-gradient(to_bottom,black_0%,black_35%,transparent_80%)]
-          opacity-[0.16]
-          dark:opacity-60
+          [mask-image:linear-gradient(to_bottom,black_0%,black_40%,transparent_80%)]
+          opacity-[0.20]
+
+          dark:opacity-[1]
+          dark:[mask-image:linear-gradient(to_bottom,black_0%,black_10%,transparent_70%)]
         "
       />
 
-      {/* Background accent glow */}
+      {/* Accent glow on the left */}
       <div
         aria-hidden="true"
         className="
           pointer-events-none
           absolute
-          -left-40
-          top-[12%]
-          size-80
+          -left-[18rem]
+          top-[10%]
+          size-[30rem]
           rounded-full
           bg-univ
-          opacity-10
-          blur-[70px]
+          opacity-[0.15]
+          blur-[140px]
+          mix-blend-multiply
 
-          md:-left-[18rem]
-          md:size-[30rem]
-          md:opacity-15
-          md:blur-[140px]
-
+          dark:opacity-[0.20]
           dark:mix-blend-screen
         "
       />
 
       {/* Left introduction section */}
-      <div className="relative z-20 w-full min-w-0 md:w-1/2 md:shrink-0">
+      <div className="w-full md:w-1/2 md:shrink-0">
         {/* Greeting section */}
         <div
           className="
             mb-5
             flex
+            w-full
             items-center
             gap-2
-            motion-safe:animate-[slide-right_500ms_ease-out_0.3s_both]
+
+            motion-safe:animate-[slide-right_500ms_ease-out_0.5s_both]
           "
         >
           {/* Changing greeting */}
-          <div
-            className={`
-              font-mono
-              text-xl
-              font-semibold
-              text-univ
-              transition-[opacity,transform]
-              duration-300
-              md:text-2xl
+          <div className="flex items-center justify-center">
+            <div
+              className={`
+                font-mono
+                text-xl
+                font-semibold
+                text-univ
+                transition-all
+                duration-500
+                ease-out
 
-              ${
-                isGreetingVisible
-                  ? "translate-y-0 opacity-100"
-                  : "-translate-y-2 opacity-0"
-              }
-            `}
-          >
-            {greetings[greetingIndex]}!
+                md:text-2xl
 
-            {/* Greeting underline */}
-            <div className="mt-2 h-0.5 rounded-full bg-univ" />
+                ${
+                  isVisible
+                    ? "translate-y-0 scale-100 opacity-100 blur-0"
+                    : "-translate-y-3 scale-50 opacity-0 blur-sm"
+                }
+              `}
+            >
+              {greetings[index]}!
+
+              {/* Greeting underline */}
+              <div className="mt-3 h-0.5 rounded-2xl bg-univ" />
+            </div>
           </div>
 
           {/* Static greeting text */}
-          <div className="font-mono text-xl text-muted md:text-2xl">
+          <div className="mb-4 font-mono text-xl text-muted md:text-2xl">
             I am
           </div>
         </div>
 
         {/* Main name heading */}
-        <h1
+        <div
           className={`
             ${ibmPlexSans.className}
-            -ml-1
+            -ml-5
+            w-full
             pb-5
-            text-[clamp(4.5rem,21vw,7.5rem)]
+            text-8xl
             font-medium
-            leading-[0.82]
-            tracking-[-0.065em]
+            leading-[0.85]
+            tracking-[-0.06em]
 
-            md:-ml-4
-            md:text-[clamp(6rem,11vw,9.5rem)]
+            md:text-9xl
 
-            motion-safe:animate-[slide-right_700ms_ease-out_0.5s_both]
+            xl:text-[150px]
+
+            motion-safe:animate-[slide-right_700ms_ease-out_0.8s_both]
           `}
         >
-          <span className="block">Rickson</span>
-          <span className="block">Bozar</span>
-        </h1>
+          <div>Rickson</div>
+          <div>Bozar</div>
+        </div>
 
-        {/* Job title and mobile social links */}
-        <div className="motion-safe:animate-[slide-right_700ms_ease-out_0.7s_both]">
-          {/* Mobile social links */}
-          <div className="mb-3 md:hidden">
-            <SocialLinks />
+        {/* Job title, social links and mobile robot */}
+        <div className="relative flex w-full">
+          {/* Job title and social links */}
+          <div className="motion-safe:animate-[slide-right_700ms_ease-out_1s_both]">
+            <div
+              className="
+                mt-5
+                font-mono
+                text-xl
+                font-extrabold
+                text-univ
+
+                md:text-3xl
+
+                lg:text-3xl
+
+                xl:mt-0
+                xl:text-3xl
+              "
+            >
+              {/* Mobile and tablet social links */}
+              <div
+                className="
+                  relative
+                  mb-5
+                  flex
+                  gap-1
+                  text-muted
+
+                  lg:mb-0
+                  lg:opacity-0
+                "
+              >
+                {icons.map((icon) => (
+                  <a
+                    key={icon.label}
+                    href={icon.href}
+                    aria-label={icon.label}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+                      pointer-events-auto
+                      inline-flex
+                      cursor-pointer
+                      transition-colors
+                      hover:text-univ
+                    "
+                  >
+                    {icon.name}
+                  </a>
+                ))}
+              </div>
+
+              FULL-STACK
+            </div>
+
+            <div
+              className="
+                font-mono
+                text-xl
+                font-extrabold
+                text-muted
+
+                md:text-3xl
+                lg:text-3xl
+                xl:text-3xl
+              "
+            >
+              DEVELOPER
+            </div>
           </div>
 
-          {/* Job title */}
-          <p className="font-mono text-xl font-extrabold text-univ md:text-3xl">
-            FULL-STACK
-          </p>
+          {/* Mobile robot stays in its original position */}
+          <div
+            className="
+              absolute
+              -top-45
+              left-35
+              z-10
+              h-[500px]
+              w-[500px]
+              max-w-full
+              overflow-hidden
 
-          <p className="font-mono text-xl font-extrabold text-muted md:text-3xl">
-            DEVELOPER
-          </p>
+              sm:-top-75
+              sm:left-45
+              sm:h-[570px]
+              sm:w-[570px]
+
+              md:hidden
+
+              motion-safe:animate-[slide-up_700ms_ease-out_1s_both]
+            "
+          >
+            {loadMobileSpline ? (
+              // Interactive robot in its original mobile location
+              <SplineScene
+                scene="https://prod.spline.design/n3j9W3bacAtGt2Zo/scene.splinecode"
+                className="
+                  h-full
+                  w-full
+                  cursor-grab
+                  active:cursor-grabbing
+                "
+              />
+            ) : (
+              // Button appears inside the original robot container
+              <div className="flex h-full w-full items-center justify-center">
+                <button
+                  type="button"
+                  onClick={() => setLoadMobileSpline(true)}
+                  className="
+                    pointer-events-auto
+                    min-h-11
+                    rounded-full
+                    border
+                    border-univ
+                    bg-background/90
+                    px-6
+                    py-3
+                    font-mono
+                    text-sm
+                    font-semibold
+                    text-univ
+                    shadow-lg
+                    backdrop-blur-sm
+                    transition-transform
+
+                    hover:scale-[1.03]
+                    active:scale-95
+
+                    focus-visible:outline-2
+                    focus-visible:outline-offset-4
+                    focus-visible:outline-univ
+                  "
+                >
+                  Load 3D Robot
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Mobile interaction hint */}
+          {loadMobileSpline && (
+            <div
+              className="
+                absolute
+                left-85
+                top-53
+                flex
+                flex-col
+                items-center
+                justify-center
+                text-[7px]
+                text-univ
+
+                sm:left-112
+                sm:top-35
+
+                md:hidden
+
+                motion-safe:animate-[slide-up_700ms_ease-out_1s_both]
+              "
+            >
+              <BiChevronsUp />
+              <div>Move me</div>
+            </div>
+          )}
         </div>
 
         {/* Location section */}
         <div
           className="
             mt-10
+            w-full
             text-muted
-            motion-safe:animate-[slide-up_700ms_ease-out_0.8s_both]
+
+            motion-safe:animate-[slide-up_700ms_ease-out_1s_both]
           "
         >
           {/* Location divider */}
-          <div className="mb-3 h-px w-full max-w-115 bg-border" />
+          <div
+            className="
+              mb-2
+              h-0.5
+              w-90
+              bg-border
+
+              sm:w-75
+              md:w-100
+              xl:w-115
+            "
+          />
 
           {/* Location information */}
           <div className="flex items-center gap-2 text-base">
-            <ImLocation aria-hidden="true" />
-            <span>Toronto, ON</span>
+            <ImLocation />
+            <div>Toronto, ON</div>
           </div>
         </div>
       </div>
 
-      {/* Right robot section */}
+      {/* Desktop robot section */}
       <div
         className="
           relative
-          z-10
-          mt-8
-          flex
-          w-full
+          hidden
           min-w-0
+          max-w-full
           flex-1
-          items-center
-          justify-center
-          md:mt-0
+          pl-30
+
+          md:flex
+          md:items-center
+          md:justify-center
         "
       >
-        {/* Responsive robot container */}
+        {/* Desktop robot viewport */}
         <div
           className="
             relative
-            aspect-square
-            w-[min(92vw,560px)]
-            md:w-[min(52vw,760px)]
-            motion-safe:animate-[fade-in_700ms_ease-out_0.8s_both]
+            h-[70vh]
+            w-full
+            overflow-visible
+
+            motion-safe:animate-[fade-in_700ms_ease-out_1s_both]
           "
         >
-          {/* Waits until the screen size has been checked */}
-          {!hasResolvedScreen ? (
-            <RobotLoadingState />
-          ) : shouldRenderSpline ? (
-            // Interactive 3D model
+          {/* Desktop robot stays in its original position */}
+          <div
+            className="
+              absolute
+              left-1/2
+              top-1/2
+              z-10
+              h-[80vw]
+              w-[80vw]
+              -translate-x-1/2
+              -translate-y-1/2
+
+              lg:h-[70vw]
+              lg:w-[70vw]
+
+              xl:h-[60vw]
+              xl:w-[60vw]
+
+              2xl:h-[55vw]
+              2xl:w-[55vw]
+            "
+          >
             <SplineScene
               scene="https://prod.spline.design/n3j9W3bacAtGt2Zo/scene.splinecode"
               className="
@@ -493,35 +521,30 @@ const Landing = () => {
                 active:cursor-grabbing
               "
             />
-          ) : (
-            // Mobile preview before loading Spline
-            <MobileRobotPreview
-              onLoad={() => setLoadMobileSpline(true)}
-            />
-          )}
+          </div>
 
-          {/* Interaction indicator */}
-          {shouldRenderSpline && (
-            <div
-              className="
-                pointer-events-none
-                absolute
-                bottom-[3%]
-                left-1/2
-                flex
-                -translate-x-1/2
-                flex-col
-                items-center
-                font-mono
-                text-[9px]
-                text-univ
-                motion-safe:animate-move-it
-              "
-            >
-              <BiChevronsUp aria-hidden="true" />
-              <span>Move me</span>
-            </div>
-          )}
+          {/* Desktop interaction hint */}
+          <div
+            className="
+              pointer-events-none
+              absolute
+              bottom-[5%]
+              left-1/2
+              flex
+              -translate-x-1/2
+              animate-move-it
+              flex-col
+              items-center
+              text-[7px]
+              text-univ
+
+              lg:bottom-[2%]
+              xl:-bottom-[3%]
+            "
+          >
+            <BiChevronsUp />
+            <div>Move me</div>
+          </div>
         </div>
       </div>
     </section>
