@@ -1,4 +1,7 @@
 "use client";
+import { AiOutlineRight } from "react-icons/ai";
+import { AiOutlineLeft } from "react-icons/ai";
+import { BiLinkExternal } from "react-icons/bi";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import {
@@ -9,10 +12,16 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import { BiLeftArrowCircle, BiRightArrowCircle } from "react-icons/bi";
+import {
+  SiNextdotjs,
+  SiReact,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiMongodb,
+} from "react-icons/si";
 import { AiOutlineClose, AiOutlineLink } from "react-icons/ai";
 import { ImArrowDownLeft2 } from "react-icons/im";
-import LineHorizontalIcon from "@/svg/horizontal-line";
+
 import WordTypewriter from "@/animation/WordTypeWriter";
 
 // Project content
@@ -26,8 +35,31 @@ const projects = [
     image: ["/serv-image.png", "/hoverServ-image.png"],
     hoverImage: "/hoverServ-image.png",
     role: "Full-Stack Developer",
+    technologies: [
+      {
+        name: "Next.js",
+        icon: <SiNextdotjs />,
+      },
+      {
+        name: "React",
+        icon: <SiReact />,
+      },
+      {
+        name: "Tailwind CSS",
+        icon: <SiTailwindcss />,
+      },
+      {
+        name: "Node.js",
+        icon: <SiNodedotjs />,
+      },
+      {
+        name: "MongoDB",
+        icon: <SiMongodb />,
+      },
+    ],
     link: "https://www.figma.com/design/mfDny3wMR43p24YnegKCeN/Serv?node-id=0-1&t=2rjeML1fHNnI6Dy4-1",
   },
+
   {
     id: 2,
     title: "Nike Store",
@@ -37,10 +69,24 @@ const projects = [
     image: ["/nike.png", "/hoverNike.png"],
     hoverImage: "/hoverNike.png",
     role: "Full-Stack Developer",
+    technologies: [
+      {
+        name: "Next.js",
+        icon: <SiNextdotjs />,
+      },
+      {
+        name: "React",
+        icon: <SiReact />,
+      },
+      {
+        name: "Tailwind CSS",
+        icon: <SiTailwindcss />,
+      },
+    ],
     link: "https://tailwind-project-lime-pi.vercel.app/",
   },
   {
-    id: 3,
+    id: 1,
     title: "Serv",
     date: "Present",
     description:
@@ -48,10 +94,33 @@ const projects = [
     image: ["/serv-image.png", "/hoverServ-image.png"],
     hoverImage: "/hoverServ-image.png",
     role: "Full-Stack Developer",
+    technologies: [
+      {
+        name: "Next.js",
+        icon: <SiNextdotjs />,
+      },
+      {
+        name: "React",
+        icon: <SiReact />,
+      },
+      {
+        name: "Tailwind CSS",
+        icon: <SiTailwindcss />,
+      },
+      {
+        name: "Node.js",
+        icon: <SiNodedotjs />,
+      },
+      {
+        name: "MongoDB",
+        icon: <SiMongodb />,
+      },
+    ],
     link: "https://www.figma.com/design/mfDny3wMR43p24YnegKCeN/Serv?node-id=0-1&t=2rjeML1fHNnI6Dy4-1",
   },
+
   {
-    id: 4,
+    id: 2,
     title: "Nike Store",
     date: "March 2026",
     description:
@@ -59,6 +128,20 @@ const projects = [
     image: ["/nike.png", "/hoverNike.png"],
     hoverImage: "/hoverNike.png",
     role: "Full-Stack Developer",
+    technologies: [
+      {
+        name: "Next.js",
+        icon: <SiNextdotjs />,
+      },
+      {
+        name: "React",
+        icon: <SiReact />,
+      },
+      {
+        name: "Tailwind CSS",
+        icon: <SiTailwindcss />,
+      },
+    ],
     link: "https://tailwind-project-lime-pi.vercel.app/",
   },
 ];
@@ -368,7 +451,7 @@ const Project = () => {
             transition={{
               duration: shouldReduceMotion ? 0 : 0.2,
             }}
-            className="fixed inset-0 z-100 overflow-y-auto bg-overlay p-5"
+            className="fixed inset-0 z-100 overflow-y-auto bg-overlay p-5 "
             onClick={closeProject}
             role="dialog"
             aria-modal="true"
@@ -400,34 +483,34 @@ const Project = () => {
                     }
               }
               transition={{
-                duration: shouldReduceMotion ? 1 : 1.5,
+                duration: shouldReduceMotion ? 0.4 : 0.8,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="mx-auto my-8 w-full max-w-5xl"
+              className="mx-auto my-8 w-full max-w-5xl bg-border dark:bg-white/80 "
               onClick={(event) => event.stopPropagation()}
             >
-              {/* Image panel */}
-              <div className="relative mb-5 w-full rounded-xl border border-border bg-surface-raised p-5 text-foreground shadow-xl">
+              {/* Whole Card Container */}
+              <div className="relative mb-5 w-full rounded-xl border border-border bg-background py-3 px-2  text-foreground shadow-xl overflow-hidden ">
                 {/* Image carousel */}
-                <div className="relative mt-2 aspect-video w-full overflow-hidden rounded-lg">
+                <div className="relative aspect-video w-full rounded-lg  overflow-hidden">
                   {/* Previous image */}
                   <button
                     type="button"
-                    className="absolute left-1 top-1/2 z-50 -translate-y-1/2 text-2xl text-on-media transition-opacity hover:opacity-70"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 z-50 flex items-center justify-center text-lg size-7 border border-border rounded-lg text-white bg-black/55 hover:bg-black/70 border-white/15"
                     onClick={previousImage}
                     aria-label="Previous project image"
                   >
-                    <BiLeftArrowCircle />
+                    <AiOutlineLeft />
                   </button>
 
                   {/* Next image */}
                   <button
                     type="button"
-                    className="absolute right-1 top-1/2 z-50 -translate-y-1/2 text-2xl text-on-media transition-opacity hover:opacity-70"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 z-50 flex items-center justify-center text-lg size-7 border border-border rounded-lg text-white bg-black/55 hover:bg-black/70 border-white/15"
                     onClick={nextImage}
                     aria-label="Next project image"
                   >
-                    <BiRightArrowCircle />
+                    <AiOutlineRight />
                   </button>
 
                   {/* Image transition */}
@@ -477,91 +560,108 @@ const Project = () => {
                     {imageCount + 1} / {selectedProject.image.length}
                   </div>
                 </div>
-              </div>
 
-              {/* Project details */}
-              <div className="relative w-full rounded-xl border border-border bg-surface-raised p-5 text-foreground shadow-xl">
-                {/* Link and close button */}
-                <div className="my-2 flex w-full gap-2">
-                  {/* Project link */}
-                  <a
-                    className="w-7/8 rounded-sm border border-border bg-background p-4 shadow-xl transition-all duration-300 hover:scale-[1.01] hover:bg-highlight"
-                    href={selectedProject.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {/* Link content */}
-                    <div className="flex justify-between">
-                      {/* Project title */}
-                      <h3
-                        id="project-modal-title"
-                        className="font-sans text-xl font-semibold tracking-[-0.03em] md:text-2xl lg:text-3xl"
-                      >
-                        {selectedProject.title}
-                      </h3>
+                {/* Project details Container */}
+                <div className="flex flex-col gap-4 w-full py-4 px-2">
 
+                  {/* Project title, link, close button */}
+                  <div className="flex items-center justify-between">
+                    {/* Project title */}
+                    <h3
+                      id="project-modal-title"
+                      className="font-mono text-4xl font-semibold tracking-[-0.03em]"
+                    >
+                      {selectedProject.title}
+                    </h3>
+                    {/* Link icon and close button container */}
+                    <div className="flex gap-3">
                       {/* Link icon */}
-                      <div className="flex items-center justify-between text-xl text-univ md:text-2xl lg:text-3xl">
-                        <AiOutlineLink />
-                      </div>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          window.open(selectedProject.link, "_blank")
+                        }
+                        aria-label="Open project link in a new tab"
+                        className="flex items-center justify-center text-lg text-univ w-10 h-10 border border-border rounded-full cursor-pointer transition-colors duration-200 hover:border-univ transition-transform hover:scale-102"
+                      >
+                        <BiLinkExternal />
+                      </button>
+                      {/* Close button */}
+                      <button
+                        type="button"
+                        className="flex items-center justify-center text-lg text-foreground w-10 h-10 border border-border rounded-full cursor-pointer transition-colors duration-200  hover:border-red-700 hover:text-red-700 transition-transform hover:scale-102"
+                        onClick={closeProject}
+                        aria-label="Close project details"
+                      >
+                        <AiOutlineClose />
+                      </button>
                     </div>
-                  </a>
+                  </div>
 
-                  {/* Close button */}
-                  <button
-                    type="button"
-                    className="flex w-1/8 items-center justify-center rounded-sm border border-border bg-background p-4 text-2xl font-extrabold text-foreground shadow-xl transition-all duration-300 hover:scale-[1.05] hover:bg-highlight hover:text-univ md:text-3xl lg:text-4xl"
-                    onClick={closeProject}
-                    aria-label="Close project details"
-                  >
-                    <AiOutlineClose />
-                  </button>
-                </div>
-
-                {/* Year and role section */}
-                <div className="my-2 mt-5 w-full">
                   {/* Year and role container */}
-                  <div className="flex justify-between rounded-sm border border-border bg-background p-4 shadow-xl">
+                  <div className="relative grid grid-cols-2  border-y border-border py-4 px-1 ">
                     {/* Year */}
-                    <div>
+                    <div className="flex flex-col gap-1 pr-6">
                       {/* Year label */}
-                      <div className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-muted sm:text-xs">
-                        Year:
+                      <div className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-muted">
+                        Year
                       </div>
 
                       {/* Year value */}
-                      <div className="font-mono text-sm font-medium tabular-nums sm:text-base">
+                      <div className="font-mono text-sm font-medium tabular-nums">
                         {selectedProject.date}
                       </div>
                     </div>
 
+                    {/* Middle Line */}
+                    <div
+                      aria-hidden="true"
+                      className=" absolute inset-y-4 left-1/2 w-px -translate-x-1/2 bg-border "
+                    />
+
                     {/* Role */}
-                    <div>
+                    <div className="flex flex-col gap-1 pl-6">
                       {/* Role label */}
-                      <div className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-muted sm:text-xs">
-                        Role:
+                      <div className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-muted ">
+                        Role
                       </div>
 
                       {/* Role value */}
-                      <div className="font-sans text-sm font-medium sm:text-base">
+                      <div className="font-sans text-sm font-medium ">
                         {selectedProject.role}
                       </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Overview section */}
-                <div className="my-2 mt-5 w-full">
                   {/* Overview container */}
-                  <div className="rounded-sm border border-border bg-background p-4 shadow-xl transition-colors hover:bg-highlight">
+                  <div className="border-border border-b  py-2 pt-0 px-1 ">
                     {/* Overview label */}
-                    <div className="mb-2 font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-muted sm:text-xs">
-                      Overview:
+                    <div className="mb-2 font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-muted text-sm text-univ">
+                      Overview
                     </div>
 
-                    {/* Overview text */}
-                    <div className="font-sans text-base leading-7 sm:text-lg">
+                    {/* Project description */}
+                    <div className="font-sans text-base  leading-7 ">
                       {selectedProject.description}
+                    </div>
+                  </div>
+
+                  {/* Technologies Container */}
+                  <div className="  border-border  px-1 ">
+                    {/* Technologies label */}
+                    <div className="mb-2 font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-muted text-sm text-univ">
+                      Technologies
+                    </div>
+                    {/* Technologies list */}
+                    <div className="flex flex-wrap gap-y-3 gap-x-2">
+                      {selectedProject.technologies.map((tech) => (
+                        <div
+                          key={tech.name}
+                          className="flex items-center gap-2 justify-center font-sans text-sm font-medium text-muted-foreground border border-border py-2 px-3 bg-surface rounded-lg"
+                        >
+                          {tech.icon} {tech.name}
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
