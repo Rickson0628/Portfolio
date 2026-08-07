@@ -390,7 +390,7 @@ const Project = () => {
                 {/* Card icon */}
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute right-8 top-9 z-10 flex size-6 sm:size-8 items-center justify-center rounded-full dark:bg-[#181a1c] text-white shadow-sm ring-1 ring-white bg-white dark:ring-white/5"
+                  className="pointer-events-none absolute right-5 top-5 z-10 flex size-7 sm:size-8 items-center justify-center rounded-full dark:bg-[#181a1c] text-white shadow-sm ring-1 ring-white bg-white dark:ring-white/5"
                 >
                   {/* Default dot */}
                   <span className="size-1.5 sm:size-2 rounded-full  bg-black/70 dark:bg-white/80 transition-all duration-300 group-hover:scale-0 group-hover:opacity-0" />
