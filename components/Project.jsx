@@ -31,8 +31,8 @@ const projects = [
     title: "Serv",
     date: "Present",
     description:
-      "Online service platform that helps customers find qualified skilled workers for repairs, maintenance, and other service needs.",
-    image: ["/serv-image.png", "/hoverServ-image.png"],
+      "Online service platform that helps customers find qualified skilled workers for repairs, maintenance,service platform that helps customers find qualified skilled workers for repairs, maintenance,service platform that helps customers find qualified skilled workers for repairs, maintenance, and other service needs",
+    image: ["/serv-image.png", "/hoverServ-image.png", "/serv-image.png", "/hoverServ-image.png" , "/hoverServ-image.png", "/serv-image.png", "/hoverServ-image.png"],
     hoverImage: "/hoverServ-image.png",
     role: "Full-Stack Developer",
     technologies: [
@@ -66,7 +66,7 @@ const projects = [
     date: "March 2026",
     description:
       "A practice e-commerce website built with Tailwind CSS, featuring a clean store layout, product sections, and a responsive design for a modern shopping experience.",
-    image: ["/nike.png", "/hoverNike.png"],
+    image: ["/nike.png", "/hoverNike.png", "/nike.png", "/hoverNike.png"],
     hoverImage: "/hoverNike.png",
     role: "Full-Stack Developer",
     technologies: [
@@ -86,12 +86,12 @@ const projects = [
     link: "https://tailwind-project-lime-pi.vercel.app/",
   },
   {
-    id: 1,
+    id: 3,
     title: "Serv",
     date: "Present",
     description:
       "Online service platform that helps customers find qualified skilled workers for repairs, maintenance, and other service needs.",
-    image: ["/serv-image.png", "/hoverServ-image.png"],
+    image: ["/serv-image.png", "/hoverServ-image.png", "/serv-image.png", "/hoverServ-image.png"],
     hoverImage: "/hoverServ-image.png",
     role: "Full-Stack Developer",
     technologies: [
@@ -120,12 +120,12 @@ const projects = [
   },
 
   {
-    id: 2,
+    id: 4,
     title: "Nike Store",
     date: "March 2026",
     description:
       "A practice e-commerce website built with Tailwind CSS, featuring a clean store layout, product sections, and a responsive design for a modern shopping experience.",
-    image: ["/nike.png", "/hoverNike.png"],
+    image: ["/nike.png", "/hoverNike.png", "/nike.png", "/hoverNike.png"],
     hoverImage: "/hoverNike.png",
     role: "Full-Stack Developer",
     technologies: [
@@ -171,6 +171,7 @@ const Project = () => {
   const projectScrollRef = useRef(null);
   const projectViewportRef = useRef(null);
   const projectTrackRef = useRef(null);
+  const imageContainerRefScroller = useRef([]);
 
   const [isHorizontalScroll, setIsHorizontalScroll] = useState(false);
   const [horizontalDistance, setHorizontalDistance] = useState(0);
@@ -178,6 +179,11 @@ const Project = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
   const [imageCount, setImageCount] = useState(0);
+
+
+  useEffect(() => {
+    imageContainerRefScroller?.current[imageCount]?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+  }, [imageCount])
 
   // Tracks vertical progress through the sticky Projects area.
   const { scrollYProgress } = useScroll({
@@ -490,75 +496,104 @@ const Project = () => {
               onClick={(event) => event.stopPropagation()}
             >
               {/* Whole Card Container */}
-              <div className="relative mb-5 w-full rounded-xl border border-border bg-background py-3 px-2  text-foreground shadow-xl overflow-hidden ">
-                {/* Image carousel */}
-                <div className="relative aspect-video w-full rounded-lg  overflow-hidden">
-                  {/* Previous image */}
-                  <button
-                    type="button"
-                    className="absolute left-2 top-1/2 -translate-y-1/2 z-50 flex items-center justify-center text-lg size-7 border border-border rounded-lg text-white bg-black/55 hover:bg-black/70 border-white/15"
-                    onClick={previousImage}
-                    aria-label="Previous project image"
-                  >
-                    <AiOutlineLeft />
-                  </button>
+              <div className="relative mb-5 w-full rounded-xl border border-border bg-background py-3 px-2  text-foreground shadow-xl overflow-hidden lg:grid lg:grid-cols-[55%_45%] lg:gap-3 lg:py-5 lg:px-4 ">
+                {/* Desktop size: Image Carousel and Preview pictures */}
+                <div className="relative lg:grid lg:grid-rows-[70%_30%] lg:gap-3 lg:overflow-hidden">
 
-                  {/* Next image */}
-                  <button
-                    type="button"
-                    className="absolute right-2 top-1/2 -translate-y-1/2 z-50 flex items-center justify-center text-lg size-7 border border-border rounded-lg text-white bg-black/55 hover:bg-black/70 border-white/15"
-                    onClick={nextImage}
-                    aria-label="Next project image"
-                  >
-                    <AiOutlineRight />
-                  </button>
-
-                  {/* Image transition */}
-                  <AnimatePresence initial={false} mode="wait">
-                    {/* Active image layer */}
-                    <motion.div
-                      key={selectedProject.image[imageCount]}
-                      initial={
-                        shouldReduceMotion
-                          ? false
-                          : {
-                              opacity: 0,
-                              scale: 0.985,
-                            }
-                      }
-                      animate={{
-                        opacity: 1,
-                        scale: 1,
-                      }}
-                      exit={
-                        shouldReduceMotion
-                          ? undefined
-                          : {
-                              opacity: 0,
-                              scale: 1.015,
-                            }
-                      }
-                      transition={{
-                        duration: shouldReduceMotion ? 0 : 0.3,
-                        ease: "easeOut",
-                      }}
-                      className="absolute inset-0"
+                  {/* Image carousel */}
+                  <div className="relative aspect-video w-full  lg:h-full lg:aspect-auto rounded-lg  overflow-hidden ">
+                    {/* Previous image */}
+                    <button
+                      type="button"
+                      className="absolute left-2 top-1/2 -translate-y-1/2 z-50 flex items-center justify-center text-lg size-7 border border-border rounded-lg text-white bg-black/55 hover:bg-black/70 border-white/15"
+                      onClick={previousImage}
+                      aria-label="Previous project image"
                     >
-                      {/* Active image */}
-                      <Image
-                        src={selectedProject.image[imageCount]}
-                        alt={`${selectedProject.title} project preview ${imageCount + 1}`}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 1024px"
-                        className="object-cover"
-                      />
-                    </motion.div>
-                  </AnimatePresence>
+                      <AiOutlineLeft />
+                    </button>
 
-                  {/* Image counter */}
-                  <div className="absolute bottom-3 right-3 z-50 rounded-full bg-overlay px-3 py-1 font-mono text-xs tabular-nums text-on-media">
-                    {imageCount + 1} / {selectedProject.image.length}
+                    {/* Next image */}
+                    <button
+                      type="button"
+                      className="absolute right-2 top-1/2 -translate-y-1/2 z-50 flex items-center justify-center text-lg size-7 border border-border rounded-lg text-white bg-black/55 hover:bg-black/70 border-white/15"
+                      onClick={nextImage}
+                      aria-label="Next project image"
+                    >
+                      <AiOutlineRight />
+                    </button>
+
+                    {/* Image transition */}
+                    <AnimatePresence initial={false} mode="wait">
+                      {/* Active image layer */}
+                      <motion.div
+                        key={selectedProject.image[imageCount]}
+                        initial={
+                          shouldReduceMotion
+                            ? false
+                            : {
+                                opacity: 0,
+                                scale: 0.985,
+                              }
+                        }
+                        animate={{
+                          opacity: 1,
+                          scale: 1,
+                        }}
+                        exit={
+                          shouldReduceMotion
+                            ? undefined
+                            : {
+                                opacity: 0,
+                                scale: 1.015,
+                              }
+                        }
+                        transition={{
+                          duration: shouldReduceMotion ? 0 : 0.3,
+                          ease: "easeOut",
+                        }}
+                        className="absolute inset-0"
+                      >
+                        {/* Active image */}
+                        <Image
+                          src={selectedProject.image[imageCount]}
+                          alt={`${selectedProject.title} project preview ${imageCount + 1}`}
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 1024px"
+                          className="object-cover "
+                        />
+                      </motion.div>
+                    </AnimatePresence>
+
+                    {/* Image counter */}
+                    <div className="absolute bottom-3 right-3 z-50 rounded-full bg-overlay px-3 py-1 font-mono text-xs tabular-nums text-on-media">
+                      {imageCount + 1} / {selectedProject.image.length}
+                    </div>
                   </div>
+                  {/* Preview pictures */}
+                  <div className="mt-3 hidden gap-2 overflow-x-auto lg:flex">
+                  
+                    {selectedProject.image.map((image, index) => (
+                      <button
+                       ref={(element) => (imageContainerRefScroller.current[index] = element)}
+                        key={image} 
+                        className={`relative w-1/4 h-full flex-shrink-0 rounded-lg overflow-hidden border-2  ${imageCount === index ? "border-univ" : 
+                          "border-border"
+                        }`}
+                        onClick={() => setImageCount(index)}
+
+                      >
+                        <Image
+                          src={image}
+                          alt={`${image} project preview ${index + 1}`}
+                          fill
+                          sizes="100px"
+                          className="object-cover"
+                        />
+                      </button>
+                    ))}
+
+                  </div>
+
                 </div>
 
                 {/* Project details Container */}
@@ -569,7 +604,7 @@ const Project = () => {
                     {/* Project title */}
                     <h3
                       id="project-modal-title"
-                      className="font-mono text-4xl font-semibold tracking-[-0.03em]"
+                      className="font-mono text-[clamp(2.5rem,4vw,3.5rem)] lg:text-[clamp(2rem,3vw,3.5rem)] font-semibold tracking-[-0.03em]"  
                     >
                       {selectedProject.title}
                     </h3>
@@ -582,14 +617,14 @@ const Project = () => {
                           window.open(selectedProject.link, "_blank")
                         }
                         aria-label="Open project link in a new tab"
-                        className="flex items-center justify-center text-lg text-univ w-10 h-10 border border-border rounded-full cursor-pointer transition-colors duration-200 hover:border-univ transition-transform hover:scale-102"
+                        className="flex items-center justify-center text-lg text-univ w-[clamp(2.5rem,6vw,3rem)] h-[clamp(2.5rem,6vw,3rem)] lg:w-[clamp(2rem,5vw,2.5rem)] lg:h-[clamp(2rem,5vw,2.5rem)] border border-border rounded-full cursor-pointer transition-colors duration-200 hover:border-univ transition-transform hover:scale-102"
                       >
                         <BiLinkExternal />
                       </button>
                       {/* Close button */}
                       <button
                         type="button"
-                        className="flex items-center justify-center text-lg text-foreground w-10 h-10 border border-border rounded-full cursor-pointer transition-colors duration-200  hover:border-red-700 hover:text-red-700 transition-transform hover:scale-102"
+                        className="flex items-center justify-center text-lg text-foreground w-[clamp(2.5rem,6vw,3rem)] h-[clamp(2.5rem,6vw,3rem)] lg:w-[clamp(2rem,5vw,2.5rem)] lg:h-[clamp(2rem,5vw,2.5rem)] border border-border rounded-full cursor-pointer transition-colors duration-200  hover:border-red-700 hover:text-red-700 transition-transform hover:scale-102"
                         onClick={closeProject}
                         aria-label="Close project details"
                       >
@@ -603,12 +638,12 @@ const Project = () => {
                     {/* Year */}
                     <div className="flex flex-col gap-1 pr-6">
                       {/* Year label */}
-                      <div className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-muted">
+                      <div className="font-mono text-[clamp(0.65rem,1vw,0.8rem)] lg:text-[clamp(0.65rem,1vw,0.75rem)] font-medium uppercase tracking-[0.12em] text-muted">
                         Year
                       </div>
 
                       {/* Year value */}
-                      <div className="font-mono text-sm font-medium tabular-nums">
+                      <div className="font-mono text-[clamp(0.95rem,1.8vw,1.25rem)] lg:text-[clamp(0.85rem,1.5vw,1.105rem)] font-medium tabular-nums">
                         {selectedProject.date}
                       </div>
                     </div>
@@ -622,12 +657,12 @@ const Project = () => {
                     {/* Role */}
                     <div className="flex flex-col gap-1 pl-6">
                       {/* Role label */}
-                      <div className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-muted ">
+                      <div className="font-mono text-[clamp(0.65rem,1vw,0.8rem)] lg:text-[clamp(0.65rem,1vw,0.75rem)] font-medium uppercase tracking-[0.12em] text-muted ">
                         Role
                       </div>
 
                       {/* Role value */}
-                      <div className="font-sans text-sm font-medium ">
+                      <div className="font-sans text-[clamp(0.95rem,1.8vw,1.25rem)] lg:text-[clamp(0.85rem,1.5vw,1.105rem)] font-medium ">
                         {selectedProject.role}
                       </div>
                     </div>
@@ -636,12 +671,12 @@ const Project = () => {
                   {/* Overview container */}
                   <div className="border-border border-b  py-2 pt-0 px-1 ">
                     {/* Overview label */}
-                    <div className="mb-2 font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-muted text-sm text-univ">
+                    <div className="mb-2 font-mono text-[clamp(0.7rem,1.1vw,0.8rem)]  lg:text-[clamp(0.65rem,1vw,0.75rem)] font-medium uppercase tracking-[0.12em] text-muted text-sm text-univ">
                       Overview
                     </div>
 
                     {/* Project description */}
-                    <div className="font-sans text-base  leading-7 ">
+                    <div className="font-sans text-[clamp(0.95rem,1.4vw,1.125rem)]  lg:text-[clamp(0.85rem,1.25vw,1rem)] text-foreground leading-7 ">
                       {selectedProject.description}
                     </div>
                   </div>
@@ -649,7 +684,7 @@ const Project = () => {
                   {/* Technologies Container */}
                   <div className="  border-border  px-1 ">
                     {/* Technologies label */}
-                    <div className="mb-2 font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-muted text-sm text-univ">
+                    <div className="mb-4 font-mono text-[clamp(0.7rem,1vw,0.8rem)]  lg:text-[clamp(0.65rem,1vw,0.75rem)] font-medium uppercase tracking-[0.12em] text-muted text-sm text-univ">
                       Technologies
                     </div>
                     {/* Technologies list */}
@@ -657,7 +692,7 @@ const Project = () => {
                       {selectedProject.technologies.map((tech) => (
                         <div
                           key={tech.name}
-                          className="flex items-center gap-2 justify-center font-sans text-sm font-medium text-muted-foreground border border-border py-2 px-3 bg-surface rounded-lg"
+                          className="flex items-center gap-2 justify-center font-sans text-[clamp(0.75rem,1vw,0.85rem)]  lg:text-[clamp(0.7rem,0.9vw,0.8rem)] font-medium text-foreground  border border-border py-2 px-3 bg-surface rounded-lg"
                         >
                           {tech.icon} {tech.name}
                         </div>
