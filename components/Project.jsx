@@ -560,6 +560,16 @@ const Project = () => {
                                 scale: 0.985,
                               }
                         }
+                        drag="x"
+                        dragConstraints={{ left: 0, right: 0 }}
+                        dragElastic={0.2}
+                        onDragEnd={(event, info) => {
+                          if (info.offset.x < -50) {
+                            nextImage();
+                          } else if (info.offset.x > 50) {
+                            previousImage();
+                          }
+                        }}
                         animate={{
                           opacity: 1,
                           scale: 1,
@@ -576,7 +586,7 @@ const Project = () => {
                           duration: shouldReduceMotion ? 0 : 0.3,
                           ease: "easeOut",
                         }}
-                        className="absolute inset-0"
+                        className="absolute inset-0 cursor-grab active:cursor-grabbing"
                       >
                         {/* Active image */}
                         <Image
@@ -584,7 +594,8 @@ const Project = () => {
                           alt={`${selectedProject.title} project preview ${imageCount + 1}`}
                           fill
                           sizes="(max-width: 1024px) 100vw, 1024px"
-                          className="object-cover "
+                          className="select-none object-cover "
+                          draggable={false}
                         />
                       </motion.div>
                     </AnimatePresence>
@@ -639,14 +650,14 @@ const Project = () => {
                           window.open(selectedProject.link, "_blank")
                         }
                         aria-label="Open project link in a new tab"
-                        className="flex items-center justify-center text-lg text-univ w-[clamp(2.5rem,6vw,3rem)] h-[clamp(2.5rem,6vw,3rem)] lg:w-[clamp(2rem,5vw,2.5rem)] lg:h-[clamp(2rem,5vw,2.5rem)] border border-border rounded-full cursor-pointer transition-colors duration-200 hover:border-univ transition-transform hover:scale-102"
+                        className="flex items-center justify-center text-lg text-univ w-[clamp(2.5rem,6vw,3rem)] h-[clamp(2.5rem,6vw,3rem)] lg:w-[clamp(2rem,5vw,2.5rem)] lg:h-[clamp(2rem,5vw,2.5rem)] border border-border rounded-full cursor-pointer transition-colors duration-200 hover:border-univ transition-transform hover:scale-102 active:scale-102 active:border-univ "
                       >
                         <BiLinkExternal />
                       </button>
                       {/* Close button */}
                       <button
                         type="button"
-                        className="flex items-center justify-center text-lg text-foreground w-[clamp(2.5rem,6vw,3rem)] h-[clamp(2.5rem,6vw,3rem)] lg:w-[clamp(2rem,5vw,2.5rem)] lg:h-[clamp(2rem,5vw,2.5rem)] border border-border rounded-full cursor-pointer transition-colors duration-200  hover:border-red-700 hover:text-red-700 transition-transform hover:scale-102"
+                        className="flex items-center justify-center text-lg text-foreground w-[clamp(2.5rem,6vw,3rem)] h-[clamp(2.5rem,6vw,3rem)] lg:w-[clamp(2rem,5vw,2.5rem)] lg:h-[clamp(2rem,5vw,2.5rem)] border border-border rounded-full cursor-pointer transition-colors duration-200  hover:border-red-700 hover:text-red-700 transition-transform hover:scale-102 active:scale-102 active:border-red-700 active:text-red-700"
                         onClick={closeProject}
                         aria-label="Close project details"
                       >
