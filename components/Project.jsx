@@ -32,7 +32,15 @@ const projects = [
     date: "Present",
     description:
       "Online service platform that helps customers find qualified skilled workers for repairs, maintenance,service platform that helps customers find qualified skilled workers for repairs, maintenance,service platform that helps customers find qualified skilled workers for repairs, maintenance, and other service needs",
-    image: ["/serv-image.png", "/hoverServ-image.png", "/serv-image.png", "/hoverServ-image.png" , "/hoverServ-image.png", "/serv-image.png", "/hoverServ-image.png"],
+    image: [
+      "/serv-image.png",
+      "/hoverServ-image.png",
+      "/serv-image.png",
+      "/hoverServ-image.png",
+      "/hoverServ-image.png",
+      "/serv-image.png",
+      "/hoverServ-image.png",
+    ],
     hoverImage: "/hoverServ-image.png",
     role: "Full-Stack Developer",
     technologies: [
@@ -91,7 +99,12 @@ const projects = [
     date: "Present",
     description:
       "Online service platform that helps customers find qualified skilled workers for repairs, maintenance, and other service needs.",
-    image: ["/serv-image.png", "/hoverServ-image.png", "/serv-image.png", "/hoverServ-image.png"],
+    image: [
+      "/serv-image.png",
+      "/hoverServ-image.png",
+      "/serv-image.png",
+      "/hoverServ-image.png",
+    ],
     hoverImage: "/hoverServ-image.png",
     role: "Full-Stack Developer",
     technologies: [
@@ -180,10 +193,13 @@ const Project = () => {
 
   const [imageCount, setImageCount] = useState(0);
 
-
   useEffect(() => {
-    imageContainerRefScroller?.current[imageCount]?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
-  }, [imageCount])
+    imageContainerRefScroller?.current[imageCount]?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "center",
+    });
+  }, [imageCount]);
 
   // Tracks vertical progress through the sticky Projects area.
   const { scrollYProgress } = useScroll({
@@ -361,7 +377,7 @@ const Project = () => {
                       }
                     : undefined
                 }
-                className={`group relative overflow-hidden rounded-2xl border-2 border-border bg-surface p-4 shadow-md transition-[background-color,border-color,box-shadow] duration-300 hover:cursor-pointer hover:bg-highlight hover:shadow-xl xl:p-5 ${
+                className={`group relative overflow-hidden rounded-2xl border-2 border-border bg-surface pb-4   shadow-md transition-[background-color,border-color,box-shadow] duration-300 hover:cursor-pointer hover:bg-highlight hover:shadow-xl  ${
                   isHorizontalScroll ? "shrink-0" : "mt-8"
                 }`}
               >
@@ -388,7 +404,7 @@ const Project = () => {
                 </div>
 
                 {/* Image preview */}
-                <div className="relative mt-2 aspect-video w-full overflow-hidden rounded-lg xl:aspect-[3/2]">
+                <div className="relative  aspect-video w-full overflow-hidden xl:aspect-[3/2]">
                   {/* Default image */}
                   <Image
                     src={project.image[0]}
@@ -433,11 +449,21 @@ const Project = () => {
                 </div>
 
                 {/* Project description */}
-                <div className="mt-2 overflow-hidden whitespace-nowrap font-sans text-sm sm:text-base leading-6 text-muted xl:mt-3">
+                <div className="mt-2 overflow-hidden whitespace-nowrap font-sans text-sm sm:text-base leading-6 text-muted mx-4 xl:mt-3">
                   {/* Moving text */}
-                  <p className="inline-block animate-marquee sm:text-base ">
-                    ★ {project.description} ★
-                  </p>
+                  <motion.div
+                    initial={{ x: "1%" }}
+                    whileInView={{ x: "-50%" }}
+                    viewport={{ once: true, amount: 0 }}
+                    transition={{
+                      duration: 20,
+                      delay: 0.8,
+                      ease: "linear",
+                    }}
+                    className="inline-block sm:text-base"
+                  >
+                    {project.description}
+                  </motion.div>
                 </div>
               </motion.article>
             ))}
@@ -499,7 +525,6 @@ const Project = () => {
               <div className="relative mb-5 w-full rounded-xl border border-border bg-background py-3 px-2  text-foreground shadow-xl overflow-hidden lg:grid lg:grid-cols-[55%_45%] lg:gap-3 lg:py-5 lg:px-4 ">
                 {/* Desktop size: Image Carousel and Preview pictures */}
                 <div className="relative lg:grid lg:grid-rows-[70%_30%] lg:gap-3 lg:overflow-hidden">
-
                   {/* Image carousel */}
                   <div className="relative aspect-video w-full  lg:h-full lg:aspect-auto rounded-lg  overflow-hidden ">
                     {/* Previous image */}
@@ -571,16 +596,16 @@ const Project = () => {
                   </div>
                   {/* Preview pictures */}
                   <div className="mt-3 hidden gap-2 overflow-x-auto lg:flex">
-                  
                     {selectedProject.image.map((image, index) => (
                       <button
-                       ref={(element) => (imageContainerRefScroller.current[index] = element)}
-                        key={image} 
-                        className={`relative w-1/4 h-full flex-shrink-0 rounded-lg overflow-hidden border-2  ${imageCount === index ? "border-univ" : 
-                          "border-border"
+                        ref={(element) =>
+                          (imageContainerRefScroller.current[index] = element)
+                        }
+                        key={image}
+                        className={`relative w-1/4 h-full flex-shrink-0 rounded-lg overflow-hidden border-2  ${
+                          imageCount === index ? "border-univ" : "border-border"
                         }`}
                         onClick={() => setImageCount(index)}
-
                       >
                         <Image
                           src={image}
@@ -591,20 +616,17 @@ const Project = () => {
                         />
                       </button>
                     ))}
-
                   </div>
-
                 </div>
 
                 {/* Project details Container */}
                 <div className="flex flex-col gap-4 w-full py-4 px-2">
-
                   {/* Project title, link, close button */}
                   <div className="flex items-center justify-between">
                     {/* Project title */}
                     <h3
                       id="project-modal-title"
-                      className="font-mono text-[clamp(2.5rem,4vw,3.5rem)] lg:text-[clamp(2rem,3vw,3.5rem)] font-semibold tracking-[-0.03em]"  
+                      className="font-mono text-[clamp(2.5rem,4vw,3.5rem)] lg:text-[clamp(2rem,3vw,3.5rem)] font-semibold tracking-[-0.03em]"
                     >
                       {selectedProject.title}
                     </h3>
