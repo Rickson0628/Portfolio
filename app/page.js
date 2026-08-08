@@ -8,7 +8,7 @@ import SideContent from "@/components/SideContent";
 import Skills from "@/components/Skills";
 import Footer from "@/components/Footer";
 import Project from "./../components/Project";
-import Milestone from "@/components/Experience";
+import Milestone from "@/components/Milestones";
 import { motion, useScroll } from "framer-motion";
 import { BiSun } from "react-icons/bi";
 import { BiMoon } from "react-icons/bi";
@@ -69,7 +69,7 @@ export default function Home() {
       <Project />
 
       <SideBar isOpen={isSideBarOpen} setSideBar={setSideBar}>
-        <SideContent />
+        <SideContent setSideBar={setSideBar} />
       </SideBar>
 
       <Skills />

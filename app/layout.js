@@ -2,15 +2,14 @@ import "./globals.css";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 
-
 export const metadata = {
-  title: "Rickson Bozar",
+  title: "Rickson Bozar | Full-Stack Developer",
+  description:
+    "Portfolio of Rickson Bozar, a full-stack developer building responsive web applications with React, Next.js, Node.js, and modern web technologies.",
   icons: {
-    icon: "/rx-black-logo.png",
+    icon: "/rx-black-logo.webp",
   },
-  description: "Personal Website",
 };
-
 
 
 
