@@ -11,17 +11,35 @@ export const metadata = {
   },
 };
 
-
-
 export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable} `}
+      suppressHydrationWarning
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
     >
-      <body
-        className={`${GeistSans.className} flex min-h-full flex-col bg-background text-foreground antialiased`}
-      >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const savedTheme = localStorage.getItem("theme");
+
+                if (savedTheme === "dark") {
+                  document.documentElement.classList.add("dark");
+                } else if (savedTheme === "light") {
+                  document.documentElement.classList.remove("dark");
+                } else {
+                  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                  document.documentElement.classList.toggle("dark", prefersDark);
+                }
+              } catch (error) {}
+            `,
+          }}
+        />
+      </head>
+
+      <body className={`${GeistSans.className} flex min-h-full flex-col bg-background text-foreground antialiased`}>
         {children}
       </body>
     </html>
