@@ -1,3 +1,4 @@
+import { SiTypescript } from "react-icons/si";
 import { CgFramer } from "react-icons/cg";
 import { AiFillThunderbolt, AiFillHtml5 } from "react-icons/ai";
 import { BiGhost } from "react-icons/bi";
@@ -42,17 +43,14 @@ const frontSkills = {
   description: "Building responsive and intuitive user interfaces",
   skills: [
     { name: "Next.js", icon: <SiNextdotjs /> },
-    { name: "React", icon: <DiReact  size={20} /> },
+    { name: "React", icon: <DiReact size={20} /> },
     {
       name: "JavaScript",
-      icon: <IoLogoJavascript  />,
+      icon: <IoLogoJavascript />,
     },
     { name: "Tailwind", icon: <SiTailwindcss /> },
-    {
-      name: "Bootstrap",
-      icon: <BsFillBootstrapFill />,
-    },
-    { name: "HTML", icon: <AiFillHtml5 size={18}  /> },
+    { name: "HTML", icon: <AiFillHtml5 size={18} /> },
+    { name: "TypeScript", icon: <SiTypescript /> },
     { name: "CSS", icon: <FaCss3Alt size={18} /> },
     { name: "Motion", icon: <CgFramer size={20} /> },
   ],
@@ -89,7 +87,7 @@ const authSkills = {
     { name: "JWT", icon: <SiJsonwebtokens /> },
     { name: "OAuth", icon: <MdSecurity /> },
     { name: "bcrypt", icon: <FaLock /> },
-    { name: "Cookies", icon: <FaCookieBite  /> },
+    { name: "Cookies", icon: <FaCookieBite /> },
   ],
 };
 const toolSkills = {
@@ -97,12 +95,12 @@ const toolSkills = {
   description: "Develop, test, and deploy applications efficiently",
   skills: [
     { name: "Git", icon: <FaGitAlt /> },
-    { name: "GitHub", icon: <FaGithub  /> },
-    { name: "Vercel", icon: <SiVercel  /> },
+    { name: "GitHub", icon: <FaGithub /> },
+    { name: "Vercel", icon: <SiVercel /> },
     { name: "Figma", icon: <FaFigma /> },
     { name: "Jira", icon: <SiJira /> },
-    { name: "Postman", icon: <SiPostman  /> },
-    { name: "Thunder", icon: <AiFillThunderbolt  /> },
+    { name: "Postman", icon: <SiPostman /> },
+    { name: "Thunder", icon: <AiFillThunderbolt /> },
   ],
 };
 
@@ -115,10 +113,10 @@ const allSkills = [
 ];
 
 const Skills = () => {
-   const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useReducedMotion();
   return (
     // Top Line
-    <div className="p-8 lg:p-15 xl:p-20 -mt-10 lg:-mt-20 lg:-mb-10">
+    <section id="skills" className="p-8 lg:p-15 xl:p-20 -mt-10 lg:-mt-20 lg:-mb-10">
       <div className="mb-6 mt-10 font-sans text-4xl font-semibold leading-none tracking-[-0.05em] sm:mx-5 sm:text-5xl lg:text-6xl">
         <WordTypewriter text="SKILLS" />
       </div>
@@ -127,18 +125,22 @@ const Skills = () => {
       </div>
       {allSkills.map((section, index) => (
         <div key={section.title}>
-          <motion.div className=" relative rounded-lg sm:p-5 lg:flex lg:items-center lg:gap-10 overflow-hidden group"
-           whileHover={shouldReduceMotion ? undefined : { y: -6 }}>
-     {/* Top-right glow */}
-  <div
-    aria-hidden="true"
-    className="pointer-events-none absolute -right-16 -top-16 size-40  rounded-full bg-univ opacity-0 blur-3xl transition-opacity  duration-500 group-hover:opacity-50 dark:group-hover:opacity-25 "/>
+          <motion.div
+            className=" relative rounded-lg sm:p-5 lg:flex lg:items-center lg:gap-10 overflow-hidden group"
+            whileHover={shouldReduceMotion ? undefined : { y: -6 }}
+          >
+            {/* Top-right glow */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-16 -top-16 size-40  rounded-full bg-univ opacity-0 blur-3xl transition-opacity  duration-500 group-hover:opacity-50 dark:group-hover:opacity-25 "
+            />
 
-  {/* Top-left glow */}
-  <div
-    aria-hidden="true"
-    className="pointer-events-none  absolute  -left-16 -top-16 size-40 rounded-full  bg-univ  opacity-0 blur-3xl
-      transition-opacity duration-500  group-hover:opacity-50 dark:group-hover:opacity-25 "/>
+            {/* Top-left glow */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none  absolute  -left-16 -top-16 size-40 rounded-full  bg-univ  opacity-0 blur-3xl
+      transition-opacity duration-500  group-hover:opacity-50 dark:group-hover:opacity-25 "
+            />
 
             {/* Right Side */}
             <div className="lg:w-1/3 flex flex-col justify-center">
@@ -185,7 +187,7 @@ const Skills = () => {
           )}
         </div>
       ))}
-    </div>
+    </section>
   );
 };
 

@@ -98,7 +98,7 @@ const DesktopCircleGlow = ({ scrollYProgress }) => {
   );
 };
 
-const Experience = () => {
+const Milestones = () => {
   const timelineRef = useRef(null);
 
   // Controls whether the desktop glow is mounted
@@ -152,6 +152,7 @@ const Experience = () => {
 
   return (
     <section
+      id="milestones"
       ref={timelineRef}
       className="
         mt-10
@@ -175,7 +176,7 @@ const Experience = () => {
           xl:text-[clamp(2.5rem,5vw,5rem)]
         "
       >
-        <WordTypewriter text="Experience" />
+        <WordTypewriter text="Milestones" />
       </h2>
 
       <div className="relative w-full">
@@ -422,4 +423,4 @@ const Experience = () => {
   );
 };
 
-export default Experience;
+export default Milestones;
