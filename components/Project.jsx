@@ -406,7 +406,8 @@ const Project = () => {
                 {/* Image preview */}
                 <div className="relative  aspect-video w-full overflow-hidden xl:aspect-[3/2]">
                   {/* Default image */}
-                  <Image
+                  <Image 
+                  priority
                     src={project.image[0]}
                     alt={`${project.title} project preview`}
                     fill
@@ -416,6 +417,7 @@ const Project = () => {
 
                   {/* Hover image */}
                   <Image
+                  priority
                     src={project.hoverImage}
                     alt=""
                     aria-hidden="true"
@@ -590,6 +592,7 @@ const Project = () => {
                       >
                         {/* Active image */}
                         <Image
+                        priority
                           src={selectedProject.image[imageCount]}
                           alt={`${selectedProject.title} project preview ${imageCount + 1}`}
                           fill
@@ -619,6 +622,7 @@ const Project = () => {
                         onClick={() => setImageCount(index)}
                       >
                         <Image
+                        priority
                           src={image}
                           alt={`${image} project preview ${index + 1}`}
                           fill

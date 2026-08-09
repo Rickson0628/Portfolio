@@ -2,14 +2,8 @@
 
 import Spline from "@splinetool/react-spline";
 
-
-const SplineScene = ({ scene, className }) => {
-  return (
-    <Spline
-      scene={scene}
-      className={className}
-    />
-  );
+const SplineScene = ({ scene, className, onLoad }) => {
+  return <Spline scene={scene} className={className} onLoad={onLoad} />;
 };
 
 export default SplineScene;

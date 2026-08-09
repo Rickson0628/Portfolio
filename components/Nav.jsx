@@ -31,30 +31,44 @@ const icons = [
   },
 ];
 
-const Nav = ({ setSideBar }) => {
+const Nav = ({ setSideBar, startAnimations }) => {
   return (
     <>
       {/* Logo + social icons */}
-      <div className="fixed left-5 -top-7 z-[70] flex h-screen w-20 flex-col items-center justify-between py-8 pointer-events-none lg:-top-5">
-
+      <div className={`fixed left-5 -top-7 z-[70] flex h-screen w-20 flex-col items-center justify-between py-8 pointer-events-none lg:-top-5 
+        ${
+          startAnimations
+            ? "motion-safe:animate-[fade-in_700ms_ease-out_0.3s_both]"
+            : "opacity-0"}
+        `}>
         {/* Top logo */}
-        <a href="#home" className="pointer-events-auto dark:hidden" aria-label="Go to home">
+        <a
+          href="#home"
+          className="pointer-events-auto dark:hidden"
+          aria-label="Go to home"
+        >
           <Image
             src="/rx-black-logo.webp"
             width={80}
             height={80}
             alt="Black-Logo"
             fetchPriority="high"
+            priority
           />
         </a>
 
-        <a href="#home" className="pointer-events-auto hidden dark:block" aria-label="Go to home">
+        <a
+          href="#home"
+          className="pointer-events-auto hidden dark:block"
+          aria-label="Go to home"
+        >
           <Image
             src="/rx-whiteLogo.webp"
             width={80}
             height={80}
             alt="White-Logo"
             fetchPriority="high"
+            priority
           />
         </a>
 
@@ -76,8 +90,13 @@ const Nav = ({ setSideBar }) => {
       </div>
 
       {/* Navbar */}
-      <nav className="fixed z-50 w-full bg-background/80 p-10 text-foreground shadow-sm backdrop-blur-xs lg:p-8 motion-safe:animate-[fade-in_700ms_ease-out_0.3s_both]">
-
+      <nav
+        className={`fixed z-50 w-full bg-background/80 p-10 text-foreground shadow-sm backdrop-blur-xs lg:p-8 ${
+          startAnimations
+            ? "motion-safe:animate-[fade-in_700ms_ease-out_0.3s_both]"
+            : "opacity-0"
+        }`}
+      >
         {/* Hamburger button */}
         <button
           className="fixed right-10 top-7 z-50 cursor-pointer lg:hidden lg:top-10"
