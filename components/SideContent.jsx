@@ -12,11 +12,12 @@ import { CgPhone } from "react-icons/cg";
 const routes = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
-  { name: "Milestones", href: "#milestones" },
-  { name: "Projects", href: "#projects" },
   { name: "Skills", href: "#skills" },
+  { name: "Projects", href: "#projects" },
+  { name: "Milestones", href: "#milestones" },
+  
+  
 ];
-
 const icons = [
   { name: <AiFillGithub size={25} />, href: "https://github.com/Rickson0628", label: "GitHub" },
   { name: <AiFillLinkedin size={25} />, href: "https://www.linkedin.com/in/rickson-bozar-628729320/", label: "LinkedIn" },

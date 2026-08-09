@@ -11,9 +11,11 @@ import Image from "next/image";
 const routes = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
-  { name: "Milestones", href: "#milestones" },
-  { name: "Projects", href: "#projects" },
   { name: "Skills", href: "#skills" },
+  { name: "Projects", href: "#projects" },
+  { name: "Milestones", href: "#milestones" },
+  
+  
 ];
 
 const icons = [

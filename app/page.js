@@ -76,14 +76,16 @@ export default function Home() {
       />
 
       <About />
-      <Milestone />
+      <Skills />
       <Project />
+      <Milestone />
+      
 
       <SideBar isOpen={isSideBarOpen} setSideBar={setSideBar}>
         <SideContent setSideBar={setSideBar} />
       </SideBar>
 
-      <Skills />
+      
       <Footer />
     </main>
   );
