@@ -156,13 +156,13 @@ const Skills = () => {
 
             {/* Left Side */}
 
-            <div className="grid grid-cols-3 sm:grid-cols-3 lg:w-2/3 md:flex md:flex-wrap gap-2 lg:gap-2 xl:grid xl:grid-cols-4">
+            <div className="grid grid-cols-3 sm:grid-cols-3 lg:w-2/3 gap-2 md:grid-cols-4">
               {section.skills.map((skill, index) => (
                 // Icon
 
                 <div
                   key={skill.name}
-                  className="h-14.5 flex items-center justify-center gap-2 rounded-lg border-2 border-border bg-surface  transition-all duration-200  hover:border-univ hover:bg-highlight hover:shadow-md sm:mt-5 md:mt-5 z-10"
+                  className="h-14.5 px-5 flex items-center justify-center gap-2 rounded-lg border-2 border-border bg-surface  transition-all duration-200  hover:border-univ hover:bg-highlight hover:shadow-md sm:mt-5 md:mt-5 z-10"
                 >
                   <IconFadeIn>
                     <div className="text-sm md:text-sm  flex justify-center items-center shrink-0 animate-fade-in ">
