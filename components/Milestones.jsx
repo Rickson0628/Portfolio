@@ -1,91 +1,135 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import WordTypewriter from "@/animation/WordTypeWriter";
 import IconFadeIn from "@/animation/IconFadeIn";
 
 const milestones = [
   {
+      title: "Building Serv",
+      company: "Independent Project",
+      description:
+        "Currently designing and building Serv, a two-sided service marketplace, as a hands-on learning project to deepen my full-stack development skills. Exploring application architecture, authentication, location-based services, real-time interactions, payments, database design, and scalable front-end development while working through the challenges of building a larger application from the ground up.",
+      date: "Present",
+      type: "Project",
+      tags: [
+        "Full-Stack Development",
+        "System Design",
+        "Problem Solving",
+        "API Integration",
+        "Database Design",
+        "Continuous Learning",
+      ],
+  },
+
+    {
+    title: "Computer Programming Graduate",
+    company: "Education",
+    description:
+      "Graduated from Seneca Polytechnic with a 3.7 GPA in Computer Programming. Built a strong foundation in full-stack development, software engineering, database systems, software testing, and data structures and algorithms through hands-on projects and collaborative software development.",
+    date: "January 2024 - December 2025",
+    type: "School Learning",
+    tags: [
+      "Full-Stack Development",
+      "Web Development",
+      "Database Systems",
+      "Software Engineering",
+      "Data Structures & Algorithms",
+      "Software Testing",
+    ],
+  },
+
+    {
+    title: "Full-Stack Developer Intern",
+    company: "DBTK",
+    description:
+      "Supported the development and maintenance of DBTK’s web applications by identifying and fixing bugs, resolving UI and responsiveness issues, and improving existing front-end functionality. Worked with an established codebase, tested changes across different screen sizes, and collaborated with the development team to improve usability, consistency, and overall application stability.",
+    date: "2025",
+    type: "Internship",
+    tags: [
+      "Bug Fixing",
+      "UI Development",
+      "Responsive Design",
+      "Code Maintenance",
+      "Problem Solving",
+      "Team Collaboration",
+    ],
+  },
+  {
+  title: "Entrepreneurship Pitch Finalist",
+  company: "Seneca Polytechnic",
+  description:
+  "Competed against other teams in Seneca’s Entrepreneurship Work-Integrated Learning Pitch Day and advanced as a Top 5 participant, presenting Serv, a two-sided service marketplace concept, to an audience of approximately 100 people. Developed and delivered the product pitch, communicated the problem and proposed solution, and gained hands-on experience presenting a technical business concept to a live audience.",
+  date: "April 2025",
+  type: "Achievement",
+  tags: [
+    "Public Speaking",
+    "Product Pitching",
+    "Technical Communication",
+    "Entrepreneurship",
+    "Product Strategy",
+    "Presentation Skills",
+  ],
+},
+
+
+  {
+  title: "Professional Development",
+  company: "Udemy",
+  description:
+    "Completed five certifications focused on modern software development, expanding my skills beyond formal coursework through hands-on training in React, Next.js, Tailwind CSS, Framer Motion, Node.js, and Python.",
+  date: "2025 - 2026",
+  type: "Certification",
+  tags: [
+    "Next.js",
+    "React",
+    "Node.js",
+    "Python",
+    "Tailwind CSS",
+    "Framer Motion",
+  ],
+},
+
+    {
     title: "Service Advisor",
     company: "Canadian Tire",
     description:
-      "Delivered customer-focused service by communicating effectively, resolving issues under pressure, coordinating with mechanics, automotive parts, and service advisors, multitasking in a fast-paced environment, and training new colleagues on internal systems and company policies.",
-    date: "2023 - Present",
+      "Recognized as one of the team’s top sellers through strong communication, problem-solving, and customer-focused recommendations. Worked in a fast-paced environment coordinating across multiple teams, resolving issues under pressure, managing competing priorities, and training new colleagues on internal systems and processes—strengthening transferable skills in collaboration, troubleshooting, adaptability, and technical communication.",
+    date: "August 2023 - June 2026",
     type: "Work",
     tags: [
-      "Customer Service",
       "Problem Solving",
-      "Team Coordination",
+      "Technical Communication",
+      "Cross-Team Collaboration",
+      "Troubleshooting",
+      "Training & Mentorship",
+      "Prioritization",
     ],
   },
-  {
-    title: "Computer Programming Graduate",
-    company: "Seneca Polytechnic",
-    description:
-      "Student at Seneca Polytechnic with a 3.7 GPA. Coursework spans full-stack development, object-oriented programming, software testing, database management, operating systems, software analysis and design, and data structures and algorithms.",
-    date: "2024 - 2025",
-    type: "School Learning",
-    tags: [
-      "Full-Stack Development",
-      "Database Management",
-      "Software Testing",
-    ],
-  },
-  {
-    title: "Full-Stack Developer",
-    company: "DBTK",
-    description:
-      "Assisted in developing responsive and high-performing web pages using Next.js, including server-rendered and statically generated pages. Supported backend functionality with Node.js, REST API integration, and MongoDB database management.",
-    date: "2025",
-    type: "Internship",
-    tags: ["Next.js", "Node.js", "MongoDB"],
-  },
-  {
-    title: "Computer Programming Graduate",
-    company: "Seneca Polytechnic",
-    description:
-      "Student at Seneca Polytechnic with a 3.7 GPA. Coursework spans full-stack development, object-oriented programming, software testing, database management, operating systems, software analysis and design, and data structures and algorithms.",
-    date: "2024 - 2025",
-    type: "School Learning",
-    tags: [
-      "Full-Stack Development",
-      "Database Management",
-      "Software Testing",
-    ],
-  },
-  {
-    title: "Full-Stack Developer",
-    company: "DBTK",
-    description:
-      "Assisted in developing responsive and high-performing web pages using Next.js, including server-rendered and statically generated pages. Supported backend functionality with Node.js, REST API integration, and MongoDB database management.",
-    date: "2025",
-    type: "Internship",
-    tags: ["Next.js", "Node.js", "MongoDB"],
-  },
-    {
-    title: "STEM Graduate",
-    company: "Bataan National High School",
-    description:
-      "Assisted in developing responsive and high-performing web pages using Next.js, including server-rendered and statically generated pages. Supported backend functionality with Node.js, REST API integration, and MongoDB database management.",
-    date: "2025",
-    type: "Internship",
-    tags: ["Next.js", "Node.js", "MongoDB"],
-  },
+
+{
+  title: "STEM Graduate",
+  company: "Bataan National High School",
+  description:
+    "Graduated with High Honors from the Science, Technology, Engineering, and Mathematics strand. Developed a strong foundation in advanced mathematics, scientific research, logical reasoning, and technology-focused problem solving, strengthening the analytical and structured thinking skills that support software development and technical learning.",
+  date: "2022",
+  type: "Academic",
+  tags: [
+    "Analytical Thinking",
+    "Problem Solving",
+    "Logical Reasoning",
+    "Research",
+    "Mathematics",
+    "Technical Learning",
+  ],
+},
 ];
 
 // Only rendered on lg screens and above
 const DesktopCircleGlow = ({ scrollYProgress }) => {
   // Animates the circle glow scale
-  const circleGlow = useTransform(
-    scrollYProgress,
-    [0.1, 0.5, 0.7],
-    [1, 2, 1],
-  );
+  const circleGlow = useTransform(scrollYProgress, [0.1, 0.5, 0.7], [1, 2, 1]);
 
   return (
     <motion.div
@@ -111,14 +155,11 @@ const Milestones = () => {
   const timelineRef = useRef(null);
 
   // Controls whether the desktop glow is mounted
-  const [showDesktopGlow, setShowDesktopGlow] =
-    useState(false);
+  const [showDesktopGlow, setShowDesktopGlow] = useState(false);
 
   // Checks when the screen crosses the lg breakpoint
   useEffect(() => {
-    const desktopQuery = window.matchMedia(
-      "(min-width: 1024px)",
-    );
+    const desktopQuery = window.matchMedia("(min-width: 1024px)");
 
     const updateDesktopGlow = () => {
       setShowDesktopGlow(desktopQuery.matches);
@@ -126,16 +167,10 @@ const Milestones = () => {
 
     updateDesktopGlow();
 
-    desktopQuery.addEventListener(
-      "change",
-      updateDesktopGlow,
-    );
+    desktopQuery.addEventListener("change", updateDesktopGlow);
 
     return () => {
-      desktopQuery.removeEventListener(
-        "change",
-        updateDesktopGlow,
-      );
+      desktopQuery.removeEventListener("change", updateDesktopGlow);
     };
   }, []);
 
@@ -146,11 +181,7 @@ const Milestones = () => {
   });
 
   // Animates the timeline line
-  const scaleY = useTransform(
-    scrollYProgress,
-    [0.1, 0.8],
-    [0, 1],
-  );
+  const scaleY = useTransform(scrollYProgress, [0.1, 0.8], [0, 1]);
 
   // Moves the circle along the timeline
   const circlePosition = useTransform(
@@ -265,9 +296,7 @@ const Milestones = () => {
           >
             {/* Animated glow on lg screens and above */}
             {showDesktopGlow && (
-              <DesktopCircleGlow
-                scrollYProgress={scrollYProgress}
-              />
+              <DesktopCircleGlow scrollYProgress={scrollYProgress} />
             )}
 
             {/* Stable outer glow */}
@@ -318,9 +347,7 @@ const Milestones = () => {
                       lg:text-3xl
                     "
                   >
-                    <WordTypewriter
-                      text={milestone.title}
-                    />
+                    <WordTypewriter text={milestone.title} />
                   </div>
 
                   <div
@@ -335,9 +362,7 @@ const Milestones = () => {
                       lg:text-xl
                     "
                   >
-                    <WordTypewriter
-                      text={milestone.company}
-                    />
+                    <WordTypewriter text={milestone.company} />
                   </div>
                 </div>
 
@@ -356,9 +381,7 @@ const Milestones = () => {
                       lg:text-lg
                     "
                   >
-                    <WordTypewriter
-                      text={milestone.date}
-                    />
+                    <WordTypewriter text={milestone.date} />
                   </div>
 
                   <div
@@ -373,9 +396,7 @@ const Milestones = () => {
                       lg:text-lg
                     "
                   >
-                    <WordTypewriter
-                      text={milestone.type}
-                    />
+                    <WordTypewriter text={milestone.type} />
                   </div>
                 </div>
               </div>
@@ -390,9 +411,7 @@ const Milestones = () => {
                   sm:text-lg
                 "
               >
-                <WordTypewriter
-                  text={milestone.description}
-                />
+                <WordTypewriter text={milestone.description} />
               </div>
 
               {/* Milestone tags */}
@@ -421,9 +440,7 @@ const Milestones = () => {
               </motion.div>
 
               {/* Milestone spacing */}
-              {index < milestones.length - 1 && (
-                <div className="mb-20" />
-              )}
+              {index < milestones.length - 1 && <div className="mb-20" />}
             </div>
           ))}
         </div>
