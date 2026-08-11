@@ -181,12 +181,12 @@ const Milestones = () => {
   });
 
   // Animates the timeline line
-  const scaleY = useTransform(scrollYProgress, [0.1, 0.8], [0, 1]);
+  const scaleY = useTransform(scrollYProgress, [0.1, 0.9], [0, 1]);
 
   // Moves the circle along the timeline
   const circlePosition = useTransform(
     scrollYProgress,
-    [0.1, 0.8],
+    [0.1, 0.9],
     ["0%", "100%"],
   );
 
