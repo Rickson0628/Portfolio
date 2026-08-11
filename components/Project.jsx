@@ -703,7 +703,7 @@ const Project = () => {
             transition={{
               duration: shouldReduceMotion ? 0 : 0.2,
             }}
-            className="fixed inset-0 z-100 overflow-y-auto bg-overlay p-5  flex justify-center items-center"
+            className="fixed inset-0 z-100 overflow-y-auto bg-overlay p-2 sm:p-4 lg:p-5 flex justify-center items-start lg:items-center"
             onClick={closeProject}
             role="dialog"
             aria-modal="true"
@@ -742,9 +742,9 @@ const Project = () => {
               onClick={(event) => event.stopPropagation()}
             >
               {/* Whole Card Container */}
-              <div className="relative  w-full rounded-xl border border-border bg-background py-3 px-2  text-foreground shadow-xl overflow-hidden lg:grid lg:grid-cols-[55%_45%] lg:gap-3 lg:py-5 lg:px-4 ">
+              <div className="relative w-full overflow-hidden rounded-xl border border-border bg-background px-2 py-3 text-foreground shadow-xl lg:grid lg:h-[82vh] lg:min-h-[680px] lg:max-h-[780px] lg:grid-cols-[55%_45%] lg:gap-3 lg:px-4 lg:py-5">
                 {/* Desktop size: Image Carousel and Preview pictures */}
-                <div className="relative lg:grid lg:grid-rows-[70%_30%] lg:gap-3 lg:overflow-hidden">
+                <div className="relative min-h-0 lg:grid lg:grid-rows-[72%_28%] lg:gap-3 lg:overflow-hidden">
                   {/* Image carousel */}
                   <div className="relative aspect-video w-full  lg:h-full lg:aspect-auto rounded-lg  overflow-hidden ">
                     {/* Previous image */}
@@ -854,7 +854,7 @@ const Project = () => {
                 </div>
 
                 {/* Project details Container */}
-                <div className="flex flex-col gap-4 w-full py-4 px-2">
+                <div className="flex min-h-0 w-full flex-col gap-4 overflow-y-auto px-2 py-4">
                   {/* Project title, link, close button */}
                   <div className="flex items-center justify-between">
                     {/* Project title */}
