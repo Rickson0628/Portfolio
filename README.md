@@ -4,7 +4,7 @@ A personal developer portfolio built with **Next.js, React, Tailwind CSS, and Mo
 
 ## Live Portfolio
 
-[View Portfolio](https://rickson-portfolio-ten.vercel.app/)
+[View Portfolio](https://rx-rickson-portfolio.vercel.app/)
 
 ---
 

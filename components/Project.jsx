@@ -703,7 +703,7 @@ const Project = () => {
             transition={{
               duration: shouldReduceMotion ? 0 : 0.2,
             }}
-            className="fixed inset-0 z-100 overflow-y-auto bg-overlay p-2 sm:p-4 lg:p-5 flex justify-center items-start lg:items-center"
+            className="fixed inset-0 z-100 overflow-y-auto bg-overlay p-2 sm:p-4 lg:p-5 flex justify-center items-start lg:items-center"    
             onClick={closeProject}
             role="dialog"
             aria-modal="true"
@@ -738,11 +738,11 @@ const Project = () => {
                 duration: shouldReduceMotion ? 0.4 : 0.8,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="mx-auto my-8 w-full  max-w-5xl lg:w-[94vw] lg:max-w-[1250px] xl:w-[92vw] xl:max-w-[80vw] 2xl:max-w-[70vw] bg-border dark:bg-white/80"
+              className="mx-auto my-2 w-full max-w-full sm:my-4 sm:max-w-2xl lg:my-0 lg:w-[90vw] lg:max-w-[1250px] xl:w-[82vw] xl:max-w-[1450px] 2xl:w-[70vw] 2xl:max-w-[1600px] bg-border dark:bg-white/80"
               onClick={(event) => event.stopPropagation()}
             >
               {/* Whole Card Container */}
-              <div className="relative w-full overflow-hidden rounded-xl border border-border bg-background px-2 py-3 text-foreground shadow-xl lg:grid lg:h-[82vh] lg:min-h-[680px] lg:max-h-[780px] lg:grid-cols-[55%_45%] lg:gap-3 lg:px-4 lg:py-5">
+              <div className="relative w-full overflow-hidden rounded-xl border border-border bg-background px-2 py-3 text-foreground shadow-xl lg:grid lg:h-[86dvh] lg:max-h-[820px] lg:grid-cols-[55%_45%] lg:gap-3 lg:px-4 lg:py-5">
                 {/* Desktop size: Image Carousel and Preview pictures */}
                 <div className="relative min-h-0 lg:grid lg:grid-rows-[72%_28%] lg:gap-3 lg:overflow-hidden">
                   {/* Image carousel */}
