@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Rickson Bozar — Developer Portfolio
 
-## Getting Started
+A personal developer portfolio built with **Next.js, React, Tailwind CSS, and Motion**, showcasing selected front-end and full-stack projects, professional experience, technical skills, and interactive UI work.
 
-First, run the development server:
+## Live Portfolio
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+[View Portfolio](https://rickson-portfolio-ten.vercel.app/)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Overview
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This portfolio was designed and developed to present my work as a front-end and full-stack developer through interactive project showcases, responsive layouts, motion-driven interfaces, and detailed project case studies.
 
-## Learn More
+The site focuses on both visual presentation and technical implementation, with reusable components, responsive design, light and dark themes, optimized loading states, and interactive project galleries.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Featured Projects
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Serv
+A two-sided service marketplace designed to connect customers with skilled service providers through booking, job management, location-based discovery, and provider/customer experiences.
 
-## Deploy on Vercel
+### Book Explorer
+A full-stack book discovery platform featuring JWT authentication, protected routes, MongoDB-backed favourites, dynamic Open Library integration, search, filtering, sorting, and responsive browsing.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Motion Components
+A collection of reusable motion-focused UI components featuring scroll-driven animations, staggered reveals, card interactions, spring-based transitions, and responsive motion patterns.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Nike E-Commerce UI
+A responsive Nike-inspired storefront featuring dynamic product selection, size and quantity controls, cart management, reusable React components, and light/dark themes.
+
+---
+
+## Tech Stack
+
+### Front End
+
+- Next.js
+- React
+- JavaScript
+- Tailwind CSS
+- Motion / Framer Motion
+- React Icons
+
+### Back End & Data
+
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- REST APIs
+- JWT Authentication
+
+### Tools & Deployment
+
+- Git
+- GitHub
+- Vercel
+- Figma
+
+---
+
+## Portfolio Features
+
+- Responsive desktop, tablet, and mobile layouts
+- Light and dark themes
+- Animated page transitions and entrance effects
+- Custom loading experience
+- Interactive project showcases
+- Responsive project galleries
+- Reusable React components
+- Dynamic navigation
+- Mobile sidebar navigation
+- Accessible motion considerations
+- Optimized image and asset loading
+
+---
+
+## Project Structure
+
+```text
+app/
+├── components/
+├── projects/
+├── hooks/
+├── animations/
+├── globals.css
+├── layout.js
+└── page.js
+
+public/
+├── serv/
+├── books/
+├── motion/
+├── nike/
+└── portfolio assets

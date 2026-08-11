@@ -1,5 +1,6 @@
-"use client";
 
+"use client";
+import { AiOutlineClose } from "react-icons/ai"; 
 import React from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
@@ -36,7 +37,7 @@ const SideBar = ({ children, isOpen, setSideBar }) => {
             }}
           >
             <button className="absolute right-4 top-4 z-20 p-2 font-mono text-lg font-medium text-foreground transition-colors hover:text-univ" onClick={() => setSideBar(false)} aria-label="Close menu">
-              X
+              <AiOutlineClose />
             </button>
 
             {children}

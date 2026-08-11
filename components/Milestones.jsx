@@ -67,6 +67,15 @@ const milestones = [
     type: "Internship",
     tags: ["Next.js", "Node.js", "MongoDB"],
   },
+    {
+    title: "STEM Graduate",
+    company: "Bataan National High School",
+    description:
+      "Assisted in developing responsive and high-performing web pages using Next.js, including server-rendered and statically generated pages. Supported backend functionality with Node.js, REST API integration, and MongoDB database management.",
+    date: "2025",
+    type: "Internship",
+    tags: ["Next.js", "Node.js", "MongoDB"],
+  },
 ];
 
 // Only rendered on lg screens and above

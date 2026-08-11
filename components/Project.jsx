@@ -1,4 +1,23 @@
 "use client";
+import { BiShieldAlt2 } from "react-icons/bi";
+import { SiHandlebarsdotjs } from "react-icons/si";
+import { DiCss3 } from "react-icons/di";
+import { BsFillBootstrapFill } from "react-icons/bs";
+import {
+  SiCloudinary,
+  SiExpress,
+  SiGooglemaps,
+  SiJavascript,
+  SiMongoose,
+  SiPostgresql,
+  SiRedis,
+  SiSequelize,
+  SiSocketdotio,
+  SiStripe,
+  SiVercel,
+} from "react-icons/si";
+import { IoLogoJavascript } from "react-icons/io";
+import { CgFramer } from "react-icons/cg";
 import { AiOutlineRight } from "react-icons/ai";
 import { AiOutlineLeft } from "react-icons/ai";
 import { BiLinkExternal } from "react-icons/bi";
@@ -18,11 +37,21 @@ import {
   SiTailwindcss,
   SiNodedotjs,
   SiMongodb,
+  SiJsonwebtokens,
 } from "react-icons/si";
 import { AiOutlineClose, AiOutlineLink } from "react-icons/ai";
 import { ImArrowDownLeft2 } from "react-icons/im";
 
 import WordTypewriter from "@/animation/WordTypeWriter";
+import {
+  FaAtom,
+  FaCookieBite,
+  FaDatabase,
+  FaLock,
+  FaUpload,
+  FaUserShield,
+} from "react-icons/fa";
+import { FaArrowsRotate } from "react-icons/fa6";
 
 // Project content
 const projects = [
@@ -31,17 +60,15 @@ const projects = [
     title: "Serv",
     date: "Present",
     description:
-      "Online service platform that helps customers find qualified skilled workers for repairs, maintenance,service platform that helps customers find qualified skilled workers for repairs, maintenance,service platform that helps customers find qualified skilled workers for repairs, maintenance, and other service needs",
+      "Building a two-sided service marketplace that connects customers with nearby skilled professionals for on-demand and scheduled services. Designed around separate customer and provider experiences, location-based discovery, real-time job matching and status updates, secure payments, ratings and reviews, and end-to-end booking management.",
     image: [
-      "/serv-image.png",
-      "/hoverServ-image.png",
-      "/serv-image.png",
-      "/hoverServ-image.png",
-      "/hoverServ-image.png",
-      "/serv-image.png",
-      "/hoverServ-image.png",
+      "/serv/serv-image.png",
+      "/serv/hoverServ-image.png",
+      "/serv/third-serv.png",
+      "/serv/fourth-serv.png",
+      "/serv/fifth-serv.png",
     ],
-    hoverImage: "/hoverServ-image.png",
+    hoverImage: "/serv/hoverServ-image.png",
     role: "Full-Stack Developer",
     technologies: [
       {
@@ -51,6 +78,10 @@ const projects = [
       {
         name: "React",
         icon: <SiReact />,
+      },
+      {
+        name: "JavaScript",
+        icon: <SiJavascript />,
       },
       {
         name: "Tailwind CSS",
@@ -61,21 +92,69 @@ const projects = [
         icon: <SiNodedotjs />,
       },
       {
+        name: "Express.js",
+        icon: <SiExpress />,
+      },
+      {
         name: "MongoDB",
         icon: <SiMongodb />,
+      },
+      {
+        name: "Mongoose",
+        icon: <SiMongoose />,
+      },
+      {
+        name: "Auth.js",
+        icon: <BiShieldAlt2 />,
+      },
+
+      {
+        name: "Stripe",
+        icon: <SiStripe />,
+      },
+      {
+        name: "Google Maps",
+        icon: <SiGooglemaps />,
+      },
+      {
+        name: "JWT",
+        icon: <SiJsonwebtokens />,
+      },
+      {
+        name: "Cloudinary",
+        icon: <SiCloudinary />,
+      },
+      {
+        name: "Socket.IO",
+        icon: <SiSocketdotio />,
+      },
+      {
+        name: "Redis",
+        icon: <SiRedis />,
+      },
+      {
+        name: "Vercel",
+        icon: <SiVercel />,
       },
     ],
     link: "https://www.figma.com/design/mfDny3wMR43p24YnegKCeN/Serv?node-id=0-1&t=2rjeML1fHNnI6Dy4-1",
   },
-
   {
     id: 2,
-    title: "Nike Store",
-    date: "March 2026",
+    title: "Book Shelf",
+    date: "2025",
     description:
-      "A practice e-commerce website built with Tailwind CSS, featuring a clean store layout, product sections, and a responsive design for a modern shopping experience.",
-    image: ["/nike.png", "/hoverNike.png", "/nike.png", "/hoverNike.png"],
-    hoverImage: "/hoverNike.png",
+      "A full-stack book discovery platform where users can browse and search millions of books, explore detailed book information, and build a personal favourites collection. Features JWT authentication, protected routes, demo access, persistent favourites, responsive design, and Open Library API integration.",
+    image: [
+      "/books/one-book.png",
+      "/books/hover-book.png",
+      "/books/third-book.png",
+      "/books/fourth-book.png",
+      "/books/fifth-book.png",
+      "/books/sixth-book.png",
+      "/books/seventh-book.png",
+    ],
+    hoverImage: "/books/hover-book.png",
     role: "Full-Stack Developer",
     technologies: [
       {
@@ -87,27 +166,167 @@ const projects = [
         icon: <SiReact />,
       },
       {
-        name: "Tailwind CSS",
-        icon: <SiTailwindcss />,
+        name: "JavaScript",
+        icon: <IoLogoJavascript />,
+      },
+      {
+        name: "Node.js",
+        icon: <SiNodedotjs />,
+      },
+      {
+        name: "CSS",
+        icon: <DiCss3 />,
+      },
+      {
+        name: "React Bootstrap",
+        icon: <BsFillBootstrapFill />,
+      },
+
+      {
+        name: "MongoDB",
+        icon: <SiMongodb />,
+      },
+
+      {
+        name: "Express.js",
+        icon: <SiExpress />,
+      },
+
+      {
+        name: "JWT",
+        icon: <SiJsonwebtokens />,
+      },
+
+      {
+        name: "Passport.js",
+        icon: <FaUserShield />,
+      },
+      { name: "bcrypt", icon: <FaLock /> },
+
+      {
+        name: "Open Library API",
+        icon: <FaDatabase />,
+      },
+      {
+        name: "SWR",
+        icon: <FaArrowsRotate />,
+      },
+      {
+        name: "Jotai",
+        icon: <FaAtom />,
+      },
+      {
+        name: "Vercel",
+        icon: <SiVercel />,
       },
     ],
-    link: "https://tailwind-project-lime-pi.vercel.app/",
+    link: "https://rx-book-shelf.vercel.app/",
   },
   {
     id: 3,
-    title: "Serv",
-    date: "Present",
+
+    title: "Store Management",
+
+    date: "2025",
+
     description:
-      "Online service platform that helps customers find qualified skilled workers for repairs, maintenance, and other service needs.",
+      "A full-stack store management platform that combines a customer-facing storefront with a secure inventory management system. Users can browse published products, while authenticated staff can manage inventory, categories, product visibility, image uploads, and account activity through a protected admin interface.",
+
     image: [
-      "/serv-image.png",
-      "/hoverServ-image.png",
-      "/serv-image.png",
-      "/hoverServ-image.png",
+      "/store/store.png",
+      "/store/hoverStore.png",
+      "/store/third-store.png",
+      "/store/fourth-store.png",
     ],
-    hoverImage: "/hoverServ-image.png",
+
+    hoverImage: "/store/hoverStore.png",
+
     role: "Full-Stack Developer",
+
     technologies: [
+      {
+        name: "Node.js",
+        icon: <SiNodedotjs />,
+      },
+      {
+        name: "Express.js",
+        icon: <SiExpress />,
+      },
+      {
+        name: "JavaScript",
+        icon: <SiJavascript />,
+      },
+      {
+        name: "Handlebars",
+        icon: <SiHandlebarsdotjs />,
+      },
+      {
+        name: "CSS",
+        icon: <DiCss3 />,
+      },
+      {
+        name: "Bootstrap",
+        icon: <BsFillBootstrapFill />,
+      },
+      {
+        name: "PostgreSQL",
+        icon: <SiPostgresql />,
+      },
+      {
+        name: "Sequelize",
+        icon: <SiSequelize />,
+      },
+      {
+        name: "MongoDB",
+        icon: <SiMongodb />,
+      },
+      {
+        name: "Mongoose",
+        icon: <SiMongoose />,
+      },
+      {
+        name: "bcrypt",
+        icon: <FaLock />,
+      },
+      {
+        name: "Sessions",
+        icon: <FaCookieBite />,
+      },
+      {
+        name: "Cloudinary",
+        icon: <SiCloudinary />,
+      },
+      {
+        name: "Multer",
+        icon: <FaUpload />,
+      },
+    ],
+
+    link: "https://rx-store-management.vercel.app/",
+  },
+  {
+    id: 3,
+    title: "Motion Components",
+    date: "2026",
+    description:
+      "Built a reusable collection of motion-focused UI components with React and Next.js, featuring scroll-driven animations, staggered reveals, interactive card effects, and responsive transitions designed for clean, scalable front-end implementation.",
+    image: [
+      "/motion/motion.png",
+      "/motion/hoverMotion.png",
+      "/motion/third-motion.png",
+      "/motion/fourth-motion.png",
+    ],
+    hoverImage: "/motion/hoverMotion.png",
+    role: "Front-End Developer",
+    technologies: [
+      {
+        name: "Framer Motion",
+        icon: <CgFramer />,
+      },
+      {
+        name: "Tailwind",
+        icon: <SiTailwindcss />,
+      },
       {
         name: "Next.js",
         icon: <SiNextdotjs />,
@@ -117,30 +336,21 @@ const projects = [
         icon: <SiReact />,
       },
       {
-        name: "Tailwind CSS",
-        icon: <SiTailwindcss />,
-      },
-      {
-        name: "Node.js",
-        icon: <SiNodedotjs />,
-      },
-      {
-        name: "MongoDB",
-        icon: <SiMongodb />,
+        name: "Vercel",
+        icon: <SiVercel />,
       },
     ],
-    link: "https://www.figma.com/design/mfDny3wMR43p24YnegKCeN/Serv?node-id=0-1&t=2rjeML1fHNnI6Dy4-1",
+    link: "https://motion-wine-alpha.vercel.app/",
   },
-
   {
     id: 4,
     title: "Nike Store",
     date: "March 2026",
     description:
-      "A practice e-commerce website built with Tailwind CSS, featuring a clean store layout, product sections, and a responsive design for a modern shopping experience.",
-    image: ["/nike.png", "/hoverNike.png", "/nike.png", "/hoverNike.png"],
-    hoverImage: "/hoverNike.png",
-    role: "Full-Stack Developer",
+      "Developed a responsive Nike-inspired e-commerce experience using Next.js and Tailwind CSS, with reusable components, dynamic product selection, cart functionality, and light/dark themes to showcase modern front-end development practices.",
+    image: ["/nike/nike.png", "/nike/hoverNike.png", "/nike/third-nike.png"],
+    hoverImage: "/nike/hoverNike.png",
+    role: "Front-End Developer",
     technologies: [
       {
         name: "Next.js",
@@ -151,11 +361,19 @@ const projects = [
         icon: <SiReact />,
       },
       {
-        name: "Tailwind CSS",
+        name: "Tailwind",
         icon: <SiTailwindcss />,
       },
+      {
+        name: "Javascript",
+        icon: <IoLogoJavascript />,
+      },
+      {
+        name: "Vercel",
+        icon: <SiVercel />,
+      },
     ],
-    link: "https://tailwind-project-lime-pi.vercel.app/",
+    link: "https://nike-ecommerce-ui.vercel.app/",
   },
 ];
 
@@ -406,8 +624,8 @@ const Project = () => {
                 {/* Image preview */}
                 <div className="relative  aspect-video w-full overflow-hidden xl:aspect-[3/2]">
                   {/* Default image */}
-                  <Image 
-                  priority
+                  <Image
+                    priority
                     src={project.image[0]}
                     alt={`${project.title} project preview`}
                     fill
@@ -417,7 +635,7 @@ const Project = () => {
 
                   {/* Hover image */}
                   <Image
-                  priority
+                    priority
                     src={project.hoverImage}
                     alt=""
                     aria-hidden="true"
@@ -485,7 +703,7 @@ const Project = () => {
             transition={{
               duration: shouldReduceMotion ? 0 : 0.2,
             }}
-            className="fixed inset-0 z-100 overflow-y-auto bg-overlay p-5 "
+            className="fixed inset-0 z-100 overflow-y-auto bg-overlay p-5  flex justify-center items-center"
             onClick={closeProject}
             role="dialog"
             aria-modal="true"
@@ -520,11 +738,11 @@ const Project = () => {
                 duration: shouldReduceMotion ? 0.4 : 0.8,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="mx-auto my-8 w-full max-w-5xl bg-border dark:bg-white/80 "
+              className="mx-auto my-8 w-full  max-w-5xl lg:w-[94vw] lg:max-w-[1250px] xl:w-[92vw] xl:max-w-[80vw] 2xl:max-w-[70vw] bg-border dark:bg-white/80"
               onClick={(event) => event.stopPropagation()}
             >
               {/* Whole Card Container */}
-              <div className="relative mb-5 w-full rounded-xl border border-border bg-background py-3 px-2  text-foreground shadow-xl overflow-hidden lg:grid lg:grid-cols-[55%_45%] lg:gap-3 lg:py-5 lg:px-4 ">
+              <div className="relative  w-full rounded-xl border border-border bg-background py-3 px-2  text-foreground shadow-xl overflow-hidden lg:grid lg:grid-cols-[55%_45%] lg:gap-3 lg:py-5 lg:px-4 ">
                 {/* Desktop size: Image Carousel and Preview pictures */}
                 <div className="relative lg:grid lg:grid-rows-[70%_30%] lg:gap-3 lg:overflow-hidden">
                   {/* Image carousel */}
@@ -592,7 +810,7 @@ const Project = () => {
                       >
                         {/* Active image */}
                         <Image
-                        priority
+                          priority
                           src={selectedProject.image[imageCount]}
                           alt={`${selectedProject.title} project preview ${imageCount + 1}`}
                           fill
@@ -622,11 +840,12 @@ const Project = () => {
                         onClick={() => setImageCount(index)}
                       >
                         <Image
-                        priority
+                          priority
                           src={image}
                           alt={`${image} project preview ${index + 1}`}
                           fill
-                          sizes="100px"
+                          sizes="(min-width: 1280px) 260px, (min-width: 1024px) 220px, 40vw"
+                          quality={95}
                           className="object-cover"
                         />
                       </button>
